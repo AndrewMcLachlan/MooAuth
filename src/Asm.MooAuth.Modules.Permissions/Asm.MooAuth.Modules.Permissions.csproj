@@ -1,0 +1,10 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\Common.props"/>
+
+  <ItemGroup>
+    <PackageReference Include="Asm.AspNetCore" />
+    <PackageReference Include="Asm.Cqrs.AspNetCore" />
+  </ItemGroup>
+
+</Project>

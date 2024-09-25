@@ -1,0 +1,92 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35309.182
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asm.MooAuth.Web.Api", "src\Asm.MooAuth.Web.Api\Asm.MooAuth.Web.Api.csproj", "{F964CAA2-E4A6-48FA-84B8-3EBFE62FB129}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asm.MooAuth", "src\Asm.MooAuth\Asm.MooAuth.csproj", "{427B288B-13A0-4C24-8A9E-47E3F371C03F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asm.MooAuth.Infrastructure", "src\Asm.MooAuth.Infrastructure\Asm.MooAuth.Infrastructure.csproj", "{4CC3B844-8815-4CFA-AF77-5CEAD31B9667}"
+EndProject
+Project("{42EA0DBD-9CF1-443E-919E-BE9C484E4577}") = "Asm.MooAuth.Database", "src\Asm.MooAuth.Database\Asm.MooAuth.Database.sqlprojx", "{904FCC8E-4BFF-4D86-B604-BAB9ADFC0359}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Asm.MooAuth.Web.App", "src\Asm.MooAuth.Web.App\Asm.MooAuth.Web.App.esproj", "{3750D8BA-61D6-4246-B749-35B80571EEC3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{42C8838F-9519-45A0-B4D0-6557B4F3CDB6}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		Common.props = Common.props
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
+		Directory.Packages.props = Directory.Packages.props
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{648EABB1-2C26-4FE3-AD2B-944233F972B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asm.MooAuth.Modules.Permissions", "src\Asm.MooAuth.Modules.Permissions\Asm.MooAuth.Modules.Permissions.csproj", "{3782610F-B73C-40F5-BC12-F86FEA11C10B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asm.MooAuth.Domain", "src\Asm.MooAuth.Domain\Asm.MooAuth.Domain.csproj", "{2E02B226-201B-46EA-BDA8-2680D8A14627}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asm.MooAuth.Modules.Applications", "src\Asm.MooAuth.Modules.Applications\Asm.MooAuth.Modules.Applications.csproj", "{378417E9-909C-4D0A-98C0-52002CB818BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asm.MooAuth.Modules.Roles", "src\Asm.MooAuth.Modules.Roles\Asm.MooAuth.Modules.Roles.csproj", "{8D0862EA-AE65-4306-A7B7-A2EEB6C4A4F0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F964CAA2-E4A6-48FA-84B8-3EBFE62FB129}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F964CAA2-E4A6-48FA-84B8-3EBFE62FB129}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F964CAA2-E4A6-48FA-84B8-3EBFE62FB129}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F964CAA2-E4A6-48FA-84B8-3EBFE62FB129}.Release|Any CPU.Build.0 = Release|Any CPU
+		{427B288B-13A0-4C24-8A9E-47E3F371C03F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{427B288B-13A0-4C24-8A9E-47E3F371C03F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{427B288B-13A0-4C24-8A9E-47E3F371C03F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{427B288B-13A0-4C24-8A9E-47E3F371C03F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CC3B844-8815-4CFA-AF77-5CEAD31B9667}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CC3B844-8815-4CFA-AF77-5CEAD31B9667}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CC3B844-8815-4CFA-AF77-5CEAD31B9667}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CC3B844-8815-4CFA-AF77-5CEAD31B9667}.Release|Any CPU.Build.0 = Release|Any CPU
+		{904FCC8E-4BFF-4D86-B604-BAB9ADFC0359}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{904FCC8E-4BFF-4D86-B604-BAB9ADFC0359}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{904FCC8E-4BFF-4D86-B604-BAB9ADFC0359}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{904FCC8E-4BFF-4D86-B604-BAB9ADFC0359}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3750D8BA-61D6-4246-B749-35B80571EEC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3750D8BA-61D6-4246-B749-35B80571EEC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3750D8BA-61D6-4246-B749-35B80571EEC3}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{3750D8BA-61D6-4246-B749-35B80571EEC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3750D8BA-61D6-4246-B749-35B80571EEC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3750D8BA-61D6-4246-B749-35B80571EEC3}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{3782610F-B73C-40F5-BC12-F86FEA11C10B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3782610F-B73C-40F5-BC12-F86FEA11C10B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3782610F-B73C-40F5-BC12-F86FEA11C10B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3782610F-B73C-40F5-BC12-F86FEA11C10B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E02B226-201B-46EA-BDA8-2680D8A14627}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E02B226-201B-46EA-BDA8-2680D8A14627}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E02B226-201B-46EA-BDA8-2680D8A14627}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E02B226-201B-46EA-BDA8-2680D8A14627}.Release|Any CPU.Build.0 = Release|Any CPU
+		{378417E9-909C-4D0A-98C0-52002CB818BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{378417E9-909C-4D0A-98C0-52002CB818BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{378417E9-909C-4D0A-98C0-52002CB818BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{378417E9-909C-4D0A-98C0-52002CB818BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D0862EA-AE65-4306-A7B7-A2EEB6C4A4F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D0862EA-AE65-4306-A7B7-A2EEB6C4A4F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D0862EA-AE65-4306-A7B7-A2EEB6C4A4F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D0862EA-AE65-4306-A7B7-A2EEB6C4A4F0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3782610F-B73C-40F5-BC12-F86FEA11C10B} = {648EABB1-2C26-4FE3-AD2B-944233F972B9}
+		{378417E9-909C-4D0A-98C0-52002CB818BA} = {648EABB1-2C26-4FE3-AD2B-944233F972B9}
+		{8D0862EA-AE65-4306-A7B7-A2EEB6C4A4F0} = {648EABB1-2C26-4FE3-AD2B-944233F972B9}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {816AE553-612C-4E59-B417-475D1E29A13B}
+	EndGlobalSection
+EndGlobal

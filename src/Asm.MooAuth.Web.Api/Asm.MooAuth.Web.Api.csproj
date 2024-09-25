@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <SpaRoot>..\Asm.MooAuth.Web.App</SpaRoot>
+    <SpaProxyLaunchCommand>npm run dev</SpaProxyLaunchCommand>
+    <SpaProxyServerUrl>https://localhost:3006</SpaProxyServerUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Asm.AspNetCore" />
+    <PackageReference Include="Asm.AspNetCore.Api" />
+    <PackageReference Include="Asm.Cqrs.AspNetCore" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaProxy" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Asm.AspNetCore" />
+    <Using Include="Asm.AspNetCore.Security" />
+    <!--<Using Include="Asm.MooAuth.Web.Api" />-->
+    <Using Include="Microsoft.Extensions.DependencyInjection" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Asm.MooAuth.Domain\Asm.MooAuth.Domain.csproj" />
+    <ProjectReference Include="..\Asm.MooAuth.Infrastructure\Asm.MooAuth.Infrastructure.csproj" />
+    <ProjectReference Include="..\Asm.MooAuth.Modules.Applications\Asm.MooAuth.Modules.Applications.csproj" />
+    <ProjectReference Include="..\Asm.MooAuth.Modules.Permissions\Asm.MooAuth.Modules.Permissions.csproj" />
+    <ProjectReference Include="..\Asm.MooAuth.Modules.Roles\Asm.MooAuth.Modules.Roles.csproj" />
+    <ProjectReference Include="..\Asm.MooAuth.Web.App\Asm.MooAuth.Web.App.esproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\Asm.MooAuth\Asm.MooAuth.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\Common.props" />
+
+  <ItemGroup>
+    <PackageReference Include="Asm.AspNetCore" />
+    <PackageReference Include="Asm.Cqrs.AspNetCore" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Asm.MooAuth.Domain\Asm.MooAuth.Domain.csproj" />
+    <ProjectReference Include="..\Asm.MooAuth.Infrastructure\Asm.MooAuth.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Asm.Cqrs.Commands" />
+    <Using Include="Asm.Cqrs.Queries" />
+    <Using Include="Microsoft.EntityFrameworkCore" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,18 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Authors>Andrew McLachlan</Authors>
+    <Company />
+    <Copyright>Copyright © Andrew McLachlan 2024. All rights reserved.</Copyright>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>$([System.DateTime]::Now.Year).$([System.DateTime]::Now.Month).0</FileVersion>
+    <Version>$([System.DateTime]::Now.Year).$([System.DateTime]::Now.Month).0</Version>
+    <Product>MooAuth</Product>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/AndrewMcLachlan/MooAuth</RepositoryUrl>
+  </PropertyGroup>
+</Project>

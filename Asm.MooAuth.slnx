@@ -1,0 +1,20 @@
+<Solution>
+  <Folder Name="/Config/">
+    <File Path=".editorconfig" />
+    <File Path=".gitignore" />
+    <File Path=".npmrc" />
+    <File Path="Common.props" />
+    <File Path="Directory.Build.targets" />
+  </Folder>
+  <Project Path="src\Asm.MooAuth.Web.Api\Asm.MooAuth.Web.Api.csproj" Type="C#" />
+  <Project Path="src\Asm.MooAuth.Web.App\Asm.MooAuth.Web.App.esproj">
+    <Build />
+    <Deploy />
+  </Project>
+  <Project Path="src\Asm.MooAuth.Database\Asm.MooAuth.Database.sqlprojx" Type="sqlprojx" />
+  <Project Path="src\Asm.MooAuth.Infrastructure\Asm.MooAuth.Infrastructure.csproj" Type="C#" />
+  <Project Path="src\Asm.MooAuth\Asm.MooAuth.csproj" Type="C#" />
+  <Properties Name="Visual Studio">
+    <Property Name="OpenWith" Value="Visual Studio Version 17" />
+  </Properties>
+</Solution>

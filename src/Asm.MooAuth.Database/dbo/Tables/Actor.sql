@@ -1,0 +1,7 @@
+CREATE TABLE dbo.Actor
+(
+    Id INT NOT NULL IDENTITY(1,1),
+    Created DATETIME2 NOT NULL,
+    Modified DATETIME2 NOT NULL,
+    CONSTRAINT PK_Actor PRIMARY KEY (Id)
+);

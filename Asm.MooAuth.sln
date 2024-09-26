@@ -33,6 +33,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asm.MooAuth.Modules.Applica
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asm.MooAuth.Modules.Roles", "src\Asm.MooAuth.Modules.Roles\Asm.MooAuth.Modules.Roles.csproj", "{8D0862EA-AE65-4306-A7B7-A2EEB6C4A4F0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{8FE04C9E-1D4D-445C-B48B-8B4F229CF560}"
+	ProjectSection(SolutionItems) = preProject
+		.github\dependabot.yml = .github\dependabot.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{31A75F10-5475-4E42-A17F-F5718E2CC8EC}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build.yml = .github\workflows\build.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -85,6 +95,7 @@ Global
 		{3782610F-B73C-40F5-BC12-F86FEA11C10B} = {648EABB1-2C26-4FE3-AD2B-944233F972B9}
 		{378417E9-909C-4D0A-98C0-52002CB818BA} = {648EABB1-2C26-4FE3-AD2B-944233F972B9}
 		{8D0862EA-AE65-4306-A7B7-A2EEB6C4A4F0} = {648EABB1-2C26-4FE3-AD2B-944233F972B9}
+		{31A75F10-5475-4E42-A17F-F5718E2CC8EC} = {8FE04C9E-1D4D-445C-B48B-8B4F229CF560}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {816AE553-612C-4E59-B417-475D1E29A13B}

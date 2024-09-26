@@ -1,0 +1,81 @@
+name: Build and Deploy
+on:
+  push:
+    branches:
+      - "main"
+  pull_request_target:
+    branches:
+      - "main"
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+
+      with:
+        dotnet-version: 8.x
+        source-url: https://nuget.pkg.github.com/AndrewMcLachlan/index.json
+      env:
+        NUGET_AUTH_TOKEN: ${{secrets.CROSS_REPO_PACKAGE_TOKEN}}
+    - name: Set version number
+      id: set-version-number
+      uses: andrewmclachlan/actions/set-version-number@v2
+      with:
+        project: 'src/Asm.MooAuth.Web.Api'
+        versionPropertyName: 'Version'
+    - name: Restore dependencies
+      run: dotnet restore Asm.MooAuth.sln
+    - name: Setup node and npm
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+        cache: npm
+        cache-dependency-path: 'src/Asm.MooAuth.Web.App/package-lock.json'
+        registry-url: "https://npm.pkg.github.com"
+    - name: Publish
+      run: dotnet publish src/Asm.MooAuth.Web.Api/Asm.MooAuth.Web.Api.csproj --output ${{ github.workspace }}/publish --configuration Release --p:Version=${{ steps.set-version-number.outputs.version }} --p:FileVersion=${{ steps.set-version-number.outputs.version }} --no-restore
+    - name: Install App dependencies
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.CROSS_REPO_PACKAGE_TOKEN }}
+      run: npm ci --prefix src/Asm.MooAuth.Web.App
+    - name: Version App
+      run: npm version ${{ steps.set-version-number.outputs.version }} --prefix src/Asm.MooAuth.Web.App
+    - name: Build App
+      run: npm run build --prefix src/Asm.MooAuth.Web.App
+    - name: Copy App
+      run: cp -r src/Asm.MooAuth.Web.App/dist ${{ github.workspace }}/publish/wwwroot
+    #- name: Publish WebJob
+    #  run: 'dotnet publish src/Asm.MooAuth.Web.Jobs/Asm.MooAuth.Web.Jobs.csproj --runtime win-x64 --no-self-contained --output ${{ github.workspace }}/publish/App_Data/jobs/continuous/Jobs --configuration Release --p:Version=${{ steps.set-version-number.outputs.version }} --p:FileVersion=${{ steps.set-version-number.outputs.version }} --no-restore'
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: publish
+        path: ${{ github.workspace }}/publish
+
+  test:
+    needs: build
+    if: (github.event_name != 'pull_request' && github.event_name != 'pull_request_target' && github.ref == 'refs/heads/main')
+    uses: AndrewMcLachlan/actions/.github/workflows/deploy-azure.yml@v2
+    with:
+      environment: 'Test'
+      artifact-name: publish
+    secrets:
+      AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      AZURE_WEBAPP_NAME: ${{ secrets.WEB_APP_NAME }}
+  production:
+    needs: test
+    if: (github.event_name != 'pull_request' && github.event_name != 'pull_request_target' && github.ref == 'refs/heads/main')
+    uses: AndrewMcLachlan/actions/.github/workflows/deploy-azure.yml@v2
+    with:
+      environment: 'Production'
+      artifact-name: publish
+    secrets:
+      AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      AZURE_WEBAPP_NAME: ${{ secrets.WEB_APP_NAME }}

@@ -13,9 +13,10 @@ updates:
   - package-ecosystem: "npm"
     directory: "/src/Asm.MooAuth.Web.App"
     schedule:
-      interval: "daily"
+      interval: "weekly"
       timezone: Australia/Brisbane
       time: "06:00"
+      day: tuesday
     reviewers:
       - andrewmcLachlan
     groups:

@@ -14,6 +14,15 @@ export const routes: RouteDefinition = {
                     details: { path: "details", element: <Pages.ApplicationDetails /> },
                 }
             },
+
+            roles: { path: "/roles", element: <Pages.Roles />, },
+            createRole: { path: "/roles/create", element: <Pages.CreateRole /> },
+            role: {
+                path: "/roles/:id", element: <Pages.Role />,
+                children: {
+                    details: { path: "details", element: <Pages.RoleDetails /> },
+                }
+            },
         }
     }
 };

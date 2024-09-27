@@ -19,6 +19,11 @@ export type CreatePermission = {
     description?: (string) | null;
 };
 
+export type CreateRole = {
+    name: string;
+    description?: (string) | null;
+};
+
 export type Permission = {
     id: number;
     name: string;
@@ -31,6 +36,17 @@ export type ProblemDetails = {
     status?: (number) | null;
     detail?: (string) | null;
     instance?: (string) | null;
+};
+
+export type Role = {
+    id?: number;
+    name: string;
+    description?: (string) | null;
+    logoUrl?: (string) | null;
+    permissions?: Array<{
+        id: number;
+        name: string;
+    }>;
 };
 
 export type GetAllApplicationsResponse = (Array<Application>);
@@ -120,3 +136,67 @@ export type CreatePermissionData = {
 export type CreatePermissionResponse = (Permission);
 
 export type CreatePermissionError = unknown;
+
+export type GetAllRolesResponse = (Array<Role>);
+
+export type GetAllRolesError = unknown;
+
+export type CreateRoleData = {
+    body: CreateRole;
+};
+
+export type CreateRoleResponse = (Role);
+
+export type CreateRoleError = unknown;
+
+export type GetRoleData = {
+    path: {
+        id: number;
+    };
+};
+
+export type GetRoleResponse = (Role);
+
+export type GetRoleError = (ProblemDetails);
+
+export type UpdateRoleData = {
+    body: Role;
+    path: {
+        id: number;
+    };
+};
+
+export type UpdateRoleResponse = (Role);
+
+export type UpdateRoleError = (ProblemDetails);
+
+export type DeleteRoleData = {
+    path: {
+        id: number;
+    };
+};
+
+export type DeleteRoleResponse = (void);
+
+export type DeleteRoleError = (ProblemDetails);
+
+export type AddPermissionData = {
+    body: Role;
+    path: {
+        id: number;
+    };
+};
+
+export type AddPermissionResponse = (Role);
+
+export type AddPermissionError = (ProblemDetails);
+
+export type RemoveRoleData = {
+    path: {
+        id: number;
+    };
+};
+
+export type RemoveRoleResponse = (void);
+
+export type RemoveRoleError = (ProblemDetails);

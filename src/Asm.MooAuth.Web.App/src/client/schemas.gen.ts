@@ -60,6 +60,20 @@ export const CreatePermissionSchema = {
     }
 } as const;
 
+export const CreateRoleSchema = {
+    required: ['name'],
+    type: 'object',
+    properties: {
+        name: {
+            type: 'string'
+        },
+        description: {
+            type: 'string',
+            nullable: true
+        }
+    }
+} as const;
+
 export const PermissionSchema = {
     required: ['id', 'name'],
     type: 'object',
@@ -101,6 +115,44 @@ export const ProblemDetailsSchema = {
         instance: {
             type: 'string',
             nullable: true
+        }
+    }
+} as const;
+
+export const RoleSchema = {
+    required: ['name'],
+    type: 'object',
+    properties: {
+        id: {
+            type: 'integer',
+            format: 'int32'
+        },
+        name: {
+            type: 'string'
+        },
+        description: {
+            type: 'string',
+            nullable: true
+        },
+        logoUrl: {
+            type: 'string',
+            nullable: true
+        },
+        permissions: {
+            type: 'array',
+            items: {
+                required: ['id', 'name'],
+                type: 'object',
+                properties: {
+                    id: {
+                        type: 'integer',
+                        format: 'int32'
+                    },
+                    name: {
+                        type: 'string'
+                    }
+                }
+            }
         }
     }
 } as const;

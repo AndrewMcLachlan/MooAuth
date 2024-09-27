@@ -25,7 +25,7 @@ internal class Roles : EndpointGroupBase
             .WithNames("Get Role")
             .ProducesProblem(StatusCodes.Status404NotFound);
 
-        builder.MapPostCreate<Create, Role>("/", "Get Role".ToMachine(), a => new { a.Id }, CommandBinding.Body)
+        builder.MapPostCreate<Create, Role>("/", "Get Role".ToMachine(), a => new { a.Id }, CommandBinding.Parameters)
             .WithNames("Create Role");
 
         builder.MapPatchCommand<Update, Role>("/{id}")

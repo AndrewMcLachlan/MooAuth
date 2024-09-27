@@ -1,9 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
+  <Import Project="..\..\Common.props" />
+
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
     <SpaRoot>..\Asm.MooAuth.Web.App</SpaRoot>
     <SpaProxyLaunchCommand>npm run dev</SpaProxyLaunchCommand>
     <SpaProxyServerUrl>https://localhost:3006</SpaProxyServerUrl>
@@ -30,9 +29,6 @@
     <ProjectReference Include="..\Asm.MooAuth.Modules.Applications\Asm.MooAuth.Modules.Applications.csproj" />
     <ProjectReference Include="..\Asm.MooAuth.Modules.Permissions\Asm.MooAuth.Modules.Permissions.csproj" />
     <ProjectReference Include="..\Asm.MooAuth.Modules.Roles\Asm.MooAuth.Modules.Roles.csproj" />
-    <ProjectReference Include="..\Asm.MooAuth.Web.App\Asm.MooAuth.Web.App.esproj">
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
     <ProjectReference Include="..\Asm.MooAuth\Asm.MooAuth.csproj" />
   </ItemGroup>
 

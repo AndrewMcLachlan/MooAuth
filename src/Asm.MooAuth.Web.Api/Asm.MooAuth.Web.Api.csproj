@@ -27,7 +27,6 @@
     <ProjectReference Include="..\Asm.MooAuth.Domain\Asm.MooAuth.Domain.csproj" />
     <ProjectReference Include="..\Asm.MooAuth.Infrastructure\Asm.MooAuth.Infrastructure.csproj" />
     <ProjectReference Include="..\Asm.MooAuth.Modules.Applications\Asm.MooAuth.Modules.Applications.csproj" />
-    <ProjectReference Include="..\Asm.MooAuth.Modules.Permissions\Asm.MooAuth.Modules.Permissions.csproj" />
     <ProjectReference Include="..\Asm.MooAuth.Modules.Roles\Asm.MooAuth.Modules.Roles.csproj" />
     <ProjectReference Include="..\Asm.MooAuth\Asm.MooAuth.csproj" />
   </ItemGroup>

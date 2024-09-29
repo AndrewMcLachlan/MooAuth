@@ -1,5 +1,5 @@
 import { useApiDelete, useApiGet, useApiPatch, useApiPost, useApiPutEmpty } from "@andrewmclachlan/mooapp";
-import { Application, CreateApplication, CreatePermission } from "client";
+import { Application, CreateApplication, CreatePermission, SimpleApplication } from "client";
 
 const key: string = "applications";
 
@@ -62,3 +62,5 @@ export const useDeletePermission = () => {
 
     return deletePermssion;
 }
+
+export const usePermissionsList = () => useApiGet<SimpleApplication[]>([key, "permissions"], "/api/applications/permissions");

@@ -11,7 +11,6 @@ void AddServices(WebApplicationBuilder builder)
     builder.RegisterModules(() => new IModule[]
     {
         new Asm.MooAuth.Modules.Applications.Module(),
-        new Asm.MooAuth.Modules.Permissions.Module(),
         new Asm.MooAuth.Modules.Roles.Module(),
     });
 

@@ -17,7 +17,6 @@ export const Create: React.FC = () => {
         defaultValues: {
             name: "",
             description: "",
-            logoUrl: "",
         }
     });
 
@@ -26,11 +25,11 @@ export const Create: React.FC = () => {
             <SectionForm onSubmit={form.handleSubmit(handleSubmit)}>
                 <Form.Group groupId="name">
                     <Form.Label>Name</Form.Label>
-                    <Form.Input type="text" />
+                    <Form.Input type="text" {...register("name")} />
                 </Form.Group>
                 <Form.Group groupId="description">
                     <Form.Label>Description</Form.Label>
-                    <Form.Input type="text" />
+                    <Form.Input type="text" {...register("description")} />
                 </Form.Group>
                 <Button type="submit" variant="primary">Save</Button>
             </SectionForm>

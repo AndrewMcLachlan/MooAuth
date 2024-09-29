@@ -1,12 +1,12 @@
-import { DeleteIcon, EditColumn, Form, Page, SaveIcon, Section, SectionForm, SectionTable } from "@andrewmclachlan/mooapp";
-import { CreateRole, CreatePermission } from "client";
+import { DeleteIcon, Form, Page, SaveIcon, SectionForm, SectionTable } from "@andrewmclachlan/mooapp";
+import { CreatePermission, CreateRole } from "client";
+import { PermissionSelector } from "components/PermissionSelector";
 import React, { useEffect } from "react";
-import { Button, Table } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { SubmitHandler, useForm } from "react-hook-form";
-import {  useUpdateRole, useAddPermission, useRemovePermission } from "services";
-import { useRole } from "./RoleProvider";
-import { toNull } from "utils/toNull";
+import { useAddPermission, usePermissionsList, useRemovePermission, useUpdateRole } from "services";
 import { useIdParams } from "utils/useIdParams";
+import { useRole } from "./RoleProvider";
 
 export const Details: React.FC = () => {
 
@@ -14,11 +14,11 @@ export const Details: React.FC = () => {
     const role = useRole();
 
     const update = useUpdateRole();
-    const createPermission = useCreatePermission();
-    const updatePermission = useUpdatePermission();
-    const deletePermission = useDeletePermission();
+    const addPermission = useAddPermission();
+    const removePermission = useRemovePermission();
+    const permissions = usePermissionsList();
 
-    const [newPermission, setNewPermission] = React.useState<CreatePermission>({ name: "", description: "" });
+    const [newPermissionId, setNewPermissionId] = React.useState<number>();
 
 
     const onSubmit: SubmitHandler<CreateRole> = async (data: CreateRole) => {
@@ -41,7 +41,7 @@ export const Details: React.FC = () => {
 
     return (
         <Page title={role.name} breadcrumbs={[{ text: role.name, route: `/roles/${role.id}/details` }]}>
-            <SectionForm onSubmit={handleSubmit(onSubmit)}>
+            <SectionForm onSubmit={handleSubmit(onSubmit)} title="Details">
                 <Form.Group groupId="name">
                     <Form.Label>Name</Form.Label>
                     <Form.Input type="text" defaultValue={role.name}{...register("name")} />
@@ -61,13 +61,13 @@ export const Details: React.FC = () => {
                 </thead>
                 <tbody>
                     <tr>
-                        <td><input type="text" placeholder="Name" value={newPermission.name} onChange={e => setNewPermission({ ...newPermission, name: e.currentTarget.value })} className="form-control" /></td>
-                        <td className="row-action"><SaveIcon onClick={() => createPermission(role.id!, newPermission)} /></td>
+                        <td><PermissionSelector onChange={p => setNewPermissionId(p?.id)} selectedPermissions={role.permissions} /></td>
+                        <td className="row-action"><SaveIcon onClick={() => addPermission(role.id!, newPermissionId)} /></td>
                     </tr>
                     {role?.permissions?.map((p) => (
                         <tr key={p.name}>
                             <td>{p.name}</td>
-                            <td className="row-action"><DeleteIcon onClick={() => deletePermission(role.id!, p.id)} /></td>
+                            <td className="row-action"><DeleteIcon onClick={() => removePermission(role.id!, p.id)} /></td>
                         </tr>
                     )
                     )}

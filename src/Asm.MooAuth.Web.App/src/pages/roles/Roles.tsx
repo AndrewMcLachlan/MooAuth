@@ -19,7 +19,6 @@ export const Roles = () => {
             <Table className="accounts section" hover striped>
                 <thead>
                     <tr>
-                        <th>Logo</th>
                         <th>Name</th>
                         <th>Description</th>
                     </tr>

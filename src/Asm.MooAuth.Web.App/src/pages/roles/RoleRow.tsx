@@ -16,9 +16,6 @@ export const RoleRow: React.FC<RoleRowProps> = (props) => {
     return (
         <tr onClick={onRowClick} className="clickable">
             <td>
-                {props.role.logoUrl && <img src={props.role.logoUrl} alt={props.role.name} />}
-            </td>
-            <td>
                 <div className="name">{props.role.name}</div>
             </td>
             <td>

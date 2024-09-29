@@ -4,13 +4,6 @@ export const ApplicationSchema = {
     required: ['name'],
     type: 'object',
     properties: {
-        id: {
-            type: 'integer',
-            format: 'int32'
-        },
-        name: {
-            type: 'string'
-        },
         description: {
             type: 'string',
             nullable: true
@@ -24,6 +17,13 @@ export const ApplicationSchema = {
             items: {
                 '$ref': '#/components/schemas/Permission'
             }
+        },
+        id: {
+            type: 'integer',
+            format: 'int32'
+        },
+        name: {
+            type: 'string'
         }
     }
 } as const;
@@ -75,19 +75,19 @@ export const CreateRoleSchema = {
 } as const;
 
 export const PermissionSchema = {
-    required: ['id', 'name'],
+    required: ['name'],
     type: 'object',
     properties: {
+        description: {
+            type: 'string',
+            nullable: true
+        },
         id: {
             type: 'integer',
             format: 'int32'
         },
         name: {
             type: 'string'
-        },
-        description: {
-            type: 'string',
-            nullable: true
         }
     }
 } as const;
@@ -142,6 +142,36 @@ export const RoleSchema = {
             type: 'array',
             items: {
                 required: ['id', 'name'],
+                type: 'object',
+                properties: {
+                    id: {
+                        type: 'integer',
+                        format: 'int32'
+                    },
+                    name: {
+                        type: 'string'
+                    }
+                }
+            }
+        }
+    }
+} as const;
+
+export const SimpleApplicationSchema = {
+    required: ['name'],
+    type: 'object',
+    properties: {
+        id: {
+            type: 'integer',
+            format: 'int32'
+        },
+        name: {
+            type: 'string'
+        },
+        permissions: {
+            type: 'array',
+            items: {
+                required: ['name'],
                 type: 'object',
                 properties: {
                     id: {

@@ -1,4 +1,5 @@
 import { useApiDelete, useApiGet, useApiPatch, useApiPost, useApiPutEmpty } from "@andrewmclachlan/mooapp";
+import { useQueryClient } from "@tanstack/react-query";
 import { Role, CreateRole, CreatePermission } from "client";
 
 const key: string = "roles";
@@ -38,18 +39,32 @@ export const useDeleteRole = () => {
 
 export const useAddPermission = () => {
 
+    const queryClient = useQueryClient();
     const { mutate } = useApiPutEmpty<Role, { id: number, permissionId: number }>(({ id, permissionId }) => `/api/roles/${id}/permissions/${permissionId}`);
 
-    const addPermission = (id: number, permissionId: number) => mutate({ id, permissionId });
+    const addPermission = (id: number, permissionId?: number) => {
+        if (permissionId) {
+            mutate({ id, permissionId }, {
+                onSuccess: () => {
+                    queryClient.invalidateQueries({ queryKey: [key, id] });
+                }
+            });
+        }
+    }
 
     return addPermission;
 }
 
 export const useRemovePermission = () => {
 
+    const queryClient = useQueryClient();
     const { mutate } = useApiDelete<{ id: number, permissionId: number }>(({ id, permissionId }) => `/api/roles/${id}/permissions/${permissionId}`);
 
-    const removePermission = ( id: number, permissionId: number ) => mutate({ id, permissionId });
+    const removePermission = (id: number, permissionId: number) => mutate({ id, permissionId }, {
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: [key, id] });
+        }
+    });
 
     return removePermission;
 }

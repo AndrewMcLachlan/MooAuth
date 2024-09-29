@@ -7,7 +7,7 @@ namespace Asm.MooAuth.Modules.Roles;
 
 public class Module : IModule
 {
-    private static readonly Assembly Assembly = typeof(System.Reflection.Module).Assembly;
+    private static readonly Assembly Assembly = typeof(Module).Assembly;
 
     public IServiceCollection AddServices(IServiceCollection services)
     {

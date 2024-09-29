@@ -33,8 +33,18 @@ public partial class MooAuthContext : DomainDbContext, IReadOnlyDbContext
         }
 
         modelBuilder.Entity<Application>();
-        modelBuilder.Entity<Permission>();
-        modelBuilder.Entity<Role>();
+        modelBuilder.Entity<Permission>().HasMany(r => r.Roles).WithMany(p => p.Permissions)
+            .UsingEntity<Dictionary<string, object>>("RolePermission",
+            x => x.HasOne<Role>().WithMany().HasForeignKey("RoleId").HasPrincipalKey(nameof(Role.Id)),
+            x => x.HasOne<Permission>().WithMany().HasForeignKey("PermissionId").HasPrincipalKey(nameof(Permission.Id)),
+            x =>
+            {
+                x.Property<int>("RoleId");
+                x.Property<int>("PermissionId");
+                x.HasKey("RoleId", "PermissionId");
+                x.ToTable("RolePermission");
+            });
+        modelBuilder.Entity<Role>().HasMany(r => r.Permissions).WithMany(p => p.Roles);
 
         modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
 

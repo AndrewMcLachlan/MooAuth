@@ -6,6 +6,7 @@ import React from "react";
 
 import { MooAppLayout, NavItem } from "@andrewmclachlan/mooapp";
 import { useIsAuthenticated } from "@azure/msal-react";
+import { User, Users, UserShield } from "@andrewmclachlan/mooicons";
 //import { useHasRole } from "hooks";
 
 const App: React.FC = () => {
@@ -38,10 +39,10 @@ const userMenu: NavItem[] = [
     }
 ];
 
-const sideMenu = [
+const sideMenu: NavItem[] = [
     {
         text: "Dashboard",
-        route: "/"
+        route: "/",
     },
     {
         text: "Applications",
@@ -49,15 +50,19 @@ const sideMenu = [
     },
     {
         text: "Roles",
-        route: "/roles"
+        route: "/roles",
+        image: <UserShield />
+
     },
     {
         text: "Users",
-        route: "/users"
+        route: "/users",
+        image: <User />
     },
     {
         text: "Groups",
-        route: "/groups"
+        route: "/groups",
+        image: <Users />
     },
     {
         text: "Connectors",

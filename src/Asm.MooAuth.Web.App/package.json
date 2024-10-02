@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "start": "vite",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
@@ -12,7 +13,7 @@
   },
   "dependencies": {
     "@andrewmclachlan/mooapp": "^2.1.545",
-    "@andrewmclachlan/mooicons": "^0.1.9",
+    "@andrewmclachlan/mooicons": "^0.1.23",
     "@hey-api/client-fetch": "^0.3.3",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.5",

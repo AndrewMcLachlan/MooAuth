@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@andrewmclachlan/mooapp": "^2.1.549",
-    "@andrewmclachlan/mooicons": "^0.1.9",
+    "@andrewmclachlan/mooicons": "^0.1.26",
     "@hey-api/client-fetch": "^0.4.0",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.5",

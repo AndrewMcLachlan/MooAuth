@@ -25,18 +25,18 @@ internal class Roles : EndpointGroupBase
             .WithNames("Get Role")
             .ProducesProblem(StatusCodes.Status404NotFound);
 
-        builder.MapPostCreate<Create, Role>("/", "Get Role".ToMachine(), a => new { a.Id }, CommandBinding.Body)
+        builder.MapPostCreate<Create, Role>("/", "Get Role".ToMachine(), a => new { a.Id }, CommandBinding.Parameters)
             .WithNames("Create Role");
 
         builder.MapPatchCommand<Update, Role>("/{id}")
             .WithNames("Update Role")
             .ProducesProblem(StatusCodes.Status404NotFound);
 
-        builder.MapPutCommand<Update, Role>("/{roleId}/permissions/{id}")
+        builder.MapPutCommand<AddPermission>("/{roleId}/permissions/{permissionId}", CommandBinding.Parameters)
             .WithNames("Add Permission")
             .ProducesProblem(StatusCodes.Status404NotFound);
 
-        builder.MapDelete<Delete>("/{roleId}/permissions/{id}")
+        builder.MapDelete<RemovePermission>("/{roleId}/permissions/{permissionId}")
             .WithNames("Remove Role")
             .ProducesProblem(StatusCodes.Status404NotFound);
 

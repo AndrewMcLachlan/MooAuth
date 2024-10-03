@@ -35,6 +35,8 @@ internal class Applications : EndpointGroupBase
             .WithNames("Delete Application")
             .ProducesProblem(StatusCodes.Status404NotFound);
 
+        builder.MapQuery<GetList, IEnumerable<SimpleApplication>>("/permissions")
+            .WithNames("Get Permission List");
 
         builder.MapQuery<Queries.Permissions.Get, Permission>("/{applicationId}/permissions/{id}")
             .WithNames("Get Permission")

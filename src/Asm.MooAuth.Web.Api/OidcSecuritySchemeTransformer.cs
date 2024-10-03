@@ -24,6 +24,22 @@ internal sealed class OidcSecuritySchemeTransformer(IAuthenticationSchemeProvide
                     Scheme = "bearer", // "bearer" refers to the header name here
                     In = ParameterLocation.Header,
                     BearerFormat = "Json Web Token",
+                    Flows = new OpenApiOAuthFlows
+                    {
+                        AuthorizationCode = new OpenApiOAuthFlow
+                        {
+                            AuthorizationUrl = new Uri($"{oAuthOptions.Value.Domain}{oAuthOptions.Value.TenantId}/oauth2/v2.0/authorize"),
+                            TokenUrl = new Uri($"{oAuthOptions.Value.Domain}{oAuthOptions.Value.TenantId}/oauth2/v2.0/token"),
+                            Scopes = new Dictionary<string, string>
+                           {
+                               { "openid", "openid" },
+                               { "profile", "profile" },
+                               { "email", "email" },
+                               { "offline_access", "offline_access" },
+                           },
+                        },
+                        Implicit = null,
+                    },
                 }
             };
             document.Components ??= new OpenApiComponents();

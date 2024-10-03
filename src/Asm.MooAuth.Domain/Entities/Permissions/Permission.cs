@@ -15,5 +15,5 @@ public class Permission([DisallowNull] int id) : NamedEntity(id)
 
     public ICollection<Role> Roles { get; set; } = [];
 
-    public override string ToString() => $"{Application.Name}.{Name}";
+    public override string ToString() => $"{Application?.Name}.{Name}";
 }

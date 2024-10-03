@@ -5,6 +5,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Asm.MooAuth.Infrastructure.Repositories;
 using Asm.MooAuth.Domain.Entities.Permissions;
+using Asm.MooAuth.Domain.Entities.Roles;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -37,7 +38,8 @@ public static class IServiceCollectionExtensions
 
     public static IServiceCollection AddRepositories(this IServiceCollection services) =>
         services.AddScoped<IApplicationRepository, ApplicationRepository>()
-                .AddScoped<IPermissionRepository, PermissionRepository>();
+                .AddScoped<IPermissionRepository, PermissionRepository>()
+                .AddScoped<IRoleRepository, RoleRepository>();
 
     public static IServiceCollection AddEntities(this IServiceCollection services) =>
         services.AddAggregateRoots<MooAuthContext>(typeof(IApplicationRepository).Assembly);

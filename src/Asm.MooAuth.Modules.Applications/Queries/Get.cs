@@ -8,6 +8,7 @@ internal class GetHandler(IQueryable<Domain.Entities.Applications.Application> a
 {
     public async ValueTask<Application> Handle(Get query, CancellationToken cancellationToken) =>
         (await applications
+            .Include(a => a.Permissions)
             .Where(a => a.Id == query.Id)
             .ToModel()
             .FirstOrDefaultAsync(cancellationToken)) ?? throw new NotFoundException();

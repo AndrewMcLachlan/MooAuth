@@ -3,15 +3,15 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="Asm" Version="3.2.273" />
-    <PackageVersion Include="Asm.AspNetCore" Version="3.2.273" />
-    <PackageVersion Include="Asm.AspNetCore.Api" Version="3.2.273" />
-    <PackageVersion Include="Asm.Cqrs.AspNetCore" Version="3.2.273" />
-    <PackageVersion Include="Asm.Domain" Version="3.2.273" />
-    <PackageVersion Include="Asm.Domain.Infrastructure" Version="3.2.273" />
+    <PackageVersion Include="Asm" Version="3.2.284" />
+    <PackageVersion Include="Asm.AspNetCore" Version="3.2.284" />
+    <PackageVersion Include="Asm.AspNetCore.Api" Version="3.2.284" />
+    <PackageVersion Include="Asm.Cqrs.AspNetCore" Version="3.2.284" />
+    <PackageVersion Include="Asm.Domain" Version="3.2.284" />
+    <PackageVersion Include="Asm.Domain.Infrastructure" Version="3.2.284" />
   </ItemGroup>
   <ItemGroup>
-    <PackageVersion Include="Azure.Identity" Version="1.12.0" />
+    <PackageVersion Include="Azure.Identity" Version="1.12.1" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.0-rc.1.24451.1" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0-rc.1.24451.1" />
     <PackageVersion Include="Microsoft.Extensions.Hosting.Abstractions" Version="9.0.0-rc.1.24431.7" />

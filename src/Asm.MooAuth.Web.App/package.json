@@ -12,7 +12,7 @@
     "openapi-ts": "openapi-ts"
   },
   "dependencies": {
-    "@andrewmclachlan/mooapp": "^2.1.549",
+    "@andrewmclachlan/mooapp": "^2.2.573",
     "@andrewmclachlan/mooicons": "^0.1.26",
     "@hey-api/client-fetch": "^0.4.0",
     "react": "^18.3.1",

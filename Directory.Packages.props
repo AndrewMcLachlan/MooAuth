@@ -3,21 +3,23 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="Asm" Version="3.2.292" />
-    <PackageVersion Include="Asm.AspNetCore" Version="3.2.292" />
-    <PackageVersion Include="Asm.AspNetCore.Api" Version="3.2.292" />
-    <PackageVersion Include="Asm.Cqrs.AspNetCore" Version="3.2.292" />
-    <PackageVersion Include="Asm.Domain" Version="3.2.292" />
-    <PackageVersion Include="Asm.Domain.Infrastructure" Version="3.2.284" />
+    <PackageVersion Include="Asm" Version="3.2.303" />
+    <PackageVersion Include="Asm.AspNetCore" Version="3.2.303" />
+    <PackageVersion Include="Asm.AspNetCore.Api" Version="3.2.303" />
+    <PackageVersion Include="Asm.Cqrs.AspNetCore" Version="3.2.303" />
+    <PackageVersion Include="Asm.Domain" Version="3.2.303" />
+    <PackageVersion Include="Asm.Domain.Infrastructure" Version="3.2.303" />
+    <PackageVersion Include="FluentValidation" Version="11.10.0" />
   </ItemGroup>
   <ItemGroup>
-    <PackageVersion Include="Azure.Identity" Version="1.12.1" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.0-rc.1.24451.1" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0-rc.1.24451.1" />
-    <PackageVersion Include="Microsoft.Extensions.Hosting.Abstractions" Version="9.0.0-rc.1.24431.7" />
+    <PackageVersion Include="Azure.Identity" Version="1.13.0-beta.2" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.0-rc.2.24474.1" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0-rc.2.24474.1" />
+    <PackageVersion Include="Microsoft.Extensions.Hosting.Abstractions" Version="9.0.0-rc.2.24473.5" />
     <PackageVersion Include="System.Formats.Asn1" Version="9.0.0-rc.1.24431.7" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
-    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0-rc.1.24452.1" />
-    <PackageVersion Include="Microsoft.AspNetCore.SpaProxy" Version="9.0.0-rc.1.24452.1" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="9.0.0-rc.2.24474.1" />
+    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0-rc.2.24474.3" />
+    <PackageVersion Include="Microsoft.AspNetCore.SpaProxy" Version="9.0.0-rc.2.24474.3" />
+    <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 </Project>

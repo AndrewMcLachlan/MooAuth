@@ -1,10 +1,9 @@
-﻿using Asm.Domain;
-using Asm.MooAuth.Modules.Roles.Models;
+﻿using Asm.MooAuth.Modules.Roles.Models;
 using IRoleRepository = Asm.MooAuth.Domain.Entities.Roles.IRoleRepository;
 
 namespace Asm.MooAuth.Modules.Roles.Commands.Roles;
 
-public record Update(int Id, Role Role) : ICommand<Role>;
+public record Update(int Id, CreateRole Role) : ICommand<Role>;
 
 internal class UpdateHandler(IUnitOfWork unitOfWork, IRoleRepository repository) : ICommandHandler<Update, Role>
 {

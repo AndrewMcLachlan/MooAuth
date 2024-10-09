@@ -23,6 +23,9 @@ export const routes: RouteDefinition = {
                     details: { path: "details", element: <Pages.RoleDetails /> },
                 }
             },
+            profile: {
+                path: "/profile", element: <Pages.Profile />,
+            }
         }
     }
 };

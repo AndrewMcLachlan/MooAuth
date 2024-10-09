@@ -22,7 +22,7 @@ export const Details: React.FC = () => {
 
 
     const onSubmit: SubmitHandler<CreateApplication> = async (data: CreateApplication) => {
-        update(application.id!, data);
+        update(application.id, data);
     };
 
     const { watch, formState, register, setValue, getValues, reset, handleSubmit, ...form } = useForm<CreateApplication>({
@@ -46,15 +46,15 @@ export const Details: React.FC = () => {
             <SectionForm onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group groupId="name">
                     <Form.Label>Name</Form.Label>
-                    <Form.Input type="text" defaultValue={application.name}{...register("name")} />
+                    <Form.Input type="text" defaultValue={application.name}{...register("name")} maxLength={50} />
                 </Form.Group>
                 <Form.Group groupId="description">
                     <Form.Label>Description</Form.Label>
-                    <Form.Input type="text" defaultValue={application.description ?? ""} {...register("description")} />
+                    <Form.Input type="text" defaultValue={application.description ?? ""} {...register("description")} maxLength={255} />
                 </Form.Group>
                 <Form.Group groupId="logourl">
                     <Form.Label>Logo</Form.Label>
-                    <Form.Input type="url" defaultValue={application.logoUrl ?? ""} {...register("logoUrl")} />
+                    <Form.Input type="url" defaultValue={application.logoUrl ?? ""} {...register("logoUrl")} maxLength={255} />
                 </Form.Group>
                 <Button type="submit" variant="primary">Save</Button>
             </SectionForm>
@@ -70,13 +70,13 @@ export const Details: React.FC = () => {
                     <tr>
                         <td><input type="text" placeholder="Name" value={newPermission.name} onChange={e => setNewPermission({ ...newPermission, name: e.currentTarget.value })} className="form-control" /></td>
                         <td><input type="text" placeholder="Description" value={newPermission.description ?? ""} onChange={e => setNewPermission({ ...newPermission, description: toNull(e.currentTarget.value) })} className="form-control" /> </td>
-                        <td className="row-action"><SaveIcon onClick={() => createPermission(application.id!, newPermission)} /></td>
+                        <td className="row-action"><SaveIcon onClick={() => createPermission(application.id, newPermission)} /></td>
                     </tr>
                     {application?.permissions?.map((p) => (
                         <tr key={p.name}>
-                            <EditColumn required value={p.name} onChange={t => updatePermission(application.id!, p.id, { ...p, name: t!.value })}>{p.name}</EditColumn>
-                            <EditColumn value={p.description ?? ""} onChange={t => updatePermission(application.id!, p.id, { ...p, description: toNull(t?.value) })}>{p.description}</EditColumn>
-                            <td className="row-action"><DeleteIcon onClick={() => deletePermission(application.id!, p.id)} /></td>
+                            <EditColumn required value={p.name} maxLength={50} onChange={t => updatePermission(application.id, p.id, { ...p, name: t!.value })}>{p.name}</EditColumn>
+                            <EditColumn value={p.description ?? ""} maxLength={255} onChange={t => updatePermission(application.id, p.id, { ...p, description: toNull(t?.value) })}>{p.description}</EditColumn>
+                            <td className="row-action"><DeleteIcon onClick={() => deletePermission(application.id, p.id)} /></td>
                         </tr>
                     )
                     )}

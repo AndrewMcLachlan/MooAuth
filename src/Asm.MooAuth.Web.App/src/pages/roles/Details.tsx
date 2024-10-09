@@ -22,7 +22,7 @@ export const Details: React.FC = () => {
 
 
     const onSubmit: SubmitHandler<CreateRole> = async (data: CreateRole) => {
-        update(role.id!, data);
+        update(role.id, data);
     };
 
     const { watch, formState, register, setValue, getValues, reset, handleSubmit, ...form } = useForm<CreateRole>({
@@ -44,11 +44,11 @@ export const Details: React.FC = () => {
             <SectionForm onSubmit={handleSubmit(onSubmit)} title="Details">
                 <Form.Group groupId="name">
                     <Form.Label>Name</Form.Label>
-                    <Form.Input type="text" defaultValue={role.name}{...register("name")} />
+                    <Form.Input type="text" defaultValue={role.name}{...register("name")} maxLength={50} />
                 </Form.Group>
                 <Form.Group groupId="description">
                     <Form.Label>Description</Form.Label>
-                    <Form.Input type="text" defaultValue={role.description ?? ""} {...register("description")} />
+                    <Form.Input type="text" defaultValue={role.description ?? ""} {...register("description")} maxLength={255} />
                 </Form.Group>
                 <Button type="submit" variant="primary">Save</Button>
             </SectionForm>
@@ -62,12 +62,12 @@ export const Details: React.FC = () => {
                 <tbody>
                     <tr>
                         <td><PermissionSelector onChange={p => setNewPermissionId(p?.id)} selectedPermissions={role.permissions} /></td>
-                        <td className="row-action"><SaveIcon onClick={() => addPermission(role.id!, newPermissionId)} /></td>
+                        <td className="row-action"><SaveIcon onClick={() => addPermission(role.id, newPermissionId)} /></td>
                     </tr>
                     {role?.permissions?.map((p) => (
                         <tr key={p.name}>
                             <td>{p.name}</td>
-                            <td className="row-action"><DeleteIcon onClick={() => removePermission(role.id!, p.id)} /></td>
+                            <td className="row-action"><DeleteIcon onClick={() => removePermission(role.id, p.id)} /></td>
                         </tr>
                     )
                     )}

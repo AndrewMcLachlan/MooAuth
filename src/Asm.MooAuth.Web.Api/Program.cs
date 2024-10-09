@@ -2,7 +2,10 @@
 using Asm.AspNetCore.Modules;
 using Asm.MooAuth.Web.Api;
 using Asm.OAuth;
+using FluentValidation;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Diagnostics;
 
 WebApplicationStart.Run(args, "MooAuth", AddServices, AddApp);
 
@@ -12,10 +15,13 @@ void AddServices(WebApplicationBuilder builder)
     {
         new Asm.MooAuth.Modules.Applications.Module(),
         new Asm.MooAuth.Modules.Roles.Module(),
+        new Asm.MooAuth.Modules.Users.Module(),
     });
 
+    AzureOAuthOptions oAuthOptions = builder.Configuration.GetSection("OAuth").Get<AzureOAuthOptions>() ?? throw new InvalidOperationException("OAuth config not defined");
+
     builder.Services.AddPrincipalProvider();
-    builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddAzureADBearer(options => builder.Configuration.Bind("OAuth", options.AzureOAuthOptions));
+    builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddAzureADBearer(options => options.AzureOAuthOptions = oAuthOptions);
 
     builder.Services.AddAuthorization();
 
@@ -24,9 +30,10 @@ void AddServices(WebApplicationBuilder builder)
     builder.Services.AddRepositories();
     builder.Services.AddEntities();
 
+    builder.Services.AddProblemDetailsFactory();
+
     builder.Services.Configure<AzureOAuthOptions>(builder.Configuration.GetSection("OAuth"));
 
-    // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
     builder.Services.AddOpenApi(options =>
     {
         options.AddDocumentTransformer<OidcSecuritySchemeTransformer>();

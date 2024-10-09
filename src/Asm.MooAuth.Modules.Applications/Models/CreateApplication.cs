@@ -1,8 +1,6 @@
 ﻿namespace Asm.MooAuth.Modules.Applications.Models;
 
-public record CreateApplication
+public record CreateApplication : Described
 {
-    public required string Name { get; init; }
-    public string? Description { get; init; }
     public string? LogoUrl { get; init; }
 }

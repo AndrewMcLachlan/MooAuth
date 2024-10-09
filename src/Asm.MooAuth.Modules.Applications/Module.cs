@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using Asm.AspNetCore.Modules;
+using FluentValidation;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -13,6 +14,12 @@ public class Module : IModule
     {
         services.AddCommandHandlers(Assembly);
         services.AddQueryHandlers(Assembly);
+
+        services.AddScoped<IValidator<Commands.Applications.Create>, Validators.Applications.Create>();
+        services.AddScoped<IValidator<Commands.Applications.Update>, Validators.Applications.Update>();
+
+        services.AddScoped<IValidator<Commands.Permissions.Create>, Validators.Permissions.Create>();
+        services.AddScoped<IValidator<Commands.Permissions.Update>, Validators.Permissions.Update>();
 
         return services;
     }

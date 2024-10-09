@@ -25,7 +25,7 @@ export const ApplicationRow: React.FC<ApplicationRowProps> = (props) => {
                 {props.application.description}
             </td>
             <td className="row-action">
-                <DeleteIcon onClick={() => deleteApplication(props.application.id!)} />
+                <DeleteIcon onClick={() => deleteApplication(props.application.id)} />
             </td>
         </tr>
     );

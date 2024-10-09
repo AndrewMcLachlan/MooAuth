@@ -22,7 +22,7 @@ export const RoleRow: React.FC<RoleRowProps> = (props) => {
                 {props.role.description}
             </td>
             <td className="row-action">
-                <DeleteIcon onClick={() => deleteRole(props.role.id!)} />
+                <DeleteIcon onClick={() => deleteRole(props.role.id)} />
             </td>
         </tr>
     );

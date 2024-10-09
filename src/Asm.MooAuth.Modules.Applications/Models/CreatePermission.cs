@@ -1,6 +1,4 @@
 ﻿namespace Asm.MooAuth.Modules.Applications.Models;
-public record CreatePermission
+public record CreatePermission : Described
 {
-    public required string Name { get; init; }
-    public string? Description { get; init; }
 }

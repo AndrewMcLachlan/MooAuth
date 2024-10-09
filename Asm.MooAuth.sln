@@ -41,6 +41,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		.github\workflows\build.yml = .github\workflows\build.yml
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asm.MooAuth.Modules.Users", "src\Asm.MooAuth.Modules.Users\Asm.MooAuth.Modules.Users.csproj", "{ABF83429-FD12-48FD-B6C6-5539B3CDDF42}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integrations", "Integrations", "{D4AB1747-528B-4390-B33C-51FB3BF4B53C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asm.MooAuth.Connector.Entra", "src\Asm.MooAuth.Connector.Entra\Asm.MooAuth.Connector.Entra.csproj", "{C3FD7DE9-9704-4D38-90C1-BB3F361DE549}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +87,14 @@ Global
 		{8D0862EA-AE65-4306-A7B7-A2EEB6C4A4F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D0862EA-AE65-4306-A7B7-A2EEB6C4A4F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D0862EA-AE65-4306-A7B7-A2EEB6C4A4F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABF83429-FD12-48FD-B6C6-5539B3CDDF42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABF83429-FD12-48FD-B6C6-5539B3CDDF42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABF83429-FD12-48FD-B6C6-5539B3CDDF42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABF83429-FD12-48FD-B6C6-5539B3CDDF42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3FD7DE9-9704-4D38-90C1-BB3F361DE549}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3FD7DE9-9704-4D38-90C1-BB3F361DE549}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3FD7DE9-9704-4D38-90C1-BB3F361DE549}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3FD7DE9-9704-4D38-90C1-BB3F361DE549}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -89,6 +103,8 @@ Global
 		{378417E9-909C-4D0A-98C0-52002CB818BA} = {648EABB1-2C26-4FE3-AD2B-944233F972B9}
 		{8D0862EA-AE65-4306-A7B7-A2EEB6C4A4F0} = {648EABB1-2C26-4FE3-AD2B-944233F972B9}
 		{31A75F10-5475-4E42-A17F-F5718E2CC8EC} = {8FE04C9E-1D4D-445C-B48B-8B4F229CF560}
+		{ABF83429-FD12-48FD-B6C6-5539B3CDDF42} = {648EABB1-2C26-4FE3-AD2B-944233F972B9}
+		{C3FD7DE9-9704-4D38-90C1-BB3F361DE549} = {D4AB1747-528B-4390-B33C-51FB3BF4B53C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {816AE553-612C-4E59-B417-475D1E29A13B}

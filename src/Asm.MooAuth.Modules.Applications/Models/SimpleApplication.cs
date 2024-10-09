@@ -1,8 +1,8 @@
 ﻿namespace Asm.MooAuth.Modules.Applications.Models;
 
-public record SimpleApplication
+public record SimpleApplication : INamed
 {
-    public int Id { get; init; }
+    public required int Id { get; init; }
     public required string Name { get; init; }
 
     public IEnumerable<SimplePermission> Permissions { get; init; } = [];

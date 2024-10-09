@@ -20,7 +20,7 @@ export const PermissionSelector: React.FC<PermissionSelectProps> = ({ onChange, 
     })) ?? [];
 
     return (
-        <Select<Permission> options={options} classNamePrefix="react-select" getOptionLabel={p => p.name} getOptionValue={p => p.id!.toString()!} onChange={a => onChange?.(a as Permission)} className="react-select" />
+        <Select<Permission> options={options} classNamePrefix="react-select" getOptionLabel={p => p.name} getOptionValue={p => p.id.toString()!} onChange={a => onChange?.(a as Permission)} className="react-select" />
     );
 }
 

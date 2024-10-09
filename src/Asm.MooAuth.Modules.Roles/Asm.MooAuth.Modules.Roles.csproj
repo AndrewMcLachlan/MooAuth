@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Asm.MooAuth.Domain\Asm.MooAuth.Domain.csproj" />
+    <ProjectReference Include="..\Asm.MooAuth\Asm.MooAuth.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,6 +18,5 @@
     <Using Include="Asm.Domain" />
     <Using Include="Microsoft.EntityFrameworkCore" />
   </ItemGroup>
-
 
 </Project>

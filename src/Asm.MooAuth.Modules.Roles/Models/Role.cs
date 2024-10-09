@@ -1,10 +1,7 @@
 ﻿namespace Asm.MooAuth.Modules.Roles.Models;
-public record Role
+public record Role : SimpleRole, IDescribed
 {
-    public int Id { get; init; }
-    public required string Name { get; init; }
     public string? Description { get; init; }
-    public string? LogoUrl { get; init; }
 
     public IEnumerable<Permission> Permissions { get; init; } = [];
 }

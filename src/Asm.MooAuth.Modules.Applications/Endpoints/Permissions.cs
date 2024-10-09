@@ -1,4 +1,4 @@
-﻿using Asm.AspNetCore;
+﻿using Asm.AspNetCore.Routing;
 using Microsoft.AspNetCore.Routing;
 
 namespace Asm.MooAuth.Modules.Applications.Endpoints;

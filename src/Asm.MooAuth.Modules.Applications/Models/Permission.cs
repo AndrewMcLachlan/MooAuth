@@ -1,5 +1,5 @@
 ﻿namespace Asm.MooAuth.Modules.Applications.Models;
-public record Permission : SimplePermission
+public record Permission : SimplePermission, IDescribed
 {
     public string? Description { get; init; }
 }

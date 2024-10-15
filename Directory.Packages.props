@@ -6,7 +6,7 @@
     <PackageVersion Include="Asm" Version="3.2.306" />
     <PackageVersion Include="Asm.AspNetCore" Version="3.2.306" />
     <PackageVersion Include="Asm.AspNetCore.Api" Version="3.2.303" />
-    <PackageVersion Include="Asm.Cqrs.AspNetCore" Version="3.2.303" />
+    <PackageVersion Include="Asm.Cqrs.AspNetCore" Version="3.2.306" />
     <PackageVersion Include="Asm.Domain" Version="3.2.303" />
     <PackageVersion Include="Asm.Domain.Infrastructure" Version="3.2.303" />
     <PackageVersion Include="FluentValidation" Version="11.10.0" />

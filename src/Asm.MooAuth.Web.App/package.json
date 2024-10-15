@@ -14,7 +14,7 @@
   "dependencies": {
     "@andrewmclachlan/mooapp": "^2.2.573",
     "@andrewmclachlan/mooicons": "^2.2.583",
-    "@hey-api/client-fetch": "^0.4.0",
+    "@hey-api/client-fetch": "^0.4.2",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.5",
     "react-dom": "^18.3.1",

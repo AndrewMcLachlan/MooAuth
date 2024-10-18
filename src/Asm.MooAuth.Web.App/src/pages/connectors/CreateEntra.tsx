@@ -42,7 +42,7 @@ export const CreateEntra: React.FC = () => {
                 </Form.Group>
                 <Form.Group groupId="clientSecret">
                     <Form.Label>Client Secret</Form.Label>
-                    <Form.Input type="password" {...register("clientSecret")} maxLength={100} />
+                    <Form.Password defaultValue="" {...register("clientSecret")} maxLength={100} />
                 </Form.Group>
                 <Form.Group groupId="audience">
                     <Form.Label>Audience</Form.Label>

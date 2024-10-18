@@ -1,14 +1,11 @@
-import { DeleteIcon, Form, Page, SaveIcon, SectionForm, SectionTable } from "@andrewmclachlan/mooapp";
+import { Form, Page, passwordMask, SectionForm } from "@andrewmclachlan/mooapp";
 import { CreateEntraConnector } from "client";
-import { PermissionSelector } from "components/PermissionSelector";
 import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useUpdateEntraConnector } from "services";
+import { useEntraConnector, useUpdateEntraConnector } from "services";
 import { useIdParams } from "utils/useIdParams";
-import { useEntraConnector } from "services";
 
-const mask = "*****************************";
 
 export const DetailsEntra: React.FC = () => {
 
@@ -25,7 +22,7 @@ export const DetailsEntra: React.FC = () => {
         defaultValues: {
             name: connector?.name,
             clientId: connector?.clientId,
-            clientSecret: mask,
+            clientSecret: passwordMask,
         }
     });
 
@@ -33,7 +30,7 @@ export const DetailsEntra: React.FC = () => {
         reset({
             name: connector?.name,
             clientId: connector?.clientId,
-            clientSecret: mask,
+            clientSecret: passwordMask,
         });
     }, [id]);
 
@@ -46,15 +43,23 @@ export const DetailsEntra: React.FC = () => {
             <SectionForm onSubmit={handleSubmit(onSubmit)} title="Details">
                 <Form.Group groupId="name">
                     <Form.Label>Name</Form.Label>
-                    <Form.Input type="text" defaultValue={connector.name}{...register("name")} maxLength={50} required />
+                    <Form.Input type="text" {...register("name")} maxLength={50} required />
+                </Form.Group>
+                <Form.Group groupId="config.tenantId">
+                    <Form.Label>Tenant ID</Form.Label>
+                    <Form.Input type="text" {...register("config.tenantId")} maxLength={100} />
                 </Form.Group>
                 <Form.Group groupId="clientId">
                     <Form.Label>Client ID</Form.Label>
-                    <Form.Input type="text" defaultValue={connector.clientId ?? ""} {...register("clientId")} maxLength={100} required />
+                    <Form.Input type="text" {...register("clientId")} maxLength={100} required />
                 </Form.Group>
                 <Form.Group groupId="clientSecret">
                     <Form.Label>Client Secret</Form.Label>
-                    <Form.Input type="password" defaultValue={mask} onFocus={(e) => e.currentTarget.value = e.currentTarget.value === mask ? "" : e.currentTarget.value} {...register("clientSecret")} maxLength={100} required />
+                    <Form.Password {...register("clientSecret")} maxLength={100} />
+                </Form.Group>
+                <Form.Group groupId="audience">
+                    <Form.Label>Audience</Form.Label>
+                    <Form.Input type="text" defaultValue={""} {...register("audience")} maxLength={100} />
                 </Form.Group>
                 <Button type="submit" variant="primary">Save</Button>
             </SectionForm>

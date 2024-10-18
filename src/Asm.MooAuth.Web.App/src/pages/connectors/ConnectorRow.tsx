@@ -19,6 +19,9 @@ export const ConnectorRow: React.FC<ConnectorRowProps> = (props) => {
                 <div className="name">{props.connector.name}</div>
             </td>
             <td>
+                {props.connector.type}
+            </td>
+            <td>
                 {props.connector.clientId}
             </td>
             <td className="row-action">

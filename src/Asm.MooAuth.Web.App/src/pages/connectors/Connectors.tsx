@@ -20,7 +20,9 @@ export const Connectors = () => {
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Description</th>
+                        <th>Type</th>
+                        <th>Client ID</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>

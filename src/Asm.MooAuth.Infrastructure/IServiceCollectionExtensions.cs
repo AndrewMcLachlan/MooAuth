@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Asm.MooAuth.Infrastructure.Repositories;
 using Asm.MooAuth.Domain.Entities.Permissions;
 using Asm.MooAuth.Domain.Entities.Roles;
+using Asm.MooAuth.Domain.Entities.Connectors;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -38,6 +39,7 @@ public static class IServiceCollectionExtensions
 
     public static IServiceCollection AddRepositories(this IServiceCollection services) =>
         services.AddScoped<IApplicationRepository, ApplicationRepository>()
+                .AddScoped<IConnectorRepository, ConnectorRepository>()
                 .AddScoped<IPermissionRepository, PermissionRepository>()
                 .AddScoped<IRoleRepository, RoleRepository>();
 

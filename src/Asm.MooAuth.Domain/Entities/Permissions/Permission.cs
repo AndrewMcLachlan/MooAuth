@@ -5,7 +5,7 @@ namespace Asm.MooAuth.Domain.Entities.Permissions;
 
 [AggregateRoot]
 [PrimaryKey(nameof(Id))]
-public class Permission([DisallowNull] int id) : NamedEntity(id)
+public class Permission([DisallowNull] int id) : DescribedEntity(id)
 {
     public Permission() : this(default) { }
 

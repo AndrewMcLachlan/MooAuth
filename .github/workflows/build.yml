@@ -56,6 +56,9 @@ jobs:
         path: ${{ github.workspace }}/publish
 
   test:
+    concurrency:
+      group: mooauth-deploy-group
+      cancel-in-progress: true
     needs: build
     if: (github.event_name != 'pull_request' && github.event_name != 'pull_request_target' && github.ref == 'refs/heads/main')
     uses: AndrewMcLachlan/actions/.github/workflows/deploy-azure.yml@v2
@@ -68,6 +71,9 @@ jobs:
       AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       AZURE_WEBAPP_NAME: ${{ secrets.WEB_APP_NAME }}
   production:
+    concurrency:
+      group: mooauth-deploy-group
+      cancel-in-progress: true
     needs: test
     if: (github.event_name != 'pull_request' && github.event_name != 'pull_request_target' && github.ref == 'refs/heads/main')
     uses: AndrewMcLachlan/actions/.github/workflows/deploy-azure.yml@v2

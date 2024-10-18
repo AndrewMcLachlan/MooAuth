@@ -4,7 +4,7 @@ namespace Asm.MooAuth.Domain.Entities.Roles;
 
 [AggregateRoot]
 [PrimaryKey(nameof(Id))]
-public class Role([DisallowNull] int id) : NamedEntity(id)
+public class Role([DisallowNull] int id) : DescribedEntity(id)
 {
     public Role() : this(default) { }
 

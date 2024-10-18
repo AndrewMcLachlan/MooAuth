@@ -4,7 +4,7 @@ namespace Asm.MooAuth.Domain.Entities.Applications;
 
 [AggregateRoot]
 [PrimaryKey(nameof(Id))]
-public class Application([DisallowNull] int id) : NamedEntity(id)
+public class Application([DisallowNull] int id) : DescribedEntity(id)
 {
     public Application() : this(default) { }
 

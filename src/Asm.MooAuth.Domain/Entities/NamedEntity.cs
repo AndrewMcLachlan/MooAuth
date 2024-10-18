@@ -6,7 +6,4 @@ public abstract class NamedEntity(int id) : ModifiableEntity(id)
 
     [MaxLength(50)]
     public required string Name { get; set; }
-
-    [MaxLength(255)]
-    public string? Description { get; set; }
 }

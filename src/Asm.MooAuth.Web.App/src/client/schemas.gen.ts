@@ -28,6 +28,29 @@ export const ApplicationSchema = {
     }
 } as const;
 
+export const ConnectorTypeSchema = {
+    enum: ['Entra', 'Auth0']
+} as const;
+
+export const ConnectorTypeEntrySchema = {
+    required: ['name'],
+    type: 'object',
+    properties: {
+        id: {
+            type: 'integer',
+            format: 'int32'
+        },
+        name: {
+            type: 'string'
+        },
+        logoUrl: {
+            type: 'string',
+            format: 'uri',
+            nullable: true
+        }
+    }
+} as const;
+
 export const CreateApplicationSchema = {
     required: ['name'],
     type: 'object',
@@ -42,6 +65,29 @@ export const CreateApplicationSchema = {
         },
         name: {
             type: 'string'
+        }
+    }
+} as const;
+
+export const CreateEntraConnectorSchema = {
+    required: ['name', 'config', 'clientId', 'clientSecret'],
+    type: 'object',
+    properties: {
+        name: {
+            type: 'string'
+        },
+        config: {
+            '$ref': '#/components/schemas/EntraConfig'
+        },
+        clientId: {
+            type: 'string'
+        },
+        clientSecret: {
+            type: 'string'
+        },
+        audience: {
+            type: 'string',
+            nullable: true
         }
     }
 } as const;
@@ -65,6 +111,45 @@ export const CreateRoleSchema = {
     type: 'object',
     properties: {
         description: {
+            type: 'string',
+            nullable: true
+        },
+        name: {
+            type: 'string'
+        }
+    }
+} as const;
+
+export const EntraConfigSchema = {
+    required: ['tenantId'],
+    type: 'object',
+    properties: {
+        tenantId: {
+            type: 'string',
+            format: 'uuid'
+        }
+    },
+    nullable: true
+} as const;
+
+export const EntraConnectorSchema = {
+    required: ['id', 'config', 'slug', 'clientId', 'name'],
+    type: 'object',
+    properties: {
+        id: {
+            type: 'integer',
+            format: 'int32'
+        },
+        config: {
+            '$ref': '#/components/schemas/EntraConfig'
+        },
+        slug: {
+            type: 'string'
+        },
+        clientId: {
+            type: 'string'
+        },
+        audience: {
             type: 'string',
             nullable: true
         },
@@ -173,6 +258,26 @@ export const SimpleApplicationSchema = {
             items: {
                 '$ref': '#/components/schemas/SimplePermission'
             }
+        }
+    }
+} as const;
+
+export const SimpleConnectorSchema = {
+    required: ['id', 'name', 'type', 'clientId'],
+    type: 'object',
+    properties: {
+        id: {
+            type: 'integer',
+            format: 'int32'
+        },
+        name: {
+            type: 'string'
+        },
+        type: {
+            '$ref': '#/components/schemas/ConnectorType'
+        },
+        clientId: {
+            type: 'string'
         }
     }
 } as const;

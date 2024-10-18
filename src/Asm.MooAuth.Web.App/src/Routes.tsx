@@ -23,6 +23,10 @@ export const routes: RouteDefinition = {
                     details: { path: "details", element: <Pages.RoleDetails /> },
                 }
             },
+            connectors: { path: "/connectors", element: <Pages.Connectors />, },
+            createConnector: { path: "/connectors/create", element: <Pages.CreateConnector /> },
+            createEntraConnector: { path: "/connectors/create/entra", element: <Pages.CreateEntra /> },
+            entraConnector: { path: "/connectors/entra/:id", element: <Pages.DetailsEntra />, },
             profile: {
                 path: "/profile", element: <Pages.Profile />,
             }

@@ -8,10 +8,26 @@ export type Application = {
     name: string;
 };
 
+export type ConnectorType = 'Entra' | 'Auth0';
+
+export type ConnectorTypeEntry = {
+    id?: number;
+    name: string;
+    logoUrl?: (string) | null;
+};
+
 export type CreateApplication = {
     logoUrl?: (string) | null;
     description?: (string) | null;
     name: string;
+};
+
+export type CreateEntraConnector = {
+    name: string;
+    config: EntraConfig;
+    clientId: string;
+    clientSecret: string;
+    audience?: (string) | null;
 };
 
 export type CreatePermission = {
@@ -21,6 +37,19 @@ export type CreatePermission = {
 
 export type CreateRole = {
     description?: (string) | null;
+    name: string;
+};
+
+export type EntraConfig = {
+    tenantId: string;
+} | null;
+
+export type EntraConnector = {
+    id: number;
+    config: EntraConfig;
+    slug: string;
+    clientId: string;
+    audience?: (string) | null;
     name: string;
 };
 
@@ -54,6 +83,13 @@ export type SimpleApplication = {
     id: number;
     name: string;
     permissions?: Array<SimplePermission>;
+};
+
+export type SimpleConnector = {
+    id: number;
+    name: string;
+    type: ConnectorType;
+    clientId: string;
 };
 
 export type SimplePermission = {
@@ -159,6 +195,53 @@ export type CreatePermissionData = {
 export type CreatePermissionResponse = (Permission);
 
 export type CreatePermissionError = unknown;
+
+export type GetAllConnectorsResponse = (Array<SimpleConnector>);
+
+export type GetAllConnectorsError = unknown;
+
+export type GetAvailableConnectorTypesResponse = (Array<ConnectorTypeEntry>);
+
+export type GetAvailableConnectorTypesError = unknown;
+
+export type DeleteConnectorData = {
+    path: {
+        id: number;
+    };
+};
+
+export type DeleteConnectorResponse = (void);
+
+export type DeleteConnectorError = (ProblemDetails);
+
+export type GetEntraConnectorData = {
+    path: {
+        id: number;
+    };
+};
+
+export type GetEntraConnectorResponse = (EntraConnector);
+
+export type GetEntraConnectorError = (ProblemDetails);
+
+export type UpdateEntraConnectorData = {
+    body: CreateEntraConnector;
+    path: {
+        id: number;
+    };
+};
+
+export type UpdateEntraConnectorResponse = (EntraConnector);
+
+export type UpdateEntraConnectorError = (ProblemDetails);
+
+export type CreateEntraConnectorData = {
+    body: CreateEntraConnector;
+};
+
+export type CreateEntraConnectorResponse = (EntraConnector);
+
+export type CreateEntraConnectorError = unknown;
 
 export type GetAllRolesResponse = (Array<Role>);
 

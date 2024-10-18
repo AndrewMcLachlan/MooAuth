@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using Asm.MooAuth.Domain.Entities.Applications;
+using Asm.MooAuth.Domain.Entities.Connectors;
 using Asm.MooAuth.Domain.Entities.Permissions;
 using Asm.MooAuth.Domain.Entities.Roles;
 using MediatR;
@@ -45,6 +46,9 @@ public partial class MooAuthContext : DomainDbContext, IReadOnlyDbContext
                 x.ToTable("RolePermission");
             });
         modelBuilder.Entity<Role>().HasMany(r => r.Permissions).WithMany(p => p.Roles);
+
+        modelBuilder.Entity<Connector>();
+        modelBuilder.Entity<ConnectorType>();
 
         modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
 

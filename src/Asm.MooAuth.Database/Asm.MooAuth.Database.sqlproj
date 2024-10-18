@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build">
+  <Sdk Name="Microsoft.Build.Sql" Version="0.2.0-preview" />
+  <PropertyGroup>
+    <Name>MooAuth</Name>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql140DatabaseSchemaProvider</DSP>
+    <ModelCollation>1033, CI</ModelCollation>
+    <RootNamespace>Asm.MooAuth.Database</RootNamespace>
+    <AssemblyName>Asm.MooAuth.Database</AssemblyName>
+    <ProjectGuid>{00000000-0000-0000-0000-000000000000}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup>
+    <Build Remove="Script.StaticData.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Asm.MooAuth.Database.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Script.StaticData.sql" />
+  </ItemGroup>
+</Project>

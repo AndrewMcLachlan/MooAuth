@@ -3,7 +3,7 @@ CREATE TABLE [dbo].[Application] (
     [Name] NVARCHAR(255) NOT NULL,
     [Description] NVARCHAR(255) NULL,
     [LogoUrl] NVARCHAR(255) NULL,
-    [Created] DATETIME2 NOT NULL,
-    [Modified] DATETIME2 NOT NULL,
+    [Created] DATETIME2 NOT NULL CONSTRAINT DF_Application_Created DEFAULT SYSUTCDATETIME(),
+    [Modified] DATETIME2 NOT NULL CONSTRAINT DF_Application_Modified DEFAULT SYSUTCDATETIME(),
     CONSTRAINT PK_Application PRIMARY KEY (Id)
 );

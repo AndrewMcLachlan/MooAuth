@@ -25,6 +25,11 @@ updates:
         patterns:
           - "*"
         dependency-type: "development"
+      prod-dependencies:
+        applies-to: version-updates
+        patterns:
+          - "*"
+        dependency-type: "production"
     open-pull-requests-limit: 20
     registries: "*"
 
@@ -37,6 +42,11 @@ updates:
       time: "06:00"
     reviewers:
       - andrewmcLachlan
+    groups:
+      version-updates:
+        applies-to: version-updates
+        patterns:
+          - "*"
     open-pull-requests-limit: 20
     registries: "*"
 

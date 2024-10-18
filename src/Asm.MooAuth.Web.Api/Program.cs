@@ -1,24 +1,34 @@
 
+using System.Text.Json.Serialization;
 using Asm.AspNetCore.Modules;
+using Asm.MooAuth;
 using Asm.MooAuth.Web.Api;
+using Asm.MooAuth.Web.Api.Config;
 using Asm.OAuth;
-using FluentValidation;
-using FluentValidation.Results;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.Extensions.DependencyInjection;
 
-WebApplicationStart.Run(args, "MooAuth", AddServices, AddApp);
+MooAuthConfig mooAuthConfig;
+
+WebApplicationStart.Run(args, "Asm.MooAuth.Web.Api", AddServices, AddApp);
 
 void AddServices(WebApplicationBuilder builder)
 {
-    builder.RegisterModules(() => new IModule[]
-    {
+    mooAuthConfig = builder.Configuration.GetSection("MooAuth").Get<MooAuthConfig>() ?? throw new InvalidOperationException("MooAuth config not defined");
+
+    builder.RegisterModules(() =>
+    [
         new Asm.MooAuth.Modules.Applications.Module(),
+        new Asm.MooAuth.Modules.Connectors.Module(),
         new Asm.MooAuth.Modules.Roles.Module(),
         new Asm.MooAuth.Modules.Users.Module(),
-    });
+    ]);
 
-    AzureOAuthOptions oAuthOptions = builder.Configuration.GetSection("OAuth").Get<AzureOAuthOptions>() ?? throw new InvalidOperationException("OAuth config not defined");
+    builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(options =>
+        options.SerializerOptions.Converters.Add(new JsonStringEnumConverter())
+    );
+
+    AzureOAuthOptions oAuthOptions = builder.Configuration.GetSection("MooAuth:OAuth").Get<AzureOAuthOptions>() ?? throw new InvalidOperationException("OAuth config not defined");
 
     builder.Services.AddPrincipalProvider();
     builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddAzureADBearer(options => options.AzureOAuthOptions = oAuthOptions);
@@ -32,12 +42,28 @@ void AddServices(WebApplicationBuilder builder)
 
     builder.Services.AddProblemDetailsFactory();
 
-    builder.Services.Configure<AzureOAuthOptions>(builder.Configuration.GetSection("OAuth"));
+    builder.Services.Configure<AzureOAuthOptions>(builder.Configuration.GetSection("MooAuth:OAuth"));
+
+    AddSecretManager(builder);
 
     builder.Services.AddOpenApi(options =>
     {
         options.AddDocumentTransformer<OidcSecuritySchemeTransformer>();
     });
+}
+
+void AddSecretManager(WebApplicationBuilder builder)
+{
+    switch (mooAuthConfig.SecretManager.Type)
+    {
+        case SecretManagerType.AzureKeyVault:
+            builder.AddKeyVaultSecretManager(mooAuthConfig.SecretManager.Uri ?? throw new InvalidOperationException("Unable to add Key Vault Secret Manager. Specify URI"));
+            break;
+        case SecretManagerType.Database:
+            throw new NotSupportedException("Database secret manager not supported yet.");
+        default:
+            throw new InvalidOperationException("Unable to add a secret manager.");
+    }
 }
 
 void AddApp(WebApplication app)

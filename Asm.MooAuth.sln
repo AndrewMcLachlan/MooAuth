@@ -50,7 +50,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asm.MooAuth.Secrets.Databas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asm.MooAuth.Modules.Connectors", "src\Asm.MooAuth.Connectors\Asm.MooAuth.Modules.Connectors.csproj", "{72670DEE-02BA-44A6-B92C-871DB2DA12F4}"
 EndProject
-Project("{42EA0DBD-9CF1-443E-919E-BE9C484E4577}") = "Asm.MooAuth.Database", "src\Asm.MooAuth.Database\Asm.MooAuth.Database.sqlprojx", "{3D6C32DF-4172-43E6-9E56-2ABEDB24EBC6}"
+Project("{42EA0DBD-9CF1-443E-919E-BE9C484E4577}") = "Asm.MooAuth.Database", "src\Asm.MooAuth.Database\Asm.MooAuth.Database.sqlproj", "{3D6C32DF-4172-43E6-9E56-2ABEDB24EBC6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

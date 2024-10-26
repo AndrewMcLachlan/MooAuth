@@ -1,20 +1,36 @@
 <Solution>
+  <Folder Name="/.github/">
+    <File Path=".github/dependabot.yml" />
+  </Folder>
+  <Folder Name="/.github/workflows/">
+    <File Path=".github/workflows/build.yml" />
+  </Folder>
   <Folder Name="/Config/">
     <File Path=".editorconfig" />
     <File Path=".gitignore" />
-    <File Path=".npmrc" />
-    <File Path="Common.props" />
+    <File Path="Directory.Build.props" />
     <File Path="Directory.Build.targets" />
+    <File Path="Directory.Packages.props" />
+    <File Path="README.md" />
   </Folder>
-  <Project Path="src\Asm.MooAuth.Web.Api\Asm.MooAuth.Web.Api.csproj" Type="C#" />
-  <Project Path="src\Asm.MooAuth.Web.App\Asm.MooAuth.Web.App.esproj">
+  <Folder Name="/Integrations/">
+    <Project Path="src/Asm.MooAuth.Connector.Entra/Asm.MooAuth.Connector.Entra.csproj" />
+    <Project Path="src/Asm.MooAuth.Secrets.Database/Asm.MooAuth.Secrets.Database.csproj" />
+    <Project Path="src/Asm.MooAuth.Secrets.KeyVault/Asm.MooAuth.Secrets.KeyVault.csproj" />
+  </Folder>
+  <Folder Name="/Modules/">
+    <Project Path="src/Asm.MooAuth.Connectors/Asm.MooAuth.Modules.Connectors.csproj" />
+    <Project Path="src/Asm.MooAuth.Modules.Applications/Asm.MooAuth.Modules.Applications.csproj" />
+    <Project Path="src/Asm.MooAuth.Modules.Roles/Asm.MooAuth.Modules.Roles.csproj" />
+    <Project Path="src/Asm.MooAuth.Modules.Users/Asm.MooAuth.Modules.Users.csproj" />
+  </Folder>
+  <Project Path="src/Asm.MooAuth.Database/Asm.MooAuth.Database.sqlproj" Type="42ea0dbd-9cf1-443e-919e-be9c484e4577" />
+  <Project Path="src/Asm.MooAuth.Domain/Asm.MooAuth.Domain.csproj" />
+  <Project Path="src/Asm.MooAuth.Infrastructure/Asm.MooAuth.Infrastructure.csproj" />
+  <Project Path="src/Asm.MooAuth.Web.Api/Asm.MooAuth.Web.Api.csproj" />
+  <Project Path="src/Asm.MooAuth.Web.App/Asm.MooAuth.Web.App.esproj">
     <Build />
     <Deploy />
   </Project>
-  <Project Path="src\Asm.MooAuth.Database\Asm.MooAuth.Database.sqlprojx" Type="sqlprojx" />
-  <Project Path="src\Asm.MooAuth.Infrastructure\Asm.MooAuth.Infrastructure.csproj" Type="C#" />
-  <Project Path="src\Asm.MooAuth\Asm.MooAuth.csproj" Type="C#" />
-  <Properties Name="Visual Studio">
-    <Property Name="OpenWith" Value="Visual Studio Version 17" />
-  </Properties>
+  <Project Path="src/Asm.MooAuth/Asm.MooAuth.csproj" />
 </Solution>

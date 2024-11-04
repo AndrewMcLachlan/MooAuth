@@ -12,15 +12,15 @@
     "openapi-ts": "openapi-ts"
   },
   "dependencies": {
-    "@andrewmclachlan/mooapp": "^2.2.624",
-    "@andrewmclachlan/mooicons": "^2.2.624",
+    "@andrewmclachlan/mooapp": "^2.2.630",
+    "@andrewmclachlan/mooicons": "^2.2.630",
     "@hey-api/client-fetch": "^0.4.2",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.5",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.27.0",
-    "vite-plugin-svgr": "^4.2.0",
-    "vite-tsconfig-paths": "^5.0.1"
+    "vite-plugin-svgr": "^4.3.0",
+    "vite-tsconfig-paths": "^5.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.14.0",

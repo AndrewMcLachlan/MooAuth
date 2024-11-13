@@ -1,12 +1,12 @@
 
 using System.Text.Json.Serialization;
+using Asm.AspNetCore.Authentication;
 using Asm.AspNetCore.Modules;
 using Asm.MooAuth;
 using Asm.MooAuth.Web.Api;
 using Asm.MooAuth.Web.Api.Config;
 using Asm.OAuth;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Extensions.DependencyInjection;
 
 MooAuthConfig mooAuthConfig;
 
@@ -31,7 +31,7 @@ void AddServices(WebApplicationBuilder builder)
     AzureOAuthOptions oAuthOptions = builder.Configuration.GetSection("MooAuth:OAuth").Get<AzureOAuthOptions>() ?? throw new InvalidOperationException("OAuth config not defined");
 
     builder.Services.AddPrincipalProvider();
-    builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddAzureADBearer(options => options.AzureOAuthOptions = oAuthOptions);
+    builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddStandardJwtBearer(options => options.OAuthOptions = oAuthOptions);
 
     builder.Services.AddAuthorization();
 

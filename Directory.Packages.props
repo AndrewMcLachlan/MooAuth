@@ -5,7 +5,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageVersion Include="Asm" Version="3.4.352" />
-    <PackageVersion Include="Asm.AspNetCore" Version="3.4.351" />
+    <PackageVersion Include="Asm.AspNetCore" Version="3.4.352" />
     <PackageVersion Include="Asm.AspNetCore.Api" Version="3.4.352" />
     <PackageVersion Include="Asm.Cqrs.AspNetCore" Version="3.4.352" />
     <PackageVersion Include="Asm.Domain" Version="3.4.352" />

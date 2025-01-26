@@ -2,9 +2,9 @@
 
 export type Application = {
     id: number;
-    logoUrl?: (string) | null;
+    logoUrl?: string | null;
     permissions?: Array<Permission>;
-    description?: (string) | null;
+    description?: string | null;
     name: string;
 };
 
@@ -13,12 +13,12 @@ export type ConnectorType = 'Entra' | 'Auth0';
 export type ConnectorTypeEntry = {
     id?: number;
     name: string;
-    logoUrl?: (string) | null;
+    logoUrl?: string | null;
 };
 
 export type CreateApplication = {
-    logoUrl?: (string) | null;
-    description?: (string) | null;
+    logoUrl?: string | null;
+    description?: string | null;
     name: string;
 };
 
@@ -27,16 +27,16 @@ export type CreateEntraConnector = {
     config: EntraConfig;
     clientId: string;
     clientSecret: string;
-    audience?: (string) | null;
+    audience?: string | null;
 };
 
 export type CreatePermission = {
-    description?: (string) | null;
+    description?: string | null;
     name: string;
 };
 
 export type CreateRole = {
-    description?: (string) | null;
+    description?: string | null;
     name: string;
 };
 
@@ -49,12 +49,12 @@ export type EntraConnector = {
     config: EntraConfig;
     slug: string;
     clientId: string;
-    audience?: (string) | null;
+    audience?: string | null;
     name: string;
 };
 
 export type Permission = {
-    description?: (string) | null;
+    description?: string | null;
     id: number;
     name: string;
 };
@@ -65,15 +65,15 @@ export type Permission2 = {
 };
 
 export type ProblemDetails = {
-    type?: (string) | null;
-    title?: (string) | null;
-    status?: (number) | null;
-    detail?: (string) | null;
-    instance?: (string) | null;
+    type?: string | null;
+    title?: string | null;
+    status?: number | null;
+    detail?: string | null;
+    instance?: string | null;
 };
 
 export type Role = {
-    description?: (string) | null;
+    description?: string | null;
     permissions?: Array<Permission2>;
     id: number;
     name: string;
@@ -104,63 +104,190 @@ export type User = {
     lastName: string;
 };
 
-export type GetAllApplicationsResponse = (Array<Application>);
+export type GetAllApplicationsData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/applications';
+};
 
-export type GetAllApplicationsError = unknown;
+export type GetAllApplicationsResponses = {
+    /**
+     * OK
+     */
+    200: Array<Application>;
+};
+
+export type GetAllApplicationsResponse = GetAllApplicationsResponses[keyof GetAllApplicationsResponses];
 
 export type CreateApplicationData = {
     body: CreateApplication;
+    path?: never;
+    query?: never;
+    url: '/api/applications';
 };
 
-export type CreateApplicationResponse = (Application);
+export type CreateApplicationResponses = {
+    /**
+     * Created
+     */
+    201: Application;
+};
 
-export type CreateApplicationError = unknown;
+export type CreateApplicationResponse = CreateApplicationResponses[keyof CreateApplicationResponses];
 
-export type GetApplicationData = {
+export type DeleteApplicationData = {
+    body?: never;
     path: {
         id: number;
     };
+    query?: never;
+    url: '/api/applications/{id}';
 };
 
-export type GetApplicationResponse = (Application);
+export type DeleteApplicationErrors = {
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
 
-export type GetApplicationError = (ProblemDetails);
+export type DeleteApplicationError = DeleteApplicationErrors[keyof DeleteApplicationErrors];
+
+export type DeleteApplicationResponses = {
+    /**
+     * No Content
+     */
+    204: void;
+};
+
+export type DeleteApplicationResponse = DeleteApplicationResponses[keyof DeleteApplicationResponses];
+
+export type GetApplicationData = {
+    body?: never;
+    path: {
+        id: number;
+    };
+    query?: never;
+    url: '/api/applications/{id}';
+};
+
+export type GetApplicationErrors = {
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type GetApplicationError = GetApplicationErrors[keyof GetApplicationErrors];
+
+export type GetApplicationResponses = {
+    /**
+     * OK
+     */
+    200: Application;
+};
+
+export type GetApplicationResponse = GetApplicationResponses[keyof GetApplicationResponses];
 
 export type UpdateApplicationData = {
     body: CreateApplication;
     path: {
         id: number;
     };
+    query?: never;
+    url: '/api/applications/{id}';
 };
 
-export type UpdateApplicationResponse = (Application);
-
-export type UpdateApplicationError = (ProblemDetails);
-
-export type DeleteApplicationData = {
-    path: {
-        id: number;
-    };
+export type UpdateApplicationErrors = {
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
 };
 
-export type DeleteApplicationResponse = (void);
+export type UpdateApplicationError = UpdateApplicationErrors[keyof UpdateApplicationErrors];
 
-export type DeleteApplicationError = (ProblemDetails);
+export type UpdateApplicationResponses = {
+    /**
+     * OK
+     */
+    200: Application;
+};
 
-export type GetPermissionListResponse = (Array<SimpleApplication>);
+export type UpdateApplicationResponse = UpdateApplicationResponses[keyof UpdateApplicationResponses];
 
-export type GetPermissionListError = unknown;
+export type GetPermissionListData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/applications/permissions';
+};
 
-export type GetPermissionData = {
+export type GetPermissionListResponses = {
+    /**
+     * OK
+     */
+    200: Array<SimpleApplication>;
+};
+
+export type GetPermissionListResponse = GetPermissionListResponses[keyof GetPermissionListResponses];
+
+export type DeletePermissionData = {
+    body?: never;
     path: {
         applicationId: number;
         id: number;
     };
+    query?: never;
+    url: '/api/applications/{applicationId}/permissions/{id}';
 };
 
-export type GetPermissionResponse = (Permission);
+export type DeletePermissionErrors = {
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
 
-export type GetPermissionError = (ProblemDetails);
+export type DeletePermissionError = DeletePermissionErrors[keyof DeletePermissionErrors];
+
+export type DeletePermissionResponses = {
+    /**
+     * No Content
+     */
+    204: void;
+};
+
+export type DeletePermissionResponse = DeletePermissionResponses[keyof DeletePermissionResponses];
+
+export type GetPermissionData = {
+    body?: never;
+    path: {
+        applicationId: number;
+        id: number;
+    };
+    query?: never;
+    url: '/api/applications/{applicationId}/permissions/{id}';
+};
+
+export type GetPermissionErrors = {
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type GetPermissionError = GetPermissionErrors[keyof GetPermissionErrors];
+
+export type GetPermissionResponses = {
+    /**
+     * OK
+     */
+    200: Permission;
+};
+
+export type GetPermissionResponse = GetPermissionResponses[keyof GetPermissionResponses];
 
 export type UpdatePermissionData = {
     body: CreatePermission;
@@ -168,146 +295,387 @@ export type UpdatePermissionData = {
         applicationId: number;
         id: number;
     };
+    query?: never;
+    url: '/api/applications/{applicationId}/permissions/{id}';
 };
 
-export type UpdatePermissionResponse = (Permission);
-
-export type UpdatePermissionError = (ProblemDetails);
-
-export type DeletePermissionData = {
-    path: {
-        applicationId: number;
-        id: number;
-    };
+export type UpdatePermissionErrors = {
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
 };
 
-export type DeletePermissionResponse = (void);
+export type UpdatePermissionError = UpdatePermissionErrors[keyof UpdatePermissionErrors];
 
-export type DeletePermissionError = (ProblemDetails);
+export type UpdatePermissionResponses = {
+    /**
+     * OK
+     */
+    200: Permission;
+};
+
+export type UpdatePermissionResponse = UpdatePermissionResponses[keyof UpdatePermissionResponses];
 
 export type CreatePermissionData = {
     body: CreatePermission;
     path: {
         applicationId: number;
     };
+    query?: never;
+    url: '/api/applications/{applicationId}/permissions';
 };
 
-export type CreatePermissionResponse = (Permission);
+export type CreatePermissionResponses = {
+    /**
+     * Created
+     */
+    201: Permission;
+};
 
-export type CreatePermissionError = unknown;
+export type CreatePermissionResponse = CreatePermissionResponses[keyof CreatePermissionResponses];
 
-export type GetAllConnectorsResponse = (Array<SimpleConnector>);
+export type GetAllConnectorsData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/connectors';
+};
 
-export type GetAllConnectorsError = unknown;
+export type GetAllConnectorsResponses = {
+    /**
+     * OK
+     */
+    200: Array<SimpleConnector>;
+};
 
-export type GetAvailableConnectorTypesResponse = (Array<ConnectorTypeEntry>);
+export type GetAllConnectorsResponse = GetAllConnectorsResponses[keyof GetAllConnectorsResponses];
 
-export type GetAvailableConnectorTypesError = unknown;
+export type GetAvailableConnectorTypesData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/connectors/available';
+};
+
+export type GetAvailableConnectorTypesResponses = {
+    /**
+     * OK
+     */
+    200: Array<ConnectorTypeEntry>;
+};
+
+export type GetAvailableConnectorTypesResponse = GetAvailableConnectorTypesResponses[keyof GetAvailableConnectorTypesResponses];
 
 export type DeleteConnectorData = {
+    body?: never;
     path: {
         id: number;
     };
+    query?: never;
+    url: '/api/connectors/{id}';
 };
 
-export type DeleteConnectorResponse = (void);
+export type DeleteConnectorErrors = {
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
 
-export type DeleteConnectorError = (ProblemDetails);
+export type DeleteConnectorError = DeleteConnectorErrors[keyof DeleteConnectorErrors];
+
+export type DeleteConnectorResponses = {
+    /**
+     * No Content
+     */
+    204: void;
+};
+
+export type DeleteConnectorResponse = DeleteConnectorResponses[keyof DeleteConnectorResponses];
 
 export type GetEntraConnectorData = {
+    body?: never;
     path: {
         id: number;
     };
+    query?: never;
+    url: '/api/connectors/entra/{id}';
 };
 
-export type GetEntraConnectorResponse = (EntraConnector);
+export type GetEntraConnectorErrors = {
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
 
-export type GetEntraConnectorError = (ProblemDetails);
+export type GetEntraConnectorError = GetEntraConnectorErrors[keyof GetEntraConnectorErrors];
+
+export type GetEntraConnectorResponses = {
+    /**
+     * OK
+     */
+    200: EntraConnector;
+};
+
+export type GetEntraConnectorResponse = GetEntraConnectorResponses[keyof GetEntraConnectorResponses];
 
 export type UpdateEntraConnectorData = {
     body: CreateEntraConnector;
     path: {
         id: number;
     };
+    query?: never;
+    url: '/api/connectors/entra/{id}';
 };
 
-export type UpdateEntraConnectorResponse = (EntraConnector);
+export type UpdateEntraConnectorErrors = {
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
 
-export type UpdateEntraConnectorError = (ProblemDetails);
+export type UpdateEntraConnectorError = UpdateEntraConnectorErrors[keyof UpdateEntraConnectorErrors];
+
+export type UpdateEntraConnectorResponses = {
+    /**
+     * OK
+     */
+    200: EntraConnector;
+};
+
+export type UpdateEntraConnectorResponse = UpdateEntraConnectorResponses[keyof UpdateEntraConnectorResponses];
 
 export type CreateEntraConnectorData = {
     body: CreateEntraConnector;
+    path?: never;
+    query?: never;
+    url: '/api/connectors/entra';
 };
 
-export type CreateEntraConnectorResponse = (EntraConnector);
+export type CreateEntraConnectorResponses = {
+    /**
+     * Created
+     */
+    201: EntraConnector;
+};
 
-export type CreateEntraConnectorError = unknown;
+export type CreateEntraConnectorResponse = CreateEntraConnectorResponses[keyof CreateEntraConnectorResponses];
 
-export type GetAllRolesResponse = (Array<Role>);
+export type GetAllRolesData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/roles';
+};
 
-export type GetAllRolesError = (ProblemDetails);
+export type GetAllRolesErrors = {
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+};
+
+export type GetAllRolesError = GetAllRolesErrors[keyof GetAllRolesErrors];
+
+export type GetAllRolesResponses = {
+    /**
+     * OK
+     */
+    200: Array<Role>;
+};
+
+export type GetAllRolesResponse = GetAllRolesResponses[keyof GetAllRolesResponses];
 
 export type CreateRoleData = {
     body: CreateRole;
+    path?: never;
+    query?: never;
+    url: '/api/roles';
 };
 
-export type CreateRoleResponse = (Role);
+export type CreateRoleResponses = {
+    /**
+     * Created
+     */
+    201: Role;
+};
 
-export type CreateRoleError = unknown;
+export type CreateRoleResponse = CreateRoleResponses[keyof CreateRoleResponses];
 
-export type GetRoleData = {
+export type DeleteRoleData = {
+    body?: never;
     path: {
         id: number;
     };
+    query?: never;
+    url: '/api/roles/{id}';
 };
 
-export type GetRoleResponse = (Role);
+export type DeleteRoleErrors = {
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
 
-export type GetRoleError = (ProblemDetails);
+export type DeleteRoleError = DeleteRoleErrors[keyof DeleteRoleErrors];
+
+export type DeleteRoleResponses = {
+    /**
+     * No Content
+     */
+    204: void;
+};
+
+export type DeleteRoleResponse = DeleteRoleResponses[keyof DeleteRoleResponses];
+
+export type GetRoleData = {
+    body?: never;
+    path: {
+        id: number;
+    };
+    query?: never;
+    url: '/api/roles/{id}';
+};
+
+export type GetRoleErrors = {
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type GetRoleError = GetRoleErrors[keyof GetRoleErrors];
+
+export type GetRoleResponses = {
+    /**
+     * OK
+     */
+    200: Role;
+};
+
+export type GetRoleResponse = GetRoleResponses[keyof GetRoleResponses];
 
 export type UpdateRoleData = {
     body: CreateRole;
     path: {
         id: number;
     };
+    query?: never;
+    url: '/api/roles/{id}';
 };
 
-export type UpdateRoleResponse = (Role);
-
-export type UpdateRoleError = (ProblemDetails);
-
-export type DeleteRoleData = {
-    path: {
-        id: number;
-    };
+export type UpdateRoleErrors = {
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
 };
 
-export type DeleteRoleResponse = (void);
+export type UpdateRoleError = UpdateRoleErrors[keyof UpdateRoleErrors];
 
-export type DeleteRoleError = (ProblemDetails);
-
-export type AddPermissionData = {
-    path: {
-        permissionId: number;
-        roleId: number;
-    };
+export type UpdateRoleResponses = {
+    /**
+     * OK
+     */
+    200: Role;
 };
 
-export type AddPermissionResponse = (unknown);
-
-export type AddPermissionError = (ProblemDetails);
+export type UpdateRoleResponse = UpdateRoleResponses[keyof UpdateRoleResponses];
 
 export type RemoveRoleData = {
+    body?: never;
     path: {
-        permissionId: number;
         roleId: number;
+        permissionId: number;
     };
+    query?: never;
+    url: '/api/roles/{roleId}/permissions/{permissionId}';
 };
 
-export type RemoveRoleResponse = (void);
+export type RemoveRoleErrors = {
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
 
-export type RemoveRoleError = (ProblemDetails);
+export type RemoveRoleError = RemoveRoleErrors[keyof RemoveRoleErrors];
 
-export type GetUserResponse = (User);
+export type RemoveRoleResponses = {
+    /**
+     * No Content
+     */
+    204: void;
+};
 
-export type GetUserError = unknown;
+export type RemoveRoleResponse = RemoveRoleResponses[keyof RemoveRoleResponses];
+
+export type AddPermissionData = {
+    body?: never;
+    path: {
+        roleId: number;
+        permissionId: number;
+    };
+    query?: never;
+    url: '/api/roles/{roleId}/permissions/{permissionId}';
+};
+
+export type AddPermissionErrors = {
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type AddPermissionError = AddPermissionErrors[keyof AddPermissionErrors];
+
+export type AddPermissionResponses = {
+    /**
+     * OK
+     */
+    200: unknown;
+    /**
+     * Created
+     */
+    201: unknown;
+};
+
+export type GetUserData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/users/me';
+};
+
+export type GetUserResponses = {
+    /**
+     * OK
+     */
+    200: User;
+};
+
+export type GetUserResponse = GetUserResponses[keyof GetUserResponses];

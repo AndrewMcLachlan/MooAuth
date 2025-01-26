@@ -1,4 +1,4 @@
-import "./App.scss";
+import "./App.css";
 //import * as Icons from "./assets";
 
 import React from "react";

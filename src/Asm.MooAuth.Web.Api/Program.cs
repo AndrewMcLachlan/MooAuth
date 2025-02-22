@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 MooAuthConfig mooAuthConfig;
 
-WebApplicationStart.Run(args, "Asm.MooAuth.Web.Api", AddServices, AddApp);
+WebApplicationStart.Run(args, "Asm.MooAuth.Web.Api", AddServices, AddApp, AddHealthChecks);
 
 void AddServices(WebApplicationBuilder builder)
 {
@@ -98,3 +98,6 @@ void AddApp(WebApplication app)
     app.MapFallbackToFile("/index.html");
 }
 
+void AddHealthChecks(IHealthChecksBuilder builder, WebApplicationBuilder app)
+{
+ }

@@ -679,3 +679,7 @@ export type GetUserResponses = {
 };
 
 export type GetUserResponse = GetUserResponses[keyof GetUserResponses];
+
+export type ClientOptions = {
+    baseUrl: 'https://localhost:7050' | 'http://localhost:5112' | (string & {});
+};

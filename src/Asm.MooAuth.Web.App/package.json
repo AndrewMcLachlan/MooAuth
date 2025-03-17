@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",
-    "@hey-api/openapi-ts": "^0.64.10",
+    "@hey-api/openapi-ts": "^0.64.12",
     "@types/node": "^22.13.10",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
@@ -37,7 +37,7 @@
     "sass": "^1.85.1",
     "typescript": "^5.8.2",
     "typescript-eslint": "^8.26.1",
-    "vite": "^6.2.1"
+    "vite": "^6.2.2"
   },
   "overrides": {
     "@azure/msal-react": {

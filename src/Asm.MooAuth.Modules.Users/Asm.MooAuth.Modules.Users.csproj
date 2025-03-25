@@ -3,7 +3,6 @@
   <ItemGroup>
     <PackageReference Include="Asm.AspNetCore" />
     <PackageReference Include="Asm.Cqrs.AspNetCore" />
-    <PackageReference Include="Newtonsoft.Json" />
   </ItemGroup>
 
   <ItemGroup>

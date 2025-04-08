@@ -15,7 +15,7 @@ versionMeta.content = import.meta.env.VITE_REACT_APP_VERSION;
 const router = createMooAppBrowserRouter(routes);
 
 root.render(
-    <MooApp clientId="a5726221-6abd-490b-ae3e-73f4bbe6d731" scopes={["api://mooauth.mclachlan.family/api.read"]} name="MooAuth" version={import.meta.env.VITE_REACT_APP_VERSION}>
+    <MooApp clientId="a5726221-6abd-490b-ae3e-73f4bbe6d731" scopes={["api://mooauth.mclachlan.family/api.read"]} name="MooAuth" version={import.meta.env.VITE_REACT_APP_VERSION} copyrightYear={2024}>
         <RouterProvider router={router} />
     </MooApp>
 );

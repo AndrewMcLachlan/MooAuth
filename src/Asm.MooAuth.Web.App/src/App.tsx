@@ -25,7 +25,6 @@ const App: React.FC = () => {
         <MooAppLayout
             header={{ menu: [], userMenu: userMenu }}
             sidebar={{ navItems: sideMenu }}
-            footer={{ copyrightYear: 2024 }}
         />
     );
 };

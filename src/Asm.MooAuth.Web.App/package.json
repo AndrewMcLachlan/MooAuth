@@ -24,19 +24,19 @@
     "vite-tsconfig-paths": "^5.1.4"
   },
   "devDependencies": {
-    "@eslint/js": "^9.23.0",
-    "@hey-api/openapi-ts": "^0.65.0",
-    "@types/node": "^22.13.14",
-    "@types/react": "^19.0.12",
-    "@types/react-dom": "^19.0.4",
+    "@eslint/js": "^9.24.0",
+    "@hey-api/openapi-ts": "^0.66.3",
+    "@types/node": "^22.14.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.1",
     "@vitejs/plugin-react": "^4.3.4",
-    "eslint": "^9.23.0",
+    "eslint": "^9.24.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^16.0.0",
-    "sass": "^1.86.0",
-    "typescript": "^5.8.2",
-    "typescript-eslint": "^8.29.0",
+    "sass": "^1.86.3",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.29.1",
     "vite": "^6.2.5"
   },
   "overrides": {

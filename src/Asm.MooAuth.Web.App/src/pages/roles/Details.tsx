@@ -25,7 +25,7 @@ export const Details: React.FC = () => {
         update(role.id, data);
     };
 
-    const { watch, formState, register, setValue, getValues, reset, handleSubmit, ...form } = useForm<CreateRole>({
+    const form = useForm<CreateRole>({
         defaultValues: {
             name: role.name,
             description: role.description,
@@ -33,22 +33,22 @@ export const Details: React.FC = () => {
     });
 
     useEffect(() => {
-        reset({
+        form.reset({
             name: role.name,
             description: role.description,
         });
-    }, [id]);
+    }, [id, form]);
 
     return (
         <Page title={role.name} breadcrumbs={[{ text: role.name, route: `/roles/${role.id}/details` }]}>
-            <SectionForm onSubmit={handleSubmit(onSubmit)} title="Details">
+            <SectionForm form={form} onSubmit={onSubmit} title="Details">
                 <Form.Group groupId="name">
                     <Form.Label>Name</Form.Label>
-                    <Form.Input type="text" defaultValue={role.name}{...register("name")} maxLength={50} />
+                    <Form.Input maxLength={50} />
                 </Form.Group>
                 <Form.Group groupId="description">
                     <Form.Label>Description</Form.Label>
-                    <Form.Input type="text" defaultValue={role.description ?? ""} {...register("description")} maxLength={255} />
+                    <Form.Input type="text" maxLength={255} />
                 </Form.Group>
                 <Button type="submit" variant="primary">Save</Button>
             </SectionForm>
@@ -73,6 +73,6 @@ export const Details: React.FC = () => {
                     )}
                 </tbody>
             </SectionTable>
-        </Page >
+        </Page>
     );
 };

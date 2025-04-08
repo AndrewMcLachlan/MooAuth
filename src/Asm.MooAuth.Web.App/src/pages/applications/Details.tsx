@@ -1,7 +1,7 @@
 import { DeleteIcon, EditColumn, Form, Page, SaveIcon, Section, SectionForm, SectionTable } from "@andrewmclachlan/mooapp";
 import { CreateApplication, CreatePermission } from "client";
 import React, { useEffect } from "react";
-import { Button, Table } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useCreatePermission, useDeletePermission, useUpdateApplication, useUpdatePermission } from "services";
 import { useApplication } from "./ApplicationProvider";
@@ -25,7 +25,7 @@ export const Details: React.FC = () => {
         update(application.id, data);
     };
 
-    const { watch, formState, register, setValue, getValues, reset, handleSubmit, ...form } = useForm<CreateApplication>({
+    const form = useForm<CreateApplication>({
         defaultValues: {
             name: application.name,
             description: application.description,
@@ -34,27 +34,27 @@ export const Details: React.FC = () => {
     });
 
     useEffect(() => {
-        reset({
+        form.reset({
             name: application.name,
             description: application.description,
             logoUrl: application.logoUrl,
         });
-    }, [id]);
+    }, [id, form]);
 
     return (
         <Page title={application.name} breadcrumbs={[{ text: application.name, route: `/applications/${application.id}/details` }]}>
-            <SectionForm onSubmit={handleSubmit(onSubmit)}>
+            <SectionForm form={form} onSubmit={onSubmit}>
                 <Form.Group groupId="name">
                     <Form.Label>Name</Form.Label>
-                    <Form.Input type="text" defaultValue={application.name}{...register("name")} maxLength={50} />
+                    <Form.Input type="text" maxLength={50} />
                 </Form.Group>
                 <Form.Group groupId="description">
                     <Form.Label>Description</Form.Label>
-                    <Form.Input type="text" defaultValue={application.description ?? ""} {...register("description")} maxLength={255} />
+                    <Form.Input type="text" maxLength={255} />
                 </Form.Group>
-                <Form.Group groupId="logourl">
+                <Form.Group groupId="logoUrl">
                     <Form.Label>Logo</Form.Label>
-                    <Form.Input type="url" defaultValue={application.logoUrl ?? ""} {...register("logoUrl")} maxLength={255} />
+                    <Form.Input type="url" maxLength={255} />
                 </Form.Group>
                 <Button type="submit" variant="primary">Save</Button>
             </SectionForm>

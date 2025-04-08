@@ -13,7 +13,7 @@ export const CreateEntra: React.FC = () => {
         create(data);
     };
 
-    const { register, setValue, getValues, reset, ...form } = useForm<CreateEntraConnector>({
+    const form = useForm<CreateEntraConnector>({
         defaultValues: {
             name: "",
             clientId: "",
@@ -27,26 +27,26 @@ export const CreateEntra: React.FC = () => {
 
     return (
         <Page title="Create Entra Connector" breadcrumbs={[{ text: "Create", route: `/connectors/create/entra` }]}>
-            <SectionForm onSubmit={form.handleSubmit(handleSubmit)}>
+            <SectionForm form={form} onSubmit={handleSubmit}>
                 <Form.Group groupId="name">
                     <Form.Label>Name</Form.Label>
-                    <Form.Input type="text" {...register("name")} maxLength={50} />
+                    <Form.Input type="text" maxLength={50} />
                 </Form.Group>
-                <Form.Group groupId="tenantId">
+                <Form.Group groupId="config.tenantId">
                     <Form.Label>Tenant ID</Form.Label>
-                    <Form.Input type="text" {...register("config.tenantId")} maxLength={100} />
+                    <Form.Input type="text" maxLength={100} />
                 </Form.Group>
                 <Form.Group groupId="clientId">
                     <Form.Label>Client ID</Form.Label>
-                    <Form.Input type="text" {...register("clientId")} maxLength={100} />
+                    <Form.Input type="text" maxLength={100} />
                 </Form.Group>
                 <Form.Group groupId="clientSecret">
                     <Form.Label>Client Secret</Form.Label>
-                    <Form.Password defaultValue="" {...register("clientSecret")} maxLength={100} />
+                    <Form.Password maxLength={100} />
                 </Form.Group>
                 <Form.Group groupId="audience">
                     <Form.Label>Audience</Form.Label>
-                    <Form.Input type="text" {...register("audience")} maxLength={255} />
+                    <Form.Input type="text" maxLength={255} />
                 </Form.Group>
                 <Button type="submit" variant="primary">Save</Button>
             </SectionForm>

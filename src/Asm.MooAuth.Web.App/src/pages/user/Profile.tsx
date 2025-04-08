@@ -1,26 +1,26 @@
-import { Form, Page, SectionForm } from "@andrewmclachlan/mooapp";
+import { Form, Page, Section, SectionForm, ThemeSelector } from "@andrewmclachlan/mooapp";
 import { User } from "client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useUser } from "services";
 
 export const Profile: React.FC = () => {
 
-    const {data: me} = useUser();
+    const { data: me } = useUser();
 
     const handleSubmit = async (data: User) => {
     };
 
-    useEffect(() => {
-        reset(me);
-    }, [me]);
+    const form = useForm<User>({ defaultValues: me });
 
-    const { register, setValue, getValues, reset, ...form } = useForm<User>({ defaultValues: me  });
+    useEffect(() => {
+        form.reset(me);
+    }, [me, form]);
 
     return (
-        <Page title="Profile" breadcrumbs={[{text: "Profile", route: "/profile"}]}>
-            <SectionForm onSubmit={form.handleSubmit(handleSubmit)}>
+        <Page title="Profile" breadcrumbs={[{ text: "Profile", route: "/profile" }]}>
+            <SectionForm form={form} onSubmit={handleSubmit}>
                 <Form.Group groupId="name">
                     <Form.Label>Name</Form.Label>
                     <Form.Input type="text" value={`${me?.firstName ?? ""} ${me?.lastName ?? ""}`} readOnly />
@@ -31,6 +31,9 @@ export const Profile: React.FC = () => {
                 </Form.Group>
                 <Button hidden type="submit" variant="primary">Save</Button>
             </SectionForm>
+            <Section title="Theme">
+                <ThemeSelector />
+            </Section>
         </Page>
     );
 };

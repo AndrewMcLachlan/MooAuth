@@ -18,7 +18,7 @@ export const DetailsEntra: React.FC = () => {
         update(id, data);
     };
 
-    const { watch, formState, register, setValue, getValues, reset, handleSubmit, ...form } = useForm<CreateEntraConnector>({
+    const form = useForm<CreateEntraConnector>({
         defaultValues: {
             name: connector?.name,
             clientId: connector?.clientId,
@@ -27,12 +27,12 @@ export const DetailsEntra: React.FC = () => {
     });
 
     useEffect(() => {
-        reset({
+        form.reset({
             name: connector?.name,
             clientId: connector?.clientId,
             clientSecret: passwordMask,
         });
-    }, [id]);
+    }, [id, form]);
 
     if (!connector) {
         return null;
@@ -40,26 +40,26 @@ export const DetailsEntra: React.FC = () => {
 
     return (
         <Page title={connector.name} breadcrumbs={[{ text: connector.name, route: `/connectors/${connector.id}/details` }]}>
-            <SectionForm onSubmit={handleSubmit(onSubmit)} title="Details">
+            <SectionForm form={form} onSubmit={onSubmit} title="Details">
                 <Form.Group groupId="name">
                     <Form.Label>Name</Form.Label>
-                    <Form.Input type="text" {...register("name")} maxLength={50} required />
+                    <Form.Input type="text" maxLength={50} required />
                 </Form.Group>
                 <Form.Group groupId="config.tenantId">
                     <Form.Label>Tenant ID</Form.Label>
-                    <Form.Input type="text" {...register("config.tenantId")} maxLength={100} />
+                    <Form.Input type="text" maxLength={100} />
                 </Form.Group>
                 <Form.Group groupId="clientId">
                     <Form.Label>Client ID</Form.Label>
-                    <Form.Input type="text" {...register("clientId")} maxLength={100} required />
+                    <Form.Input type="text" maxLength={100} required />
                 </Form.Group>
                 <Form.Group groupId="clientSecret">
                     <Form.Label>Client Secret</Form.Label>
-                    <Form.Password {...register("clientSecret")} maxLength={100} />
+                    <Form.Password maxLength={100} />
                 </Form.Group>
                 <Form.Group groupId="audience">
                     <Form.Label>Audience</Form.Label>
-                    <Form.Input type="text" defaultValue={""} {...register("audience")} maxLength={100} />
+                    <Form.Input type="text" maxLength={100} />
                 </Form.Group>
                 <Button type="submit" variant="primary">Save</Button>
             </SectionForm>

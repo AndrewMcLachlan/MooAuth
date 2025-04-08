@@ -13,7 +13,7 @@ export const Create: React.FC = () => {
         create(data);
     };
 
-    const { register, setValue, getValues, reset, ...form } = useForm<CreateApplication>({
+    const form = useForm<CreateApplication>({
         defaultValues: {
             name: "",
             description: "",
@@ -23,18 +23,18 @@ export const Create: React.FC = () => {
 
     return (
         <Page title="Create Application" breadcrumbs={[{ text: "Create", route: `/applications/create` }]}>
-            <SectionForm onSubmit={form.handleSubmit(handleSubmit)}>
+            <SectionForm form={form} onSubmit={handleSubmit}>
                 <Form.Group groupId="name">
                     <Form.Label>Name</Form.Label>
-                    <Form.Input type="text" {...register("name")} maxLength={50} />
+                    <Form.Input type="text" maxLength={50} />
                 </Form.Group>
                 <Form.Group groupId="description">
                     <Form.Label>Description</Form.Label>
-                    <Form.Input type="text" {...register("description")} maxLength={255} />
+                    <Form.Input type="text" maxLength={255} />
                 </Form.Group>
-                <Form.Group groupId="logourl">
+                <Form.Group groupId="logoUrl">
                     <Form.Label>Logo</Form.Label>
-                    <Form.Input type="url" {...register("logoUrl")} maxLength={255} />
+                    <Form.Input type="url" maxLength={255} />
                 </Form.Group>
                 <Button type="submit" variant="primary">Save</Button>
             </SectionForm>

@@ -12,8 +12,8 @@
     "openapi-ts": "openapi-ts"
   },
   "dependencies": {
-    "@andrewmclachlan/mooapp": "^2.3.964",
-    "@andrewmclachlan/mooicons": "^2.3.964",
+    "@andrewmclachlan/mooapp": "^2.3.969",
+    "@andrewmclachlan/mooicons": "^2.3.969",
     "@hey-api/client-fetch": "^0.13.1",
     "react": "^19.1.1",
     "react-bootstrap": "^2.10.10",

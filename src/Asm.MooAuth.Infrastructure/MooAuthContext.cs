@@ -3,7 +3,6 @@ using Asm.MooAuth.Domain.Entities.Applications;
 using Asm.MooAuth.Domain.Entities.Connectors;
 using Asm.MooAuth.Domain.Entities.Permissions;
 using Asm.MooAuth.Domain.Entities.Roles;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Asm.MooAuth.Infrastructure;
@@ -12,11 +11,11 @@ public partial class MooAuthContext : DomainDbContext, IReadOnlyDbContext
 {
     private static readonly List<Assembly> Assemblies = [];
 
-    public MooAuthContext(IMediator mediator) : base(mediator)
+    public MooAuthContext(IPublisher publisher) : base(publisher)
     {
     }
 
-    public MooAuthContext(DbContextOptions<MooAuthContext> options, IMediator mediator) : base(options, mediator)
+    public MooAuthContext(DbContextOptions<MooAuthContext> options, IPublisher publisher) : base(options, publisher)
     {
     }
 

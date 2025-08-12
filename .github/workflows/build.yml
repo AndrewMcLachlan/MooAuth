@@ -35,7 +35,7 @@ jobs:
         project: 'src/Asm.MooAuth.Web.Api'
         versionPropertyName: 'Version'
     - name: Restore dependencies
-      run: dotnet restore Asm.MooAuth.sln
+      run: dotnet restore Asm.MooAuth.slnx
     - name: Setup node and npm
       uses: actions/setup-node@v4
       with:

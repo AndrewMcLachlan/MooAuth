@@ -18,7 +18,6 @@
   <ItemGroup>
     <Using Include="Asm.AspNetCore" />
     <Using Include="Asm.AspNetCore.Security" />
-    <!--<Using Include="Asm.MooAuth.Web.Api" />-->
     <Using Include="Microsoft.Extensions.DependencyInjection" />
   </ItemGroup>
 

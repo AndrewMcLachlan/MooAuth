@@ -2,8 +2,10 @@
   <Folder Name="/.github/">
     <File Path=".github/dependabot.yml" />
   </Folder>
-  <Folder Name="/.github/workflows/" Id="e7a3c856-6834-d657-f2f0-05592df2dde9">
+  <Folder Name="/.github/workflows/">
     <File Path=".github/workflows/build.yml" />
+    <File Path=".github/workflows/dependabot-autoapprove.yml" />
+    <File Path=".github/workflows/dependabot-automerge.yml" />
   </Folder>
   <Folder Name="/Config/">
     <File Path=".editorconfig" />
@@ -24,7 +26,7 @@
     <Project Path="src/Asm.MooAuth.Modules.Roles/Asm.MooAuth.Modules.Roles.csproj" />
     <Project Path="src/Asm.MooAuth.Modules.Users/Asm.MooAuth.Modules.Users.csproj" />
   </Folder>
-  <Project Path="src/Asm.MooAuth.Database/Asm.MooAuth.Database.sqlproj" Type="42ea0dbd-9cf1-443e-919e-be9c484e4577" />
+  <Project Path="src/Asm.MooAuth.Database/Asm.MooAuth.Database.sqlproj" Type="42ea0dbd-9cf1-443e-919e-be9c484e4577" Id="db7f5c2c-063a-4878-9e2b-6c8f72e22abc" />
   <Project Path="src/Asm.MooAuth.Domain/Asm.MooAuth.Domain.csproj" />
   <Project Path="src/Asm.MooAuth.Infrastructure/Asm.MooAuth.Infrastructure.csproj" />
   <Project Path="src/Asm.MooAuth.Web.Api/Asm.MooAuth.Web.Api.csproj" />

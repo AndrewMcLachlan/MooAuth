@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" />
     <Using Include="Asm.Cqrs.Commands" />
     <Using Include="Asm.Cqrs.Queries" />
     <Using Include="Asm.Domain" />

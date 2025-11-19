@@ -1,5 +1,6 @@
 
 using System.Text.Json.Serialization;
+using Asm.AspNetCore.Api;
 using Asm.AspNetCore.Authentication;
 using Asm.AspNetCore.Modules;
 using Asm.MooAuth;
@@ -7,6 +8,7 @@ using Asm.MooAuth.Web.Api;
 using Asm.MooAuth.Web.Api.Config;
 using Asm.OAuth;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.OpenApi;
 
 MooAuthConfig mooAuthConfig;
 
@@ -48,6 +50,7 @@ void AddServices(WebApplicationBuilder builder)
 
     builder.Services.AddOpenApi(options =>
     {
+        options.OpenApiVersion = OpenApiSpecVersion.OpenApi3_1;
         options.AddDocumentTransformer<OidcSecuritySchemeTransformer>();
     });
 }
@@ -70,8 +73,7 @@ void AddApp(WebApplication app)
 {
     app.MapOpenApi();
 
-    IEndpointRouteBuilder builder = app.MapGroup("/api")
-        .WithOpenApi();
+    IEndpointRouteBuilder builder = app.MapGroup("/api");
 
     app.UseSwaggerUI(options =>
     {

@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - "main"
-  pull_request_target:
+  pull_request: 
     branches:
       - "main"
   workflow_dispatch:
@@ -18,13 +18,15 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       packages: read
+    outputs:
+      version: ${{ steps.set-version-number.outputs.version }}
     steps:
     - uses: actions/checkout@v5
     - name: Setup .NET
       uses: actions/setup-dotnet@v5
 
       with:
-        dotnet-version: 9.x
+        dotnet-version: 10.x
         source-url: https://nuget.pkg.github.com/AndrewMcLachlan/index.json
       env:
         NUGET_AUTH_TOKEN: ${{secrets.CROSS_REPO_PACKAGE_TOKEN}}
@@ -33,13 +35,13 @@ jobs:
       uses: andrewmclachlan/actions/set-version-number@v4
       with:
         project: 'src/Asm.MooAuth.Web.Api'
-        versionPropertyName: 'Version'
+        version-property-name: 'Version'
     - name: Restore dependencies
       run: dotnet restore Asm.MooAuth.slnx
     - name: Setup node and npm
       uses: actions/setup-node@v6
       with:
-        node-version: 20
+        node-version: 22
         cache: npm
         cache-dependency-path: 'src/Asm.MooAuth.Web.App/package-lock.json'
         registry-url: "https://npm.pkg.github.com"
@@ -55,43 +57,85 @@ jobs:
       run: npm run build --prefix src/Asm.MooAuth.Web.App
     - name: Copy App
       run: cp -r src/Asm.MooAuth.Web.App/dist ${{ github.workspace }}/publish/wwwroot
-    #- name: Publish WebJob
-    #  run: 'dotnet publish src/Asm.MooAuth.Web.Jobs/Asm.MooAuth.Web.Jobs.csproj --runtime win-x64 --no-self-contained --output ${{ github.workspace }}/publish/App_Data/jobs/continuous/Jobs --configuration Release --p:Version=${{ steps.set-version-number.outputs.version }} --p:FileVersion=${{ steps.set-version-number.outputs.version }} --no-restore'
     - name: Upload Artifact
       uses: actions/upload-artifact@v5
       with:
         name: publish
         path: ${{ github.workspace }}/publish
+    - name: Build Docker image (validation only)
+      uses: docker/build-push-action@v6
+      with:
+        context: .
+        file: ./src/Asm.MooAuth.Web.Api/Dockerfile
+        push: false
+        tags: |
+          ghcr.io/andrewmclachlan/mooauth:${{steps.set-version-number.outputs.version}}
+          ghcr.io/andrewmclachlan/mooauth:latest
 
-  test:
+  docker-push:
+    runs-on: ubuntu-latest
+    needs: build
+    if: (github.event_name != 'pull_request' && github.event_name != 'pull_request_target' && github.ref == 'refs/heads/main')
+    permissions:
+      packages: write
+      contents: read
+    steps:
+    - uses: actions/checkout@v5
+    - name: Download publish artifact
+      uses: actions/download-artifact@v5
+      with:
+        name: publish
+        path: ${{ github.workspace }}/publish
+    - name: Log in to GitHub Container Registry
+      uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v6
+      with:
+        context: .
+        file: ./src/Asm.MooAuth.Web.Api/Dockerfile
+        push: true
+        tags: |
+          ghcr.io/andrewmclachlan/mooauth:${{needs.build.outputs.version}}
+          ghcr.io/andrewmclachlan/mooauth:latest
+        cache-from: type=registry,ref=ghcr.io/andrewmclachlan/mooauth:latest
+        cache-to: type=inline
+
+  staging:
     concurrency:
       group: mooauth-deploy-group
       cancel-in-progress: true
-    needs: build
+    needs: [build, docker-push]
     if: (github.event_name != 'pull_request' && github.event_name != 'pull_request_target' && github.ref == 'refs/heads/main')
     uses: AndrewMcLachlan/actions/.github/workflows/deploy-azure.yml@v4
     with:
       environment: Staging
       artifact-name: publish
       app-name: mooauth
+      resource-group: MooAuth
       slot-name: staging
+      container-image: ghcr.io/andrewmclachlan/mooauth:${{needs.build.outputs.version}}
+      container-name: main
     secrets:
       AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
       AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-  production:
+  production: 
     concurrency:
       group: mooauth-deploy-group
       cancel-in-progress: true
-    needs: test
+    needs: staging
     if: (github.event_name != 'pull_request' && github.event_name != 'pull_request_target' && github.ref == 'refs/heads/main')
     uses: AndrewMcLachlan/actions/.github/workflows/azure-appservice-swap-slot.yml@v4
     with:
       environment: Production
       app-name: mooauth
-      slot-name: staging
       resource-group: MooAuth
+      slot-name: staging
     secrets:
       AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
@@ -108,7 +152,10 @@ jobs:
       environment: Post-Production
       artifact-name: publish
       app-name: mooauth
+      resource-group: MooAuth
       slot-name: staging
+      container-image: ghcr.io/andrewmclachlan/mooauth:${{needs.build.outputs.version}}
+      container-name: main
     secrets:
       AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}

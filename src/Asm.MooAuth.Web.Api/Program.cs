@@ -4,10 +4,10 @@ using Asm.AspNetCore.Api;
 using Asm.AspNetCore.Authentication;
 using Asm.AspNetCore.Modules;
 using Asm.MooAuth;
-using Asm.MooAuth.Web.Api;
 using Asm.MooAuth.Web.Api.Config;
 using Asm.OAuth;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi;
 
 MooAuthConfig mooAuthConfig;
@@ -44,7 +44,7 @@ void AddServices(WebApplicationBuilder builder)
 
     builder.Services.AddProblemDetailsFactory();
 
-    builder.Services.Configure<AzureOAuthOptions>(builder.Configuration.GetSection("MooAuth:OAuth"));
+    builder.Services.AddAzureOAuthOptions("MooAuth:OAuth");
 
     AddSecretManager(builder);
 
@@ -73,11 +73,9 @@ void AddApp(WebApplication app)
 {
     app.MapOpenApi();
 
-    IEndpointRouteBuilder builder = app.MapGroup("/api");
-
     app.UseSwaggerUI(options =>
     {
-        options.SwaggerEndpoint("/openapi/v1.json", "v1");
+        options.SwaggerEndpoint("/openapi/v1.json", "MooAuth API");
         options.OAuthClientId(app.Configuration["OAuth:Audience"]);
         options.OAuthAppName("MooAuth");
         options.OAuthUsePkce();
@@ -93,6 +91,18 @@ void AddApp(WebApplication app)
 
     app.UseAuthorization();
 
+    IEndpointRouteBuilder builder = app.MapGroup("/api");
+
+    builder.MapGet("config", (IOptions<AzureOAuthOptions> options) =>
+    {
+        return options.Value;
+    })
+    .WithNames("Get Configuration")
+    .WithSummary("Get API configuration")
+    .WithDescription("Get configuration information for the API.")
+    .WithTags("Configuration")
+    .AllowAnonymous();
+
     builder.MapModuleEndpoints();
 
     app.UseSecurityHeaders();
@@ -102,4 +112,4 @@ void AddApp(WebApplication app)
 
 void AddHealthChecks(IHealthChecksBuilder builder, WebApplicationBuilder app)
 {
- }
+}

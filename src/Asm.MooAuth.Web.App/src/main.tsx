@@ -7,15 +7,35 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faArrowsRotate, faCheck, faCheckCircle, faTrashAlt, faChevronDown, faChevronUp, faTimesCircle, faArrowLeft, faChevronRight, faCircleChevronLeft, faLongArrowUp, faLongArrowDown, faUpload, faXmark, faFilterCircleXmark, faInfoCircle, faPenToSquare, faPlus } from "@fortawesome/free-solid-svg-icons";
 library.add(faArrowsRotate, faCheck, faCheckCircle, faTrashAlt, faChevronDown, faChevronUp, faTimesCircle, faArrowLeft, faLongArrowUp, faLongArrowDown, faChevronRight, faCircleChevronLeft, faUpload, faXmark, faFilterCircleXmark, faInfoCircle, faPenToSquare, faPlus);
 
-const root = createRoot(document.getElementById("root")!);
+interface AppConfig {
+    clientId: string;
+}
 
-const versionMeta = Array.from(document.getElementsByTagName("meta")).find((value) => value.getAttribute("name") === "application-version")!;
-versionMeta.content = import.meta.env.VITE_REACT_APP_VERSION;
+const scopes = ["api://mooauth.mclachlan.family/api.read"];
 
-const router = createMooAppBrowserRouter(routes);
+async function fetchConfig(): Promise<AppConfig> {
+    const response = await fetch("/api/config");
+    if (!response.ok) {
+        throw new Error("Failed to fetch application configuration");
+    }
+    return response.json();
+}
 
-root.render(
-    <MooApp clientId="a5726221-6abd-490b-ae3e-73f4bbe6d731" scopes={["api://mooauth.mclachlan.family/api.read"]} name="MooAuth" version={import.meta.env.VITE_REACT_APP_VERSION} copyrightYear={2024}>
-        <RouterProvider router={router} />
-    </MooApp>
-);
+async function initializeApp() {
+    const config = await fetchConfig();
+
+    const root = createRoot(document.getElementById("root")!);
+
+    const versionMeta = Array.from(document.getElementsByTagName("meta")).find((value) => value.getAttribute("name") === "application-version")!;
+    versionMeta.content = import.meta.env.VITE_REACT_APP_VERSION;
+
+    const router = createMooAppBrowserRouter(routes);
+
+    root.render(
+        <MooApp clientId={config.clientId} scopes={scopes} name="MooAuth" version={import.meta.env.VITE_REACT_APP_VERSION} copyrightYear={2024}>
+            <RouterProvider router={router} />
+        </MooApp>
+    );
+}
+
+initializeApp();

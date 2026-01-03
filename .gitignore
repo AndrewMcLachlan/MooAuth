@@ -266,3 +266,4 @@ serviceDependencies.local.json
 
 *.tsbuildinfo
 /Visual Studio 2022/Visualizers/attribcache140.bin
+/.claude/settings.local.json

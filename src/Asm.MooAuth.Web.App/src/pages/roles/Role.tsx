@@ -1,13 +1,13 @@
 import { useIdParams } from "utils/useIdParams";
 import { RoleProvider } from "./RoleProvider";
 import { Navigate, Outlet, useMatch } from "react-router-dom";
-import { useRole } from "services";
+import { useGetRole } from "./hooks/useGetRole";
 
 export const Role = () => {
 
     const id = useIdParams();
 
-    const role = useRole(id);
+    const role = useGetRole(id);
 
     const match = useMatch("/accounts/:id");
 

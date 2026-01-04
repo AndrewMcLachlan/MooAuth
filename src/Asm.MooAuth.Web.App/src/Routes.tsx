@@ -1,4 +1,4 @@
-import { RouteDefinition } from "@andrewmclachlan/mooapp";
+import { RouteDefinition } from "@andrewmclachlan/moo-app";
 import App from "App";
 import * as Pages from "./pages";
 
@@ -27,6 +27,16 @@ export const routes: RouteDefinition = {
             createConnector: { path: "/connectors/create", element: <Pages.CreateConnector /> },
             createEntraConnector: { path: "/connectors/create/entra", element: <Pages.CreateEntra /> },
             entraConnector: { path: "/connectors/entra/:id", element: <Pages.DetailsEntra />, },
+            datasources: { path: "/datasources", element: <Pages.DataSources />, },
+            createDataSource: { path: "/datasources/create", element: <Pages.CreateDataSource /> },
+            createFreeTextDataSource: { path: "/datasources/create/freetext", element: <Pages.CreateFreeText /> },
+            createStaticListDataSource: { path: "/datasources/create/staticlist", element: <Pages.CreateStaticList /> },
+            createApiListDataSource: { path: "/datasources/create/apilist", element: <Pages.CreateApiList /> },
+            freeTextDataSource: { path: "/datasources/freetext/:id", element: <Pages.DetailsFreeText />, },
+            staticListDataSource: { path: "/datasources/staticlist/:id", element: <Pages.DetailsStaticList />, },
+            apiListDataSource: { path: "/datasources/apilist/:id", element: <Pages.DetailsApiList />, },
+            users: { path: "/users", element: <Pages.Users /> },
+            groups: { path: "/groups", element: <Pages.Groups /> },
             profile: {
                 path: "/profile", element: <Pages.Profile />,
             }

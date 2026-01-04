@@ -4,9 +4,10 @@ import "./App.css";
 import React from "react";
 //import { Link } from "react-router-dom";
 
-import { MooAppLayout, NavItem } from "@andrewmclachlan/mooapp";
+import { MooAppLayout } from "@andrewmclachlan/moo-app";
+import { NavItem } from "@andrewmclachlan/moo-ds";
 import { useIsAuthenticated } from "@azure/msal-react";
-import { Application, Dashboard, User, Users, UserShield } from "@andrewmclachlan/mooicons";
+import { Application, Dashboard, User, Users, UserShield } from "@andrewmclachlan/moo-icons";
 //import { useHasRole } from "hooks";
 
 const App: React.FC = () => {
@@ -68,5 +69,9 @@ const sideMenu: NavItem[] = [
     {
         text: "Connectors",
         route: "/connectors"
+    },
+    {
+        text: "Data Sources",
+        route: "/datasources"
     },
 ];

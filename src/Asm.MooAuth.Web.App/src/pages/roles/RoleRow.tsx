@@ -1,8 +1,8 @@
-import { DeleteIcon } from "@andrewmclachlan/mooapp";
-import { Role } from "client";
+import { DeleteIcon } from "@andrewmclachlan/moo-ds";
+import { Role } from "api";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useDeleteRole } from "services";
+import { useDeleteRole } from "./hooks/useDeleteRole";
 
 export const RoleRow: React.FC<RoleRowProps> = (props) => {
 
@@ -22,7 +22,10 @@ export const RoleRow: React.FC<RoleRowProps> = (props) => {
                 {props.role.description}
             </td>
             <td className="row-action">
-                <DeleteIcon onClick={() => deleteRole(props.role.id)} />
+                <DeleteIcon onClick={(e) => {
+                    e.stopPropagation();
+                    deleteRole.mutate({ path: { id: props.role.id } })
+                }} />
             </td>
         </tr>
     );

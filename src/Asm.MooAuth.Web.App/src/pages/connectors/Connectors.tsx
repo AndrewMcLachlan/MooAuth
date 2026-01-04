@@ -1,16 +1,15 @@
-import { IconButton, LoadingTableRows, Page } from "@andrewmclachlan/mooapp";
+import { Page } from "@andrewmclachlan/moo-app";
+import { IconButton, LoadingTableRows } from "@andrewmclachlan/moo-ds";
 import { Table } from "react-bootstrap";
-import { useConnectors } from "services";
 import { useNavigate } from "react-router-dom";
 import { ConnectorRow } from "./ConnectorRow";
+import { useGetConnectors } from "./hooks/useGetConnectors";
 
 export const Connectors = () => {
 
     const navigate = useNavigate();
 
-    const connectorsQuery = useConnectors();
-
-    const { data } = connectorsQuery;
+    const { data } = useGetConnectors();
 
     const connectorRows: React.ReactNode[] = data?.map(a => <ConnectorRow key={a.id} connector={a} />) ?? [<LoadingTableRows key={1} rows={2} cols={3} />];
 

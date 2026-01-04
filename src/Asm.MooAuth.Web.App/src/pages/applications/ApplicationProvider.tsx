@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Application } from "client";
+import { Application } from "api";
 
 export interface ApplicationProviderProps {
     application: Application;

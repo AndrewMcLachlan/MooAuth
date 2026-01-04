@@ -1,13 +1,13 @@
 import { useIdParams } from "utils/useIdParams";
 import { ApplicationProvider } from "./ApplicationProvider";
 import { Navigate, Outlet, useMatch } from "react-router-dom";
-import { useApplication } from "services";
+import { useGetApplication } from "./hooks/useGetApplication";
 
 export const Application = () => {
 
     const id = useIdParams();
 
-    const application = useApplication(id);
+    const application = useGetApplication(id);
 
     const match = useMatch("/accounts/:id");
 

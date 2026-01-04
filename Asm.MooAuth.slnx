@@ -24,7 +24,9 @@
   </Folder>
   <Folder Name="/Modules/">
     <Project Path="src/Asm.MooAuth.Connectors/Asm.MooAuth.Modules.Connectors.csproj" />
+    <Project Path="src/Asm.MooAuth.Modules.DataSources/Asm.MooAuth.Modules.DataSources.csproj" />
     <Project Path="src/Asm.MooAuth.Modules.Applications/Asm.MooAuth.Modules.Applications.csproj" />
+    <Project Path="src/Asm.MooAuth.Modules.Groups/Asm.MooAuth.Modules.Groups.csproj" />
     <Project Path="src/Asm.MooAuth.Modules.Roles/Asm.MooAuth.Modules.Roles.csproj" />
     <Project Path="src/Asm.MooAuth.Modules.Users/Asm.MooAuth.Modules.Users.csproj" />
   </Folder>

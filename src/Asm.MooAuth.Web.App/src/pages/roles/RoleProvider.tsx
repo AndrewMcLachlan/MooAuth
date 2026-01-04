@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Role } from "client";
+import { Role } from "api";
 
 export interface RoleProviderProps {
     role: Role;

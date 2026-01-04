@@ -9,7 +9,8 @@ public class Permission([DisallowNull] int id) : DescribedEntity(id)
 {
     public Permission() : this(default) { }
 
-    public required int ApplicationId { get; set; }
+    [Required]
+    public int ApplicationId { get; set; }
 
     public Application Application { get; set; } = null!;
 

@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Asm.MooAuth.Models;
 
 namespace Asm.MooAuth;
+
 public interface IConnector
 {
-    //PagedResult<ListItem<>>
+    Task<PagedResult<ConnectorUser>> GetUsersAsync(int page, int pageSize, string? search = null, CancellationToken cancellationToken = default);
+
+    Task<PagedResult<ConnectorGroup>> GetGroupsAsync(int page, int pageSize, string? search = null, CancellationToken cancellationToken = default);
 }

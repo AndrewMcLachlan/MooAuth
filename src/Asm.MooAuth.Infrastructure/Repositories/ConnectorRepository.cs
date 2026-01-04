@@ -5,6 +5,6 @@ internal class ConnectorRepository(MooAuthContext context) : RepositoryDeleteBas
 {
     public override void Delete(int id)
     {
-        throw new NotImplementedException();
+        Entities.Remove(new(id));
     }
 }

@@ -1,8 +1,8 @@
-import { DeleteIcon } from "@andrewmclachlan/mooapp";
-import { Application } from "client";
+import { DeleteIcon } from "@andrewmclachlan/moo-ds";
+import { Application } from "api";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useDeleteApplication } from "services";
+import { useDeleteApplication } from "./hooks/useDeleteApplication";
 
 export const ApplicationRow: React.FC<ApplicationRowProps> = (props) => {
 
@@ -25,7 +25,10 @@ export const ApplicationRow: React.FC<ApplicationRowProps> = (props) => {
                 {props.application.description}
             </td>
             <td className="row-action">
-                <DeleteIcon onClick={() => deleteApplication(props.application.id)} />
+                <DeleteIcon onClick={(e) => {
+                    e.stopPropagation();
+                    deleteApplication.mutate({ path: { id: props.application.id } })
+                }} />
             </td>
         </tr>
     );

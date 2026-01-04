@@ -1,28 +1,30 @@
-import { DeleteIcon, Form, Page, SaveIcon, SectionForm, SectionTable } from "@andrewmclachlan/mooapp";
-import { CreatePermission, CreateRole } from "client";
+import { Page } from "@andrewmclachlan/moo-app";
+import { DeleteIcon, Form, SaveIcon, SectionForm, SectionTable } from "@andrewmclachlan/moo-ds";
+import { CreateRole } from "api";
 import { PermissionSelector } from "components/PermissionSelector";
 import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useAddPermission, usePermissionsList, useRemovePermission, useUpdateRole } from "services";
 import { useIdParams } from "utils/useIdParams";
 import { useRole } from "./RoleProvider";
+import { useUpdateRole } from "./hooks/useUpdateRole";
+import { useAddPermission } from "./hooks/useAddPermission";
+import { useRemovePermission } from "./hooks/useRemovePermission";
 
 export const Details: React.FC = () => {
 
     const id = useIdParams();
     const role = useRole();
 
-    const update = useUpdateRole();
+    const updateRole = useUpdateRole();
     const addPermission = useAddPermission();
     const removePermission = useRemovePermission();
-    const permissions = usePermissionsList();
 
     const [newPermissionId, setNewPermissionId] = React.useState<number>();
 
 
     const onSubmit: SubmitHandler<CreateRole> = async (data: CreateRole) => {
-        update(role.id, data);
+        updateRole.mutate({ path: { id: role.id }, body: data });
     };
 
     const form = useForm<CreateRole>({
@@ -56,18 +58,18 @@ export const Details: React.FC = () => {
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th></th>
+                        <th className="row-action column-5"></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td><PermissionSelector onChange={p => setNewPermissionId(p?.id)} selectedPermissions={role.permissions} /></td>
-                        <td className="row-action"><SaveIcon onClick={() => addPermission(role.id, newPermissionId)} /></td>
+                        <td className="row-action"><SaveIcon onClick={() => newPermissionId && addPermission.mutate({ path: { roleId: role.id, permissionId: newPermissionId } })} /></td>
                     </tr>
                     {role?.permissions?.map((p) => (
                         <tr key={p.name}>
                             <td>{p.name}</td>
-                            <td className="row-action"><DeleteIcon onClick={() => removePermission(role.id, p.id)} /></td>
+                            <td className="row-action"><DeleteIcon onClick={() => removePermission.mutate({ path: { roleId: role.id, permissionId: p.id } })} /></td>
                         </tr>
                     )
                     )}

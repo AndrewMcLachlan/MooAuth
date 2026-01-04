@@ -1,4 +1,4 @@
-import { useIdParams as useBaseIdParams } from '@andrewmclachlan/mooapp';
+import { useIdParams as useBaseIdParams } from '@andrewmclachlan/moo-app';
 
 export const useIdParams = () : number => {
     const id = useBaseIdParams();

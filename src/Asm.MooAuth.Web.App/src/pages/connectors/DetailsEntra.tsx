@@ -1,26 +1,29 @@
-import { Form, Page, passwordMask, SectionForm } from "@andrewmclachlan/mooapp";
-import { CreateEntraConnector } from "client";
+import { Page } from "@andrewmclachlan/moo-app";
+import { Form, passwordMask, SectionForm } from "@andrewmclachlan/moo-ds";
+import { CreateEntraConnector } from "api";
 import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useEntraConnector, useUpdateEntraConnector } from "services";
 import { useIdParams } from "utils/useIdParams";
+import { useGetEntraConnector } from "./hooks/useGetEntraConnector";
+import { useUpdateEntraConnector } from "./hooks/useUpdateEntraConnector";
 
 
 export const DetailsEntra: React.FC = () => {
 
     const id = useIdParams();
-    const {data: connector } = useEntraConnector(id);
+    const { data: connector } = useGetEntraConnector(id);
 
-    const update = useUpdateEntraConnector();
+    const updateConnector = useUpdateEntraConnector();
 
     const onSubmit: SubmitHandler<CreateEntraConnector> = async (data: CreateEntraConnector) => {
-        update(id, data);
+        updateConnector.mutate({ path: { id }, body: data });
     };
 
     const form = useForm<CreateEntraConnector>({
         defaultValues: {
             name: connector?.name,
+            config: { tenantId: connector?.config?.tenantId },
             clientId: connector?.clientId,
             clientSecret: passwordMask,
         }
@@ -29,10 +32,11 @@ export const DetailsEntra: React.FC = () => {
     useEffect(() => {
         form.reset({
             name: connector?.name,
+            config: { tenantId: connector?.config?.tenantId },
             clientId: connector?.clientId,
             clientSecret: passwordMask,
         });
-    }, [id, form]);
+    }, [id, connector, form]);
 
     if (!connector) {
         return null;

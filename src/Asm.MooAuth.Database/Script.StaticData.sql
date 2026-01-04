@@ -19,3 +19,14 @@ USING (VALUES
 ON target.Id = source.Id
 WHEN MATCHED AND target.Name <> source.Name THEN  UPDATE SET target.Name = source.Name
 WHEN NOT MATCHED BY TARGET THEN INSERT (Id, Name) VALUES (source.Id, source.Name);
+
+-- Merge Value into DataSourceType
+MERGE INTO [dbo].[DataSourceType] AS target
+USING (VALUES
+    (0, 'FreeText'),
+    (1, 'StaticList'),
+    (2, 'ApiList')
+) AS source (Id, Name)
+ON target.Id = source.Id
+WHEN MATCHED AND target.Name <> source.Name THEN UPDATE SET target.Name = source.Name
+WHEN NOT MATCHED BY TARGET THEN INSERT (Id, Name) VALUES (source.Id, source.Name);

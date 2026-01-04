@@ -1,10 +1,11 @@
-import { LinkBox, Page } from "@andrewmclachlan/mooapp";
+import { Page } from "@andrewmclachlan/moo-app";
+import { LinkBox } from "@andrewmclachlan/moo-ds";
 import { Col, Row } from "react-bootstrap";
-import { useConnectorTypes } from "services"
+import { useGetConnectorTypes } from "./hooks/useGetConnectorTypes";
 
 export const CreateConnector = () => {
 
-    var { data } = useConnectorTypes();
+    var { data } = useGetConnectorTypes();
 
     return (
         <Page title="Create Connector" breadcrumbs={[{ text: "Create", route: `/connectors/create` }]}>

@@ -1,19 +1,23 @@
-import { DeleteIcon, EditColumn, Form, Page, SaveIcon, Section, SectionForm, SectionTable } from "@andrewmclachlan/mooapp";
-import { CreateApplication, CreatePermission } from "client";
+import { Page } from "@andrewmclachlan/moo-app";
+import { DeleteIcon, EditColumn, Form, SaveIcon, SectionForm, SectionTable } from "@andrewmclachlan/moo-ds";
+import { CreateApplication, CreatePermission } from "api";
 import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useCreatePermission, useDeletePermission, useUpdateApplication, useUpdatePermission } from "services";
 import { useApplication } from "./ApplicationProvider";
 import { toNull } from "utils/toNull";
 import { useIdParams } from "utils/useIdParams";
+import { useUpdateApplication } from "./hooks/useUpdateApplication";
+import { useCreatePermission } from "./hooks/useCreatePermission";
+import { useUpdatePermission } from "./hooks/useUpdatePermission";
+import { useDeletePermission } from "./hooks/useDeletePermission";
 
 export const Details: React.FC = () => {
 
     const id = useIdParams();
     const application = useApplication();
 
-    const update = useUpdateApplication();
+    const updateApplication = useUpdateApplication();
     const createPermission = useCreatePermission();
     const updatePermission = useUpdatePermission();
     const deletePermission = useDeletePermission();
@@ -22,7 +26,7 @@ export const Details: React.FC = () => {
 
 
     const onSubmit: SubmitHandler<CreateApplication> = async (data: CreateApplication) => {
-        update(application.id, data);
+        updateApplication.mutate({ path: { id: application.id }, body: data });
     };
 
     const form = useForm<CreateApplication>({
@@ -70,13 +74,13 @@ export const Details: React.FC = () => {
                     <tr>
                         <td><input type="text" placeholder="Name" value={newPermission.name} onChange={e => setNewPermission({ ...newPermission, name: e.currentTarget.value })} className="form-control" /></td>
                         <td><input type="text" placeholder="Description" value={newPermission.description ?? ""} onChange={e => setNewPermission({ ...newPermission, description: toNull(e.currentTarget.value) })} className="form-control" /> </td>
-                        <td className="row-action"><SaveIcon onClick={() => createPermission(application.id, newPermission)} /></td>
+                        <td className="row-action"><SaveIcon onClick={() => createPermission.mutate({ path: { applicationId: application.id }, body: newPermission })} /></td>
                     </tr>
                     {application?.permissions?.map((p) => (
                         <tr key={p.name}>
-                            <EditColumn required value={p.name} maxLength={50} onChange={t => updatePermission(application.id, p.id, { ...p, name: t!.value })}>{p.name}</EditColumn>
-                            <EditColumn value={p.description ?? ""} maxLength={255} onChange={t => updatePermission(application.id, p.id, { ...p, description: toNull(t?.value) })}>{p.description}</EditColumn>
-                            <td className="row-action"><DeleteIcon onClick={() => deletePermission(application.id, p.id)} /></td>
+                            <EditColumn required value={p.name} maxLength={50} onChange={t => updatePermission.mutate({ path: { applicationId: application.id, id: p.id }, body: { name: t!.value } })}>{p.name}</EditColumn>
+                            <EditColumn value={""} maxLength={255} onChange={t => updatePermission.mutate({ path: { applicationId: application.id, id: p.id }, body: { name: p.name, description: toNull(t?.value) } })}>{""}</EditColumn>
+                            <td className="row-action"><DeleteIcon onClick={() => deletePermission.mutate({ path: { applicationId: application.id, id: p.id } })} /></td>
                         </tr>
                     )
                     )}

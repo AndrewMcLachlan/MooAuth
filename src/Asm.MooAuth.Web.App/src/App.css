@@ -1,1 +1,10 @@
-@import "~/@andrewmclachlan/mooapp/dist/index.css";
+@layer mooapp, layout, mooauth;
+
+@import "~/@andrewmclachlan/moo-ds/dist/index.css" layer(mooapp);
+
+@layer mooauth {
+
+    .row-action {
+        min-width: 75px;
+    }
+}

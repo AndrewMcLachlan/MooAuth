@@ -1,16 +1,17 @@
-import { Form, Page, SectionForm } from "@andrewmclachlan/mooapp";
-import { CreateEntraConnector } from "client";
+import { Page } from "@andrewmclachlan/moo-app";
+import { Form, SectionForm } from "@andrewmclachlan/moo-ds";
+import { CreateEntraConnector } from "api";
 import React from "react";
 import { Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { useCreateEntraConnector } from "services";
+import { useCreateEntraConnector } from "./hooks/useCreateEntraConnector";
 
 export const CreateEntra: React.FC = () => {
 
-    const create = useCreateEntraConnector();
+    const createConnector = useCreateEntraConnector();
 
     const handleSubmit = async (data: CreateEntraConnector) => {
-        create(data);
+        createConnector.mutate({ body: data });
     };
 
     const form = useForm<CreateEntraConnector>({

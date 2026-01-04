@@ -1,8 +1,8 @@
-import { DeleteIcon } from "@andrewmclachlan/mooapp";
-import { SimpleConnector } from "client";
+import { DeleteIcon } from "@andrewmclachlan/moo-ds";
+import { SimpleConnector } from "api";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useDeleteConnector } from "services";
+import { useDeleteConnector } from "./hooks/useDeleteConnector";
 
 export const ConnectorRow: React.FC<ConnectorRowProps> = (props) => {
 
@@ -25,7 +25,7 @@ export const ConnectorRow: React.FC<ConnectorRowProps> = (props) => {
                 {props.connector.clientId}
             </td>
             <td className="row-action">
-                <DeleteIcon onClick={() => deleteConnector(props.connector.id)} />
+                <DeleteIcon onClick={() => deleteConnector.mutate({ path: { id: props.connector.id } })} />
             </td>
         </tr>
     );

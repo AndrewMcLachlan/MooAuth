@@ -1,7 +1,7 @@
-import { createMooAppBrowserRouter, MooApp } from '@andrewmclachlan/mooapp';
+import { createMooAppBrowserRouter, MooApp } from '@andrewmclachlan/moo-app';
 import { createRoot } from 'react-dom/client';
-import { RouterProvider } from "react-router-dom";
 import { routes } from "./Routes";
+import { client } from "./api/client.gen";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faArrowsRotate, faCheck, faCheckCircle, faTrashAlt, faChevronDown, faChevronUp, faTimesCircle, faArrowLeft, faChevronRight, faCircleChevronLeft, faLongArrowUp, faLongArrowDown, faUpload, faXmark, faFilterCircleXmark, faInfoCircle, faPenToSquare, faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -32,9 +32,7 @@ async function initializeApp() {
     const router = createMooAppBrowserRouter(routes);
 
     root.render(
-        <MooApp clientId={config.clientId} scopes={scopes} name="MooAuth" version={import.meta.env.VITE_REACT_APP_VERSION} copyrightYear={2024}>
-            <RouterProvider router={router} />
-        </MooApp>
+        <MooApp clientId={config.clientId} client={client.instance} scopes={scopes} name="MooAuth" version={import.meta.env.VITE_REACT_APP_VERSION} copyrightYear={2024} router={router} />
     );
 }
 

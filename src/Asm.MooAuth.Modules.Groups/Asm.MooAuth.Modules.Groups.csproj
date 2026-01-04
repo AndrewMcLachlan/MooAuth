@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <PackageReference Include="Asm.AspNetCore" />
+    <PackageReference Include="Asm.Cqrs.AspNetCore" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Asm.MooAuth\Asm.MooAuth.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Asm.Cqrs.Commands" />
+    <Using Include="Asm.Cqrs.Queries" />
+  </ItemGroup>
+
+</Project>

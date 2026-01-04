@@ -1,16 +1,17 @@
-import { Form, Page, SectionForm } from "@andrewmclachlan/mooapp";
-import { CreateRole } from "client";
+import { Page } from "@andrewmclachlan/moo-app";
+import { Form, SectionForm } from "@andrewmclachlan/moo-ds";
+import { CreateRole } from "api";
 import React from "react";
 import { Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { useCreateRole } from "services";
+import { useCreateRole } from "./hooks/useCreateRole";
 
 export const Create: React.FC = () => {
 
-    const create = useCreateRole();
+    const createRole = useCreateRole();
 
     const handleSubmit = async (data: CreateRole) => {
-        create(data);
+        createRole.mutate({ body: data });
     };
 
     const form = useForm<CreateRole>({

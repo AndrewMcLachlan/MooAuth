@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using Asm.MooAuth.Domain.Entities.Applications;
 using Asm.MooAuth.Domain.Entities.Connectors;
+using Asm.MooAuth.Domain.Entities.DataSources;
 using Asm.MooAuth.Domain.Entities.Permissions;
 using Asm.MooAuth.Domain.Entities.Roles;
 using Microsoft.EntityFrameworkCore;
@@ -48,6 +49,10 @@ public partial class MooAuthContext : DomainDbContext, IReadOnlyDbContext
 
         modelBuilder.Entity<Connector>();
         modelBuilder.Entity<ConnectorType>();
+
+        modelBuilder.Entity<DataSource>();
+        modelBuilder.Entity<DataSourceValue>();
+        modelBuilder.Entity<DataSourceTypeEntry>().ToTable("DataSourceType");
 
         modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
 

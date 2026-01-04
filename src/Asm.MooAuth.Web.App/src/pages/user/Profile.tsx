@@ -1,15 +1,16 @@
-import { Form, Page, Section, SectionForm, ThemeSelector } from "@andrewmclachlan/mooapp";
-import { User } from "client";
+import { Page } from "@andrewmclachlan/moo-app";
+import { Form, Section, SectionForm, ThemeSelector } from "@andrewmclachlan/moo-ds";
+import { User } from "api";
 import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { useUser } from "services";
+import { useGetUser } from "./hooks/useGetUser";
 
 export const Profile: React.FC = () => {
 
-    const { data: me } = useUser();
+    const { data: me } = useGetUser();
 
-    const handleSubmit = async (data: User) => {
+    const handleSubmit = async (_data: User) => {
     };
 
     const form = useForm<User>({ defaultValues: me });

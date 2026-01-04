@@ -1,4 +1,4 @@
-import { Dashboard as DashboardPage, DashboardProps } from "@andrewmclachlan/mooapp";
+import { Dashboard as DashboardPage, DashboardProps } from "@andrewmclachlan/moo-app";
 
 const props: DashboardProps = {
     title: "Home",

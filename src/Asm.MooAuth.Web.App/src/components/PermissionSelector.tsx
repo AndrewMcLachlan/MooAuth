@@ -1,26 +1,36 @@
-import { Permission } from 'client';
+import { ComboBox } from '@andrewmclachlan/moo-ds';
+import { Permission } from 'api';
 import React, { useMemo } from 'react';
-import Select, { GroupBase } from 'react-select';
-import { usePermissionsList } from 'services';
+import { useGetPermissionList } from './hooks/useGetPermissionList';
+
+interface PermissionWithApplication extends Permission {
+    applicationName: string;
+}
 
 export const PermissionSelector: React.FC<PermissionSelectProps> = ({ onChange, selectedPermissions = [] }) => {
 
-    var { data, isLoading } = usePermissionsList();
+    const { data } = useGetPermissionList();
 
-    const permisisonsToShow = useMemo(() => {
-        return data?.filter(a => {
-            a.permissions = a.permissions?.filter(p => !selectedPermissions.some(sp => sp.id === p.id));
-            return a.permissions?.length! > 0;
+    const permissionsToShow = useMemo(() => {
+        const permissions: PermissionWithApplication[] = [];
+        data?.forEach(app => {
+            app.permissions?.forEach(p => {
+                if (!selectedPermissions.some(sp => sp.id === p.id)) {
+                    permissions.push({ ...p, applicationName: app.name! });
+                }
+            });
         });
+        return permissions;
     }, [data, selectedPermissions]);
 
-    const options: GroupBase<Permission>[] = permisisonsToShow?.map((application) => ({
-        label: application.name!,
-        options: application.permissions ?? [],
-    })) ?? [];
-
     return (
-        <Select<Permission> options={options} classNamePrefix="react-select" getOptionLabel={p => p.name} getOptionValue={p => p.id.toString()!} onChange={a => onChange?.(a as Permission)} className="react-select" />
+        <ComboBox<PermissionWithApplication>
+            items={permissionsToShow}
+            labelField={p => `${p.applicationName} - ${p.name}`}
+            valueField={p => p.id}
+            onChange={items => onChange?.(items[0])}
+            clearable
+        />
     );
 }
 

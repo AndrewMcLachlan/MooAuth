@@ -1,16 +1,15 @@
-import { IconButton, LoadingTableRows, Page } from "@andrewmclachlan/mooapp";
+import { Page } from "@andrewmclachlan/moo-app";
+import { IconButton, LoadingTableRows } from "@andrewmclachlan/moo-ds";
 import { Table } from "react-bootstrap";
-import { useRoles } from "services";
 import { useNavigate } from "react-router-dom";
 import { RoleRow } from "./RoleRow";
+import { useGetRoles } from "./hooks/useGetRoles";
 
 export const Roles = () => {
 
     const navigate = useNavigate();
 
-    const rolesQuery = useRoles();
-
-    const { data } = rolesQuery;
+    const { data } = useGetRoles();
 
     const roleRows: React.ReactNode[] = data?.map(a => <RoleRow key={a.id} role={a} />) ?? [<LoadingTableRows key={1} rows={2} cols={3} />];
 
@@ -21,6 +20,7 @@ export const Roles = () => {
                     <tr>
                         <th>Name</th>
                         <th>Description</th>
+                        <th className="row-action column-5" />
                     </tr>
                 </thead>
                 <tbody>

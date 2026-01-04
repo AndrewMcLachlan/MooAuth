@@ -4,6 +4,7 @@ using Asm.AspNetCore.Api;
 using Asm.AspNetCore.Authentication;
 using Asm.AspNetCore.Modules;
 using Asm.MooAuth;
+using Asm.MooAuth.Connector.Entra;
 using Asm.MooAuth.Web.Api.Config;
 using Asm.OAuth;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -22,9 +23,13 @@ void AddServices(WebApplicationBuilder builder)
     [
         new Asm.MooAuth.Modules.Applications.Module(),
         new Asm.MooAuth.Modules.Connectors.Module(),
+        new Asm.MooAuth.Modules.DataSources.Module(),
+        new Asm.MooAuth.Modules.Groups.Module(),
         new Asm.MooAuth.Modules.Roles.Module(),
         new Asm.MooAuth.Modules.Users.Module(),
     ]);
+
+    builder.Services.AddScoped<IConnectorFactory, EntraConnectorFactory>();
 
     builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(options =>
         options.SerializerOptions.Converters.Add(new JsonStringEnumConverter())
@@ -47,6 +52,13 @@ void AddServices(WebApplicationBuilder builder)
     builder.Services.AddAzureOAuthOptions("MooAuth:OAuth");
 
     AddSecretManager(builder);
+
+    builder.Services.ConfigureHttpJsonOptions(options =>
+    {
+        options.SerializerOptions.Converters.Add(new JsonStringEnumConverter());
+        options.SerializerOptions.NumberHandling = JsonNumberHandling.Strict;
+    });
+
 
     builder.Services.AddOpenApi(options =>
     {

@@ -1,16 +1,13 @@
-/*import { createClient } from '@hey-api/openapi-ts';
-
-createClient({
-  client: '@hey-api/client-fetch',
-  input: 'http://localhost:5112/openapi/v1.json',
-  output: 'src/client',
-});*/
-
-
 import { defineConfig } from '@hey-api/openapi-ts';
 
 export default defineConfig({
-  plugins: ['@hey-api/client-fetch'],
-  input: 'http://localhost:5006/openapi/v1.json',
-  output: 'src/client'
+    input: 'http://localhost:5006/openapi/v1.json',
+    output: './src/api',
+    plugins: [
+        {
+            name: '@hey-api/client-axios',
+            runtimeConfigPath: '../utils/axios-config.ts',
+        },
+        '@tanstack/react-query'
+    ],
 });

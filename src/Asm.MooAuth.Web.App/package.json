@@ -12,9 +12,9 @@
     "generate": "openapi-ts"
   },
   "dependencies": {
-    "@andrewmclachlan/moo-app": "^3.0.1136",
-    "@andrewmclachlan/moo-ds": "^3.0.1136",
-    "@andrewmclachlan/moo-icons": "^3.0.1136",
+    "@andrewmclachlan/moo-app": "^3.0.1143",
+    "@andrewmclachlan/moo-ds": "^3.0.1143",
+    "@andrewmclachlan/moo-icons": "^3.0.1143",
     "@hey-api/client-fetch": "^0.13.1",
     "react": "^19.2.3",
     "react-bootstrap": "^2.10.10",

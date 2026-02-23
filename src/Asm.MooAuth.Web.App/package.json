@@ -12,14 +12,14 @@
     "generate": "openapi-ts"
   },
   "dependencies": {
-    "@andrewmclachlan/moo-app": "^4.0.29",
-    "@andrewmclachlan/moo-ds": "^4.0.29",
-    "@andrewmclachlan/moo-icons": "^4.0.29",
+    "@andrewmclachlan/moo-app": "^5.0.51",
+    "@andrewmclachlan/moo-ds": "^5.0.51",
+    "@andrewmclachlan/moo-icons": "^5.0.51",
     "@hey-api/client-fetch": "^0.13.1",
     "react": "^19.2.4",
     "react-bootstrap": "^2.10.10",
     "react-dom": "^19.2.4",
-    "react-router-dom": "^7.13.0"
+    "react-router-dom": "^7.13.1"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

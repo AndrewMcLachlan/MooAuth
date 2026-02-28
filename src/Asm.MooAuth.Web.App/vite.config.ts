@@ -1,6 +1,7 @@
 import { fileURLToPath, URL } from 'node:url';
 
 import { defineConfig } from 'vite';
+import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import react from '@vitejs/plugin-react';
 import svgr from "vite-plugin-svgr";
 import tsconfigpaths from "vite-tsconfig-paths";
@@ -41,7 +42,16 @@ const target = env.ASPNETCORE_HTTPS_PORT ? `https://localhost:${env.ASPNETCORE_H
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    plugins: [tsconfigpaths(), svgr(), react()],
+    plugins: [
+        tsconfigpaths(),
+        tanstackRouter({
+            target: "react",
+            autoCodeSplitting: true,
+            quoteStyle: "double",
+        }),
+        svgr(),
+        react(),
+    ],
     resolve: {
         alias: {
             '@': fileURLToPath(new URL('./src', import.meta.url)),

@@ -1,6 +1,8 @@
-import { createMooAppBrowserRouter, MooApp } from '@andrewmclachlan/moo-app';
+import { MooApp } from '@andrewmclachlan/moo-app';
+import { Spinner } from '@andrewmclachlan/moo-ds';
+import { createRouter } from '@tanstack/react-router';
 import { createRoot } from 'react-dom/client';
-import { routes } from "./Routes";
+import { routeTree } from "./routeTree.gen.ts";
 import { client } from "./api/client.gen";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -29,7 +31,13 @@ async function initializeApp() {
     const versionMeta = Array.from(document.getElementsByTagName("meta")).find((value) => value.getAttribute("name") === "application-version")!;
     versionMeta.content = import.meta.env.VITE_REACT_APP_VERSION;
 
-    const router = createMooAppBrowserRouter(routes);
+    const router = createRouter({
+        routeTree,
+        defaultPreload: "intent",
+        defaultPreloadStaleTime: 0,
+        scrollRestoration: true,
+        defaultPendingComponent: Spinner,
+    });
 
     root.render(
         <MooApp clientId={config.clientId} client={client.instance} scopes={scopes} name="MooAuth" version={import.meta.env.VITE_REACT_APP_VERSION} copyrightYear={2024} router={router} />

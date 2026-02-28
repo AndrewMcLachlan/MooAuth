@@ -6,7 +6,7 @@ registries:
     token: ${{ secrets.CROSS_REPO_PACKAGE_TOKEN }}
   nuget-github:
     type: nuget-feed
-    url: https://nuget.pkg.github.com/AndrewMclachlan/index.json
+    url: https://nuget.pkg.github.com/AndrewMcLachlan/index.json
     token: ${{ secrets.CROSS_REPO_PACKAGE_TOKEN }}
 
 updates:
@@ -15,19 +15,25 @@ updates:
     schedule:
       interval: "weekly"
       timezone: Australia/Brisbane
-      time: "08:00"
       day: tuesday
+      time: "08:00"
     groups:
       dev-dependencies:
         applies-to: version-updates
         patterns:
           - "*"
         dependency-type: "development"
+        update-types:
+          - "minor"
+          - "patch"
       prod-dependencies:
         applies-to: version-updates
         patterns:
           - "*"
         dependency-type: "production"
+        update-types:
+          - "minor"
+          - "patch"
     open-pull-requests-limit: 20
     registries: "*"
 

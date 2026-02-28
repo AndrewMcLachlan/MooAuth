@@ -23,14 +23,15 @@
     <Project Path="src/Asm.MooAuth.Secrets.KeyVault/Asm.MooAuth.Secrets.KeyVault.csproj" />
   </Folder>
   <Folder Name="/Modules/">
-    <Project Path="src/Asm.MooAuth.Modules.Actors/Asm.MooAuth.Modules.Actors.csproj" />
     <Project Path="src/Asm.MooAuth.Connectors/Asm.MooAuth.Modules.Connectors.csproj" />
-    <Project Path="src/Asm.MooAuth.Modules.DataSources/Asm.MooAuth.Modules.DataSources.csproj" />
+    <Project Path="src/Asm.MooAuth.Modules.Actors/Asm.MooAuth.Modules.Actors.csproj" />
     <Project Path="src/Asm.MooAuth.Modules.Applications/Asm.MooAuth.Modules.Applications.csproj" />
+    <Project Path="src/Asm.MooAuth.Modules.DataSources/Asm.MooAuth.Modules.DataSources.csproj" />
     <Project Path="src/Asm.MooAuth.Modules.Groups/Asm.MooAuth.Modules.Groups.csproj" />
     <Project Path="src/Asm.MooAuth.Modules.Roles/Asm.MooAuth.Modules.Roles.csproj" />
     <Project Path="src/Asm.MooAuth.Modules.Users/Asm.MooAuth.Modules.Users.csproj" />
   </Folder>
+  <Project Path="src/Asm.MooAuth.AppHost/Asm.MooAuth.AppHost.csproj" Id="38b5e6ab-c4c9-4479-950d-8816b8097f96" />
   <Project Path="src/Asm.MooAuth.Database/Asm.MooAuth.Database.sqlproj" Type="42ea0dbd-9cf1-443e-919e-be9c484e4577" Id="db7f5c2c-063a-4878-9e2b-6c8f72e22abc" />
   <Project Path="src/Asm.MooAuth.Domain/Asm.MooAuth.Domain.csproj" />
   <Project Path="src/Asm.MooAuth.Infrastructure/Asm.MooAuth.Infrastructure.csproj" />

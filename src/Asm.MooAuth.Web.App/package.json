@@ -19,7 +19,7 @@
     "react": "^19.2.4",
     "react-bootstrap": "^2.10.10",
     "react-dom": "^19.2.4",
-    "react-router-dom": "^7.13.1"
+    "@tanstack/react-router": "^1.162.8"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
@@ -30,6 +30,7 @@
     "@vitejs/plugin-react": "^5.1.4",
     "eslint": "^10.0.2",
     "eslint-plugin-react-hooks": "^7.0.1",
+    "@tanstack/router-plugin": "^1.163.3",
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.3.0",
     "sass": "^1.97.3",
@@ -43,6 +44,7 @@
     "@azure/msal-react": {
       "react": "^19.0.0",
       "react-dom": "^19.0.0"
-    }
+    },
+    "eslint": "$eslint"
   }
 }

@@ -17,9 +17,9 @@ internal class AddValueHandler(IUnitOfWork unitOfWork, IDataSourceRepository rep
         var dataSource = await repository.Get(command.DataSourceId, new IncludeValuesSpecification(), cancellationToken)
             ?? throw new NotFoundException();
 
-        if (dataSource.DataSourceType != MooAuth.Models.DataSourceType.StaticList)
+        if (dataSource.DataSourceType != MooAuth.Models.DataSourceType.PickList)
         {
-            throw new BadHttpRequestException("Values can only be added to static list data sources");
+            throw new BadHttpRequestException("Values can only be added to pick list data sources");
         }
 
         var value = new Domain.Entities.DataSources.DataSourceValue

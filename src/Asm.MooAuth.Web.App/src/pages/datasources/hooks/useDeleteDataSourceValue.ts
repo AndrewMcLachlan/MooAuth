@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { removeDataSourceValueMutation, getDataSourceValuesQueryKey, getStaticlistDataSourceQueryKey } from "../../../api/@tanstack/react-query.gen";
+import { removeDataSourceValueMutation, getDataSourceValuesQueryKey, getPicklistDataSourceQueryKey } from "../../../api/@tanstack/react-query.gen";
 
 export const useDeleteDataSourceValue = (dataSourceId: number) => {
     const queryClient = useQueryClient();
@@ -7,7 +7,7 @@ export const useDeleteDataSourceValue = (dataSourceId: number) => {
         ...removeDataSourceValueMutation(),
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: getDataSourceValuesQueryKey({ path: { dataSourceId } }) });
-            queryClient.invalidateQueries({ queryKey: getStaticlistDataSourceQueryKey({ path: { id: dataSourceId } }) });
+            queryClient.invalidateQueries({ queryKey: getPicklistDataSourceQueryKey({ path: { id: dataSourceId } }) });
         },
     });
 };

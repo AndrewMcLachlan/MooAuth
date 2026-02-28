@@ -7,7 +7,7 @@ import React from "react";
 import { MooAppLayout } from "@andrewmclachlan/moo-app";
 import { NavItem } from "@andrewmclachlan/moo-ds";
 import { useIsAuthenticated } from "@azure/msal-react";
-import { Application, Dashboard, User, Users, UserShield } from "@andrewmclachlan/moo-icons";
+import { Application, Dashboard, Database, User, Users, UserShield } from "@andrewmclachlan/moo-icons";
 //import { useHasRole } from "hooks";
 
 const App: React.FC = () => {
@@ -72,6 +72,7 @@ const sideMenu: NavItem[] = [
     },
     {
         text: "Data Sources",
-        route: "/datasources"
+        route: "/datasources",
+        image: <Database />
     },
 ];

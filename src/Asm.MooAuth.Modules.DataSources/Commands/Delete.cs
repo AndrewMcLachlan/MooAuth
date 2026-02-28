@@ -13,7 +13,7 @@ internal class DeleteHandler(IUnitOfWork unitOfWork, IDataSourceRepository repos
             ?? throw new NotFoundException();
 
         // Delete any associated secrets
-        if (dataSource.DataSourceType == MooAuth.Models.DataSourceType.ApiList)
+        if (dataSource.DataSourceType == MooAuth.Models.DataSourceType.ApiPickList)
         {
             try
             {

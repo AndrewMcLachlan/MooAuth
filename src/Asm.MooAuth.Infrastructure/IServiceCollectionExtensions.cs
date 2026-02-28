@@ -1,4 +1,5 @@
-﻿using Asm.MooAuth.Domain.Entities.Applications;
+﻿using Asm.MooAuth.Domain.Entities.Actors;
+using Asm.MooAuth.Domain.Entities.Applications;
 using Asm.MooAuth.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
@@ -38,7 +39,8 @@ public static class IServiceCollectionExtensions
     }
 
     public static IServiceCollection AddRepositories(this IServiceCollection services) =>
-        services.AddScoped<IApplicationRepository, ApplicationRepository>()
+        services.AddScoped<IActorRepository, ActorRepository>()
+                .AddScoped<IApplicationRepository, ApplicationRepository>()
                 .AddScoped<IConnectorRepository, ConnectorRepository>()
                 .AddScoped<IDataSourceRepository, DataSourceRepository>()
                 .AddScoped<IPermissionRepository, PermissionRepository>()

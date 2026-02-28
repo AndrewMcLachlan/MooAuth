@@ -4,6 +4,6 @@ import { getDataSourceValuesOptions } from "../../../api/@tanstack/react-query.g
 export const useGetDataSourceValues = (dataSourceId: number) => {
     return useQuery({
         ...getDataSourceValuesOptions({ path: { dataSourceId } }),
-        enabled: dataSourceId !== undefined,
+        enabled: dataSourceId > 0,
     });
 };

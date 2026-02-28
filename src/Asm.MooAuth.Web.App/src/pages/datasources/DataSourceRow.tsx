@@ -12,8 +12,9 @@ export const DataSourceRow: React.FC<DataSourceRowProps> = (props) => {
     const getTypeRoute = () => {
         switch (props.dataSource.type) {
             case "FreeText": return "freetext";
-            case "StaticList": return "staticlist";
-            case "ApiList": return "apilist";
+            case "Checkbox": return "checkbox";
+            case "PickList": return "picklist";
+            case "ApiPickList": return "apipicklist";
             default: return "";
         }
     };
@@ -31,7 +32,7 @@ export const DataSourceRow: React.FC<DataSourceRowProps> = (props) => {
                 {props.dataSource.key}
             </td>
             <td>
-                {props.dataSource.type}
+                {props.dataSource.typeDisplayName}
             </td>
             <td className="row-action">
                 <DeleteIcon onClick={() => deleteDataSource.mutate({ path: { id: props.dataSource.id } })} />

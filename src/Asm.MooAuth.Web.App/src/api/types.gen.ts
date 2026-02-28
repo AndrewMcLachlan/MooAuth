@@ -4,9 +4,33 @@ export type ClientOptions = {
     baseURL: 'http://localhost:5006/' | (string & {});
 };
 
+export type Actor = {
+    id: number;
+    externalId: string;
+    actorType: ActorType;
+    connectorId: number;
+    roleAssignments?: Array<ActorRoleAssignment>;
+};
+
+export type ActorRoleAssignment = {
+    roleId: number;
+    roleName: string;
+    resources?: Array<ActorRoleResource>;
+};
+
+export type ActorRoleResource = {
+    dataSourceId?: null | number;
+    dataSourceName?: null | string;
+    dataSourceKey?: null | string;
+    resourceValue?: null | string;
+};
+
+export type ActorType = 'User' | 'Group';
+
 export type ApiAuthType = 'None' | 'ApiKey' | 'OAuthClientCredentials';
 
-export type ApiListConfig = {
+export type ApiPickListConfig = {
+    allowMultiple?: boolean;
     endpoint: string;
     authType: ApiAuthType;
     tokenEndpoint?: null | string;
@@ -18,12 +42,12 @@ export type ApiListConfig = {
     cacheMinutes?: number;
 };
 
-export type ApiListDataSource = {
+export type ApiPickListDataSource = {
     id: number;
     name: string;
     description?: null | string;
     key: string;
-    config?: null | ApiListConfig;
+    config?: null | ApiPickListConfig;
 };
 
 export type Application = {
@@ -41,6 +65,13 @@ export type AzureOAuthOptions = {
     audience: string;
     clientId: string;
     validateAudience?: boolean;
+};
+
+export type CheckboxDataSource = {
+    id: number;
+    name: string;
+    description?: null | string;
+    key: string;
 };
 
 export type ConnectorGroup = {
@@ -65,11 +96,17 @@ export type ConnectorUser = {
     lastName?: null | string;
 };
 
-export type CreateApiListDataSource = {
+export type CreateActorRoleAssignment = {
+    roleId: number;
+    connectorId: number;
+    resources?: Array<ResourceEntry>;
+};
+
+export type CreateApiPickListDataSource = {
     name: string;
     description?: null | string;
     key: string;
-    config: ApiListConfig;
+    config: ApiPickListConfig;
     clientSecret?: null | string;
     apiKey?: null | string;
 };
@@ -78,6 +115,12 @@ export type CreateApplication = {
     logoUrl?: null | string;
     description?: null | string;
     name: string;
+};
+
+export type CreateCheckboxDataSource = {
+    name: string;
+    description?: null | string;
+    key: string;
 };
 
 export type CreateDataSourceValue = {
@@ -105,23 +148,25 @@ export type CreatePermission = {
     name: string;
 };
 
+export type CreatePickListDataSource = {
+    name: string;
+    description?: null | string;
+    key: string;
+    allowMultiple?: boolean;
+    values?: Array<CreateDataSourceValue>;
+};
+
 export type CreateRole = {
     description?: null | string;
     name: string;
 };
 
-export type CreateStaticListDataSource = {
-    name: string;
-    description?: null | string;
-    key: string;
-    values?: Array<CreateDataSourceValue>;
-};
-
-export type DataSourceType = 'FreeText' | 'StaticList' | 'ApiList';
+export type DataSourceType = 'FreeText' | 'PickList' | 'ApiPickList' | 'Checkbox';
 
 export type DataSourceTypeEntry = {
     id?: number;
     name: string;
+    displayName: string;
 };
 
 export type DataSourceValue = {
@@ -166,12 +211,26 @@ export type Permission = {
     name: string;
 };
 
+export type PickListDataSource = {
+    id: number;
+    name: string;
+    description?: null | string;
+    key: string;
+    allowMultiple?: boolean;
+    values?: Array<DataSourceValue>;
+};
+
 export type ProblemDetails = {
     type?: null | string;
     title?: null | string;
     status?: null | number;
     detail?: null | string;
     instance?: null | string;
+};
+
+export type ResourceEntry = {
+    dataSourceId?: null | number;
+    value?: null | string;
 };
 
 export type Role = {
@@ -199,19 +258,12 @@ export type SimpleDataSource = {
     name: string;
     key: string;
     type: DataSourceType;
+    typeDisplayName: string;
 };
 
 export type SimplePermission = {
     id: number;
     name: string;
-};
-
-export type StaticListDataSource = {
-    id: number;
-    name: string;
-    description?: null | string;
-    key: string;
-    values?: Array<DataSourceValue>;
 };
 
 export type User = {
@@ -236,6 +288,73 @@ export type GetConfigurationResponses = {
 };
 
 export type GetConfigurationResponse = GetConfigurationResponses[keyof GetConfigurationResponses];
+
+export type GetActorWithRolesData = {
+    body?: never;
+    path: {
+        actorType: ActorType;
+        externalId: string;
+    };
+    query?: never;
+    url: '/api/actors/{actorType}/{externalId}';
+};
+
+export type GetActorWithRolesResponses = {
+    /**
+     * OK
+     */
+    200: Actor;
+};
+
+export type GetActorWithRolesResponse = GetActorWithRolesResponses[keyof GetActorWithRolesResponses];
+
+export type AddRoleAssignmentData = {
+    body: CreateActorRoleAssignment;
+    path: {
+        actorType: ActorType;
+        externalId: string;
+    };
+    query?: never;
+    url: '/api/actors/{actorType}/{externalId}/roles';
+};
+
+export type AddRoleAssignmentResponses = {
+    /**
+     * OK
+     */
+    200: Actor;
+};
+
+export type AddRoleAssignmentResponse = AddRoleAssignmentResponses[keyof AddRoleAssignmentResponses];
+
+export type RemoveRoleAssignmentData = {
+    body?: never;
+    path: {
+        actorType: ActorType;
+        externalId: string;
+        roleId: number;
+    };
+    query?: never;
+    url: '/api/actors/{actorType}/{externalId}/roles/{roleId}';
+};
+
+export type RemoveRoleAssignmentErrors = {
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type RemoveRoleAssignmentError = RemoveRoleAssignmentErrors[keyof RemoveRoleAssignmentErrors];
+
+export type RemoveRoleAssignmentResponses = {
+    /**
+     * OK
+     */
+    200: Actor;
+};
+
+export type RemoveRoleAssignmentResponse = RemoveRoleAssignmentResponses[keyof RemoveRoleAssignmentResponses];
 
 export type GetAllApplicationsData = {
     body?: never;
@@ -726,145 +845,215 @@ export type CreateFreetextDataSourceResponses = {
 
 export type CreateFreetextDataSourceResponse = CreateFreetextDataSourceResponses[keyof CreateFreetextDataSourceResponses];
 
-export type GetStaticlistDataSourceData = {
+export type GetCheckboxDataSourceData = {
     body?: never;
     path: {
         id: number;
     };
     query?: never;
-    url: '/api/datasources/staticlist/{id}';
+    url: '/api/datasources/checkbox/{id}';
 };
 
-export type GetStaticlistDataSourceErrors = {
+export type GetCheckboxDataSourceErrors = {
     /**
      * Not Found
      */
     404: ProblemDetails;
 };
 
-export type GetStaticlistDataSourceError = GetStaticlistDataSourceErrors[keyof GetStaticlistDataSourceErrors];
+export type GetCheckboxDataSourceError = GetCheckboxDataSourceErrors[keyof GetCheckboxDataSourceErrors];
 
-export type GetStaticlistDataSourceResponses = {
+export type GetCheckboxDataSourceResponses = {
     /**
      * OK
      */
-    200: StaticListDataSource;
+    200: CheckboxDataSource;
 };
 
-export type GetStaticlistDataSourceResponse = GetStaticlistDataSourceResponses[keyof GetStaticlistDataSourceResponses];
+export type GetCheckboxDataSourceResponse = GetCheckboxDataSourceResponses[keyof GetCheckboxDataSourceResponses];
 
-export type UpdateStaticlistDataSourceData = {
-    body: CreateStaticListDataSource;
+export type UpdateCheckboxDataSourceData = {
+    body: CreateCheckboxDataSource;
     path: {
         id: number;
     };
     query?: never;
-    url: '/api/datasources/staticlist/{id}';
+    url: '/api/datasources/checkbox/{id}';
 };
 
-export type UpdateStaticlistDataSourceErrors = {
+export type UpdateCheckboxDataSourceErrors = {
     /**
      * Not Found
      */
     404: ProblemDetails;
 };
 
-export type UpdateStaticlistDataSourceError = UpdateStaticlistDataSourceErrors[keyof UpdateStaticlistDataSourceErrors];
+export type UpdateCheckboxDataSourceError = UpdateCheckboxDataSourceErrors[keyof UpdateCheckboxDataSourceErrors];
 
-export type UpdateStaticlistDataSourceResponses = {
+export type UpdateCheckboxDataSourceResponses = {
     /**
      * OK
      */
-    200: StaticListDataSource;
+    200: CheckboxDataSource;
 };
 
-export type UpdateStaticlistDataSourceResponse = UpdateStaticlistDataSourceResponses[keyof UpdateStaticlistDataSourceResponses];
+export type UpdateCheckboxDataSourceResponse = UpdateCheckboxDataSourceResponses[keyof UpdateCheckboxDataSourceResponses];
 
-export type CreateStaticlistDataSourceData = {
-    body: CreateStaticListDataSource;
+export type CreateCheckboxDataSourceData = {
+    body: CreateCheckboxDataSource;
     path?: never;
     query?: never;
-    url: '/api/datasources/staticlist';
+    url: '/api/datasources/checkbox';
 };
 
-export type CreateStaticlistDataSourceResponses = {
+export type CreateCheckboxDataSourceResponses = {
     /**
      * Created
      */
-    201: StaticListDataSource;
+    201: CheckboxDataSource;
 };
 
-export type CreateStaticlistDataSourceResponse = CreateStaticlistDataSourceResponses[keyof CreateStaticlistDataSourceResponses];
+export type CreateCheckboxDataSourceResponse = CreateCheckboxDataSourceResponses[keyof CreateCheckboxDataSourceResponses];
 
-export type GetApilistDataSourceData = {
+export type GetPicklistDataSourceData = {
     body?: never;
     path: {
         id: number;
     };
     query?: never;
-    url: '/api/datasources/apilist/{id}';
+    url: '/api/datasources/picklist/{id}';
 };
 
-export type GetApilistDataSourceErrors = {
+export type GetPicklistDataSourceErrors = {
     /**
      * Not Found
      */
     404: ProblemDetails;
 };
 
-export type GetApilistDataSourceError = GetApilistDataSourceErrors[keyof GetApilistDataSourceErrors];
+export type GetPicklistDataSourceError = GetPicklistDataSourceErrors[keyof GetPicklistDataSourceErrors];
 
-export type GetApilistDataSourceResponses = {
+export type GetPicklistDataSourceResponses = {
     /**
      * OK
      */
-    200: ApiListDataSource;
+    200: PickListDataSource;
 };
 
-export type GetApilistDataSourceResponse = GetApilistDataSourceResponses[keyof GetApilistDataSourceResponses];
+export type GetPicklistDataSourceResponse = GetPicklistDataSourceResponses[keyof GetPicklistDataSourceResponses];
 
-export type UpdateApilistDataSourceData = {
-    body: CreateApiListDataSource;
+export type UpdatePicklistDataSourceData = {
+    body: CreatePickListDataSource;
     path: {
         id: number;
     };
     query?: never;
-    url: '/api/datasources/apilist/{id}';
+    url: '/api/datasources/picklist/{id}';
 };
 
-export type UpdateApilistDataSourceErrors = {
+export type UpdatePicklistDataSourceErrors = {
     /**
      * Not Found
      */
     404: ProblemDetails;
 };
 
-export type UpdateApilistDataSourceError = UpdateApilistDataSourceErrors[keyof UpdateApilistDataSourceErrors];
+export type UpdatePicklistDataSourceError = UpdatePicklistDataSourceErrors[keyof UpdatePicklistDataSourceErrors];
 
-export type UpdateApilistDataSourceResponses = {
+export type UpdatePicklistDataSourceResponses = {
     /**
      * OK
      */
-    200: ApiListDataSource;
+    200: PickListDataSource;
 };
 
-export type UpdateApilistDataSourceResponse = UpdateApilistDataSourceResponses[keyof UpdateApilistDataSourceResponses];
+export type UpdatePicklistDataSourceResponse = UpdatePicklistDataSourceResponses[keyof UpdatePicklistDataSourceResponses];
 
-export type CreateApilistDataSourceData = {
-    body: CreateApiListDataSource;
+export type CreatePicklistDataSourceData = {
+    body: CreatePickListDataSource;
     path?: never;
     query?: never;
-    url: '/api/datasources/apilist';
+    url: '/api/datasources/picklist';
 };
 
-export type CreateApilistDataSourceResponses = {
+export type CreatePicklistDataSourceResponses = {
     /**
      * Created
      */
-    201: ApiListDataSource;
+    201: PickListDataSource;
 };
 
-export type CreateApilistDataSourceResponse = CreateApilistDataSourceResponses[keyof CreateApilistDataSourceResponses];
+export type CreatePicklistDataSourceResponse = CreatePicklistDataSourceResponses[keyof CreatePicklistDataSourceResponses];
+
+export type GetApipicklistDataSourceData = {
+    body?: never;
+    path: {
+        id: number;
+    };
+    query?: never;
+    url: '/api/datasources/apipicklist/{id}';
+};
+
+export type GetApipicklistDataSourceErrors = {
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type GetApipicklistDataSourceError = GetApipicklistDataSourceErrors[keyof GetApipicklistDataSourceErrors];
+
+export type GetApipicklistDataSourceResponses = {
+    /**
+     * OK
+     */
+    200: ApiPickListDataSource;
+};
+
+export type GetApipicklistDataSourceResponse = GetApipicklistDataSourceResponses[keyof GetApipicklistDataSourceResponses];
+
+export type UpdateApipicklistDataSourceData = {
+    body: CreateApiPickListDataSource;
+    path: {
+        id: number;
+    };
+    query?: never;
+    url: '/api/datasources/apipicklist/{id}';
+};
+
+export type UpdateApipicklistDataSourceErrors = {
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type UpdateApipicklistDataSourceError = UpdateApipicklistDataSourceErrors[keyof UpdateApipicklistDataSourceErrors];
+
+export type UpdateApipicklistDataSourceResponses = {
+    /**
+     * OK
+     */
+    200: ApiPickListDataSource;
+};
+
+export type UpdateApipicklistDataSourceResponse = UpdateApipicklistDataSourceResponses[keyof UpdateApipicklistDataSourceResponses];
+
+export type CreateApipicklistDataSourceData = {
+    body: CreateApiPickListDataSource;
+    path?: never;
+    query?: never;
+    url: '/api/datasources/apipicklist';
+};
+
+export type CreateApipicklistDataSourceResponses = {
+    /**
+     * Created
+     */
+    201: ApiPickListDataSource;
+};
+
+export type CreateApipicklistDataSourceResponse = CreateApipicklistDataSourceResponses[keyof CreateApipicklistDataSourceResponses];
 
 export type GetDataSourceValuesData = {
     body?: never;

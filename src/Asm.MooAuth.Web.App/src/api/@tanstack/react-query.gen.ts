@@ -4,8 +4,8 @@ import { type DefaultError, queryOptions, type UseMutationOptions } from '@tanst
 import type { AxiosError } from 'axios';
 
 import { client } from '../client.gen';
-import { addDataSourceValue, addPermission, createApilistDataSource, createApplication, createEntraConnector, createFreetextDataSource, createPermission, createRole, createStaticlistDataSource, deleteApplication, deleteConnector, deleteDataSource, deletePermission, deleteRole, getAllApplications, getAllConnectors, getAllDataSources, getAllRoles, getApilistDataSource, getApplication, getAvailableConnectorTypes, getConfiguration, getDataSourceTypes, getDataSourceValues, getEntraConnector, getFreetextDataSource, getGroups, getPermission, getPermissionList, getRole, getStaticlistDataSource, getUser, getUsers, type Options, removeDataSourceValue, removeRole, updateApilistDataSource, updateApplication, updateDataSourceValue, updateEntraConnector, updateFreetextDataSource, updatePermission, updateRole, updateStaticlistDataSource } from '../sdk.gen';
-import type { AddDataSourceValueData, AddDataSourceValueError, AddDataSourceValueResponse, AddPermissionData, AddPermissionError, CreateApilistDataSourceData, CreateApilistDataSourceResponse, CreateApplicationData, CreateApplicationResponse, CreateEntraConnectorData, CreateEntraConnectorResponse, CreateFreetextDataSourceData, CreateFreetextDataSourceResponse, CreatePermissionData, CreatePermissionResponse, CreateRoleData, CreateRoleResponse, CreateStaticlistDataSourceData, CreateStaticlistDataSourceResponse, DeleteApplicationData, DeleteApplicationError, DeleteApplicationResponse, DeleteConnectorData, DeleteConnectorError, DeleteConnectorResponse, DeleteDataSourceData, DeleteDataSourceError, DeleteDataSourceResponse, DeletePermissionData, DeletePermissionError, DeletePermissionResponse, DeleteRoleData, DeleteRoleError, DeleteRoleResponse, GetAllApplicationsData, GetAllApplicationsResponse, GetAllConnectorsData, GetAllConnectorsResponse, GetAllDataSourcesData, GetAllDataSourcesResponse, GetAllRolesData, GetAllRolesError, GetAllRolesResponse, GetApilistDataSourceData, GetApilistDataSourceError, GetApilistDataSourceResponse, GetApplicationData, GetApplicationError, GetApplicationResponse, GetAvailableConnectorTypesData, GetAvailableConnectorTypesResponse, GetConfigurationData, GetConfigurationResponse, GetDataSourceTypesData, GetDataSourceTypesResponse, GetDataSourceValuesData, GetDataSourceValuesError, GetDataSourceValuesResponse, GetEntraConnectorData, GetEntraConnectorError, GetEntraConnectorResponse, GetFreetextDataSourceData, GetFreetextDataSourceError, GetFreetextDataSourceResponse, GetGroupsData, GetGroupsResponse, GetPermissionData, GetPermissionError, GetPermissionListData, GetPermissionListResponse, GetPermissionResponse, GetRoleData, GetRoleError, GetRoleResponse, GetStaticlistDataSourceData, GetStaticlistDataSourceError, GetStaticlistDataSourceResponse, GetUserData, GetUserResponse, GetUsersData, GetUsersResponse, RemoveDataSourceValueData, RemoveDataSourceValueError, RemoveDataSourceValueResponse, RemoveRoleData, RemoveRoleError, RemoveRoleResponse, UpdateApilistDataSourceData, UpdateApilistDataSourceError, UpdateApilistDataSourceResponse, UpdateApplicationData, UpdateApplicationError, UpdateApplicationResponse, UpdateDataSourceValueData, UpdateDataSourceValueError, UpdateDataSourceValueResponse, UpdateEntraConnectorData, UpdateEntraConnectorError, UpdateEntraConnectorResponse, UpdateFreetextDataSourceData, UpdateFreetextDataSourceError, UpdateFreetextDataSourceResponse, UpdatePermissionData, UpdatePermissionError, UpdatePermissionResponse, UpdateRoleData, UpdateRoleError, UpdateRoleResponse, UpdateStaticlistDataSourceData, UpdateStaticlistDataSourceError, UpdateStaticlistDataSourceResponse } from '../types.gen';
+import { addDataSourceValue, addPermission, addRoleAssignment, createApipicklistDataSource, createApplication, createCheckboxDataSource, createEntraConnector, createFreetextDataSource, createPermission, createPicklistDataSource, createRole, deleteApplication, deleteConnector, deleteDataSource, deletePermission, deleteRole, getActorWithRoles, getAllApplications, getAllConnectors, getAllDataSources, getAllRoles, getApipicklistDataSource, getApplication, getAvailableConnectorTypes, getCheckboxDataSource, getConfiguration, getDataSourceTypes, getDataSourceValues, getEntraConnector, getFreetextDataSource, getGroups, getPermission, getPermissionList, getPicklistDataSource, getRole, getUser, getUsers, type Options, removeDataSourceValue, removeRole, removeRoleAssignment, updateApipicklistDataSource, updateApplication, updateCheckboxDataSource, updateDataSourceValue, updateEntraConnector, updateFreetextDataSource, updatePermission, updatePicklistDataSource, updateRole } from '../sdk.gen';
+import type { AddDataSourceValueData, AddDataSourceValueError, AddDataSourceValueResponse, AddPermissionData, AddPermissionError, AddRoleAssignmentData, AddRoleAssignmentResponse, CreateApipicklistDataSourceData, CreateApipicklistDataSourceResponse, CreateApplicationData, CreateApplicationResponse, CreateCheckboxDataSourceData, CreateCheckboxDataSourceResponse, CreateEntraConnectorData, CreateEntraConnectorResponse, CreateFreetextDataSourceData, CreateFreetextDataSourceResponse, CreatePermissionData, CreatePermissionResponse, CreatePicklistDataSourceData, CreatePicklistDataSourceResponse, CreateRoleData, CreateRoleResponse, DeleteApplicationData, DeleteApplicationError, DeleteApplicationResponse, DeleteConnectorData, DeleteConnectorError, DeleteConnectorResponse, DeleteDataSourceData, DeleteDataSourceError, DeleteDataSourceResponse, DeletePermissionData, DeletePermissionError, DeletePermissionResponse, DeleteRoleData, DeleteRoleError, DeleteRoleResponse, GetActorWithRolesData, GetActorWithRolesResponse, GetAllApplicationsData, GetAllApplicationsResponse, GetAllConnectorsData, GetAllConnectorsResponse, GetAllDataSourcesData, GetAllDataSourcesResponse, GetAllRolesData, GetAllRolesError, GetAllRolesResponse, GetApipicklistDataSourceData, GetApipicklistDataSourceError, GetApipicklistDataSourceResponse, GetApplicationData, GetApplicationError, GetApplicationResponse, GetAvailableConnectorTypesData, GetAvailableConnectorTypesResponse, GetCheckboxDataSourceData, GetCheckboxDataSourceError, GetCheckboxDataSourceResponse, GetConfigurationData, GetConfigurationResponse, GetDataSourceTypesData, GetDataSourceTypesResponse, GetDataSourceValuesData, GetDataSourceValuesError, GetDataSourceValuesResponse, GetEntraConnectorData, GetEntraConnectorError, GetEntraConnectorResponse, GetFreetextDataSourceData, GetFreetextDataSourceError, GetFreetextDataSourceResponse, GetGroupsData, GetGroupsResponse, GetPermissionData, GetPermissionError, GetPermissionListData, GetPermissionListResponse, GetPermissionResponse, GetPicklistDataSourceData, GetPicklistDataSourceError, GetPicklistDataSourceResponse, GetRoleData, GetRoleError, GetRoleResponse, GetUserData, GetUserResponse, GetUsersData, GetUsersResponse, RemoveDataSourceValueData, RemoveDataSourceValueError, RemoveDataSourceValueResponse, RemoveRoleAssignmentData, RemoveRoleAssignmentError, RemoveRoleAssignmentResponse, RemoveRoleData, RemoveRoleError, RemoveRoleResponse, UpdateApipicklistDataSourceData, UpdateApipicklistDataSourceError, UpdateApipicklistDataSourceResponse, UpdateApplicationData, UpdateApplicationError, UpdateApplicationResponse, UpdateCheckboxDataSourceData, UpdateCheckboxDataSourceError, UpdateCheckboxDataSourceResponse, UpdateDataSourceValueData, UpdateDataSourceValueError, UpdateDataSourceValueResponse, UpdateEntraConnectorData, UpdateEntraConnectorError, UpdateEntraConnectorResponse, UpdateFreetextDataSourceData, UpdateFreetextDataSourceError, UpdateFreetextDataSourceResponse, UpdatePermissionData, UpdatePermissionError, UpdatePermissionResponse, UpdatePicklistDataSourceData, UpdatePicklistDataSourceError, UpdatePicklistDataSourceResponse, UpdateRoleData, UpdateRoleError, UpdateRoleResponse } from '../types.gen';
 
 export type QueryKey<TOptions extends Options> = [
     Pick<TOptions, 'baseURL' | 'body' | 'headers' | 'path' | 'query'> & {
@@ -59,6 +59,49 @@ export const getConfigurationOptions = (options?: Options<GetConfigurationData>)
     },
     queryKey: getConfigurationQueryKey(options)
 });
+
+export const getActorWithRolesQueryKey = (options: Options<GetActorWithRolesData>) => createQueryKey('getActorWithRoles', options);
+
+export const getActorWithRolesOptions = (options: Options<GetActorWithRolesData>) => queryOptions<GetActorWithRolesResponse, AxiosError<DefaultError>, GetActorWithRolesResponse, ReturnType<typeof getActorWithRolesQueryKey>>({
+    queryFn: async ({ queryKey, signal }) => {
+        const { data } = await getActorWithRoles({
+            ...options,
+            ...queryKey[0],
+            signal,
+            throwOnError: true
+        });
+        return data;
+    },
+    queryKey: getActorWithRolesQueryKey(options)
+});
+
+export const addRoleAssignmentMutation = (options?: Partial<Options<AddRoleAssignmentData>>): UseMutationOptions<AddRoleAssignmentResponse, AxiosError<DefaultError>, Options<AddRoleAssignmentData>> => {
+    const mutationOptions: UseMutationOptions<AddRoleAssignmentResponse, AxiosError<DefaultError>, Options<AddRoleAssignmentData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await addRoleAssignment({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+export const removeRoleAssignmentMutation = (options?: Partial<Options<RemoveRoleAssignmentData>>): UseMutationOptions<RemoveRoleAssignmentResponse, AxiosError<RemoveRoleAssignmentError>, Options<RemoveRoleAssignmentData>> => {
+    const mutationOptions: UseMutationOptions<RemoveRoleAssignmentResponse, AxiosError<RemoveRoleAssignmentError>, Options<RemoveRoleAssignmentData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await removeRoleAssignment({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
 
 export const getAllApplicationsQueryKey = (options?: Options<GetAllApplicationsData>) => createQueryKey('getAllApplications', options);
 
@@ -378,11 +421,11 @@ export const createFreetextDataSourceMutation = (options?: Partial<Options<Creat
     return mutationOptions;
 };
 
-export const getStaticlistDataSourceQueryKey = (options: Options<GetStaticlistDataSourceData>) => createQueryKey('getStaticlistDataSource', options);
+export const getCheckboxDataSourceQueryKey = (options: Options<GetCheckboxDataSourceData>) => createQueryKey('getCheckboxDataSource', options);
 
-export const getStaticlistDataSourceOptions = (options: Options<GetStaticlistDataSourceData>) => queryOptions<GetStaticlistDataSourceResponse, AxiosError<GetStaticlistDataSourceError>, GetStaticlistDataSourceResponse, ReturnType<typeof getStaticlistDataSourceQueryKey>>({
+export const getCheckboxDataSourceOptions = (options: Options<GetCheckboxDataSourceData>) => queryOptions<GetCheckboxDataSourceResponse, AxiosError<GetCheckboxDataSourceError>, GetCheckboxDataSourceResponse, ReturnType<typeof getCheckboxDataSourceQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getStaticlistDataSource({
+        const { data } = await getCheckboxDataSource({
             ...options,
             ...queryKey[0],
             signal,
@@ -390,13 +433,13 @@ export const getStaticlistDataSourceOptions = (options: Options<GetStaticlistDat
         });
         return data;
     },
-    queryKey: getStaticlistDataSourceQueryKey(options)
+    queryKey: getCheckboxDataSourceQueryKey(options)
 });
 
-export const updateStaticlistDataSourceMutation = (options?: Partial<Options<UpdateStaticlistDataSourceData>>): UseMutationOptions<UpdateStaticlistDataSourceResponse, AxiosError<UpdateStaticlistDataSourceError>, Options<UpdateStaticlistDataSourceData>> => {
-    const mutationOptions: UseMutationOptions<UpdateStaticlistDataSourceResponse, AxiosError<UpdateStaticlistDataSourceError>, Options<UpdateStaticlistDataSourceData>> = {
+export const updateCheckboxDataSourceMutation = (options?: Partial<Options<UpdateCheckboxDataSourceData>>): UseMutationOptions<UpdateCheckboxDataSourceResponse, AxiosError<UpdateCheckboxDataSourceError>, Options<UpdateCheckboxDataSourceData>> => {
+    const mutationOptions: UseMutationOptions<UpdateCheckboxDataSourceResponse, AxiosError<UpdateCheckboxDataSourceError>, Options<UpdateCheckboxDataSourceData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await updateStaticlistDataSource({
+            const { data } = await updateCheckboxDataSource({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -407,10 +450,10 @@ export const updateStaticlistDataSourceMutation = (options?: Partial<Options<Upd
     return mutationOptions;
 };
 
-export const createStaticlistDataSourceMutation = (options?: Partial<Options<CreateStaticlistDataSourceData>>): UseMutationOptions<CreateStaticlistDataSourceResponse, AxiosError<DefaultError>, Options<CreateStaticlistDataSourceData>> => {
-    const mutationOptions: UseMutationOptions<CreateStaticlistDataSourceResponse, AxiosError<DefaultError>, Options<CreateStaticlistDataSourceData>> = {
+export const createCheckboxDataSourceMutation = (options?: Partial<Options<CreateCheckboxDataSourceData>>): UseMutationOptions<CreateCheckboxDataSourceResponse, AxiosError<DefaultError>, Options<CreateCheckboxDataSourceData>> => {
+    const mutationOptions: UseMutationOptions<CreateCheckboxDataSourceResponse, AxiosError<DefaultError>, Options<CreateCheckboxDataSourceData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await createStaticlistDataSource({
+            const { data } = await createCheckboxDataSource({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -421,11 +464,11 @@ export const createStaticlistDataSourceMutation = (options?: Partial<Options<Cre
     return mutationOptions;
 };
 
-export const getApilistDataSourceQueryKey = (options: Options<GetApilistDataSourceData>) => createQueryKey('getApilistDataSource', options);
+export const getPicklistDataSourceQueryKey = (options: Options<GetPicklistDataSourceData>) => createQueryKey('getPicklistDataSource', options);
 
-export const getApilistDataSourceOptions = (options: Options<GetApilistDataSourceData>) => queryOptions<GetApilistDataSourceResponse, AxiosError<GetApilistDataSourceError>, GetApilistDataSourceResponse, ReturnType<typeof getApilistDataSourceQueryKey>>({
+export const getPicklistDataSourceOptions = (options: Options<GetPicklistDataSourceData>) => queryOptions<GetPicklistDataSourceResponse, AxiosError<GetPicklistDataSourceError>, GetPicklistDataSourceResponse, ReturnType<typeof getPicklistDataSourceQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApilistDataSource({
+        const { data } = await getPicklistDataSource({
             ...options,
             ...queryKey[0],
             signal,
@@ -433,13 +476,13 @@ export const getApilistDataSourceOptions = (options: Options<GetApilistDataSourc
         });
         return data;
     },
-    queryKey: getApilistDataSourceQueryKey(options)
+    queryKey: getPicklistDataSourceQueryKey(options)
 });
 
-export const updateApilistDataSourceMutation = (options?: Partial<Options<UpdateApilistDataSourceData>>): UseMutationOptions<UpdateApilistDataSourceResponse, AxiosError<UpdateApilistDataSourceError>, Options<UpdateApilistDataSourceData>> => {
-    const mutationOptions: UseMutationOptions<UpdateApilistDataSourceResponse, AxiosError<UpdateApilistDataSourceError>, Options<UpdateApilistDataSourceData>> = {
+export const updatePicklistDataSourceMutation = (options?: Partial<Options<UpdatePicklistDataSourceData>>): UseMutationOptions<UpdatePicklistDataSourceResponse, AxiosError<UpdatePicklistDataSourceError>, Options<UpdatePicklistDataSourceData>> => {
+    const mutationOptions: UseMutationOptions<UpdatePicklistDataSourceResponse, AxiosError<UpdatePicklistDataSourceError>, Options<UpdatePicklistDataSourceData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await updateApilistDataSource({
+            const { data } = await updatePicklistDataSource({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -450,10 +493,53 @@ export const updateApilistDataSourceMutation = (options?: Partial<Options<Update
     return mutationOptions;
 };
 
-export const createApilistDataSourceMutation = (options?: Partial<Options<CreateApilistDataSourceData>>): UseMutationOptions<CreateApilistDataSourceResponse, AxiosError<DefaultError>, Options<CreateApilistDataSourceData>> => {
-    const mutationOptions: UseMutationOptions<CreateApilistDataSourceResponse, AxiosError<DefaultError>, Options<CreateApilistDataSourceData>> = {
+export const createPicklistDataSourceMutation = (options?: Partial<Options<CreatePicklistDataSourceData>>): UseMutationOptions<CreatePicklistDataSourceResponse, AxiosError<DefaultError>, Options<CreatePicklistDataSourceData>> => {
+    const mutationOptions: UseMutationOptions<CreatePicklistDataSourceResponse, AxiosError<DefaultError>, Options<CreatePicklistDataSourceData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await createApilistDataSource({
+            const { data } = await createPicklistDataSource({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+export const getApipicklistDataSourceQueryKey = (options: Options<GetApipicklistDataSourceData>) => createQueryKey('getApipicklistDataSource', options);
+
+export const getApipicklistDataSourceOptions = (options: Options<GetApipicklistDataSourceData>) => queryOptions<GetApipicklistDataSourceResponse, AxiosError<GetApipicklistDataSourceError>, GetApipicklistDataSourceResponse, ReturnType<typeof getApipicklistDataSourceQueryKey>>({
+    queryFn: async ({ queryKey, signal }) => {
+        const { data } = await getApipicklistDataSource({
+            ...options,
+            ...queryKey[0],
+            signal,
+            throwOnError: true
+        });
+        return data;
+    },
+    queryKey: getApipicklistDataSourceQueryKey(options)
+});
+
+export const updateApipicklistDataSourceMutation = (options?: Partial<Options<UpdateApipicklistDataSourceData>>): UseMutationOptions<UpdateApipicklistDataSourceResponse, AxiosError<UpdateApipicklistDataSourceError>, Options<UpdateApipicklistDataSourceData>> => {
+    const mutationOptions: UseMutationOptions<UpdateApipicklistDataSourceResponse, AxiosError<UpdateApipicklistDataSourceError>, Options<UpdateApipicklistDataSourceData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await updateApipicklistDataSource({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+export const createApipicklistDataSourceMutation = (options?: Partial<Options<CreateApipicklistDataSourceData>>): UseMutationOptions<CreateApipicklistDataSourceResponse, AxiosError<DefaultError>, Options<CreateApipicklistDataSourceData>> => {
+    const mutationOptions: UseMutationOptions<CreateApipicklistDataSourceResponse, AxiosError<DefaultError>, Options<CreateApipicklistDataSourceData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await createApipicklistDataSource({
                 ...options,
                 ...fnOptions,
                 throwOnError: true

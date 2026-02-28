@@ -34,6 +34,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Asm.MooAuth.Connector.Entra\Asm.MooAuth.Connector.Entra.csproj" />
     <ProjectReference Include="..\Asm.MooAuth.Connectors\Asm.MooAuth.Modules.Connectors.csproj" />
+    <ProjectReference Include="..\Asm.MooAuth.Modules.Actors\Asm.MooAuth.Modules.Actors.csproj" />
     <ProjectReference Include="..\Asm.MooAuth.Modules.DataSources\Asm.MooAuth.Modules.DataSources.csproj" />
     <ProjectReference Include="..\Asm.MooAuth.Domain\Asm.MooAuth.Domain.csproj" />
     <ProjectReference Include="..\Asm.MooAuth.Infrastructure\Asm.MooAuth.Infrastructure.csproj" />
@@ -41,6 +42,7 @@
     <ProjectReference Include="..\Asm.MooAuth.Modules.Groups\Asm.MooAuth.Modules.Groups.csproj" />
     <ProjectReference Include="..\Asm.MooAuth.Modules.Roles\Asm.MooAuth.Modules.Roles.csproj" />
     <ProjectReference Include="..\Asm.MooAuth.Modules.Users\Asm.MooAuth.Modules.Users.csproj" />
+    <ProjectReference Include="..\Asm.MooAuth.Secrets.Database\Asm.MooAuth.Secrets.Database.csproj" />
     <ProjectReference Include="..\Asm.MooAuth.Secrets.KeyVault\Asm.MooAuth.Secrets.KeyVault.csproj" />
     <ProjectReference Include="..\Asm.MooAuth\Asm.MooAuth.csproj" />
   </ItemGroup>

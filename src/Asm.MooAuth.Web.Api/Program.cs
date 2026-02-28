@@ -21,6 +21,7 @@ void AddServices(WebApplicationBuilder builder)
 
     builder.RegisterModules(() =>
     [
+        new Asm.MooAuth.Modules.Actors.Module(),
         new Asm.MooAuth.Modules.Applications.Module(),
         new Asm.MooAuth.Modules.Connectors.Module(),
         new Asm.MooAuth.Modules.DataSources.Module(),
@@ -75,7 +76,8 @@ void AddSecretManager(WebApplicationBuilder builder)
             builder.AddKeyVaultSecretManager(mooAuthConfig.SecretManager.Uri ?? throw new InvalidOperationException("Unable to add Key Vault Secret Manager. Specify URI"));
             break;
         case SecretManagerType.Database:
-            throw new NotSupportedException("Database secret manager not supported yet.");
+            builder.Services.AddDatabaseSecretManager();
+            break;
         default:
             throw new InvalidOperationException("Unable to add a secret manager.");
     }

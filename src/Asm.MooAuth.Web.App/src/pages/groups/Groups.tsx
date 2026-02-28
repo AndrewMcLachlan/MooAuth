@@ -18,7 +18,7 @@ export const Groups = () => {
 
     const groupRows: React.ReactNode[] = data?.results?.map(g =>
         <GroupRow key={g.id} group={g} />
-    ) ?? (isLoading ? [<LoadingTableRows key={1} rows={5} cols={2} />] : []);
+    ) ?? (isLoading ? [<LoadingTableRows key={1} rows={5} cols={3} />] : []);
 
     return (
         <Page title="Groups" breadcrumbs={[{ text: "Groups", route: "/groups" }]}>
@@ -35,6 +35,7 @@ export const Groups = () => {
                     <tr>
                         <th>Name</th>
                         <th>Description</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>

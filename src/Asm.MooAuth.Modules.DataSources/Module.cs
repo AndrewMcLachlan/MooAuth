@@ -17,10 +17,12 @@ public class Module : IModule
 
         services.AddScoped<IValidator<Commands.FreeText.Create>, Validators.FreeText.Create>();
         services.AddScoped<IValidator<Commands.FreeText.Update>, Validators.FreeText.Update>();
-        services.AddScoped<IValidator<Commands.StaticList.Create>, Validators.StaticList.Create>();
-        services.AddScoped<IValidator<Commands.StaticList.Update>, Validators.StaticList.Update>();
-        services.AddScoped<IValidator<Commands.ApiList.Create>, Validators.ApiList.Create>();
-        services.AddScoped<IValidator<Commands.ApiList.Update>, Validators.ApiList.Update>();
+        services.AddScoped<IValidator<Commands.Checkbox.Create>, Validators.Checkbox.Create>();
+        services.AddScoped<IValidator<Commands.Checkbox.Update>, Validators.Checkbox.Update>();
+        services.AddScoped<IValidator<Commands.PickList.Create>, Validators.PickList.Create>();
+        services.AddScoped<IValidator<Commands.PickList.Update>, Validators.PickList.Update>();
+        services.AddScoped<IValidator<Commands.ApiPickList.Create>, Validators.ApiPickList.Create>();
+        services.AddScoped<IValidator<Commands.ApiPickList.Update>, Validators.ApiPickList.Update>();
 
         services.AddHttpClient<IDataSourceApiClient, DataSourceApiClient>();
 
@@ -31,8 +33,9 @@ public class Module : IModule
     {
         new Endpoints.DataSources().MapGroup(endpoints);
         new Endpoints.FreeText().MapGroup(endpoints);
-        new Endpoints.StaticList().MapGroup(endpoints);
-        new Endpoints.ApiList().MapGroup(endpoints);
+        new Endpoints.Checkbox().MapGroup(endpoints);
+        new Endpoints.PickList().MapGroup(endpoints);
+        new Endpoints.ApiPickList().MapGroup(endpoints);
         new Endpoints.Values().MapGroup(endpoints);
 
         return endpoints;

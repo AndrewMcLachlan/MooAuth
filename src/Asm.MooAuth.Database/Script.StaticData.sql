@@ -24,8 +24,19 @@ WHEN NOT MATCHED BY TARGET THEN INSERT (Id, Name) VALUES (source.Id, source.Name
 MERGE INTO [dbo].[DataSourceType] AS target
 USING (VALUES
     (0, 'FreeText'),
-    (1, 'StaticList'),
-    (2, 'ApiList')
+    (1, 'PickList'),
+    (2, 'ApiPickList'),
+    (3, 'Checkbox')
+) AS source (Id, Name)
+ON target.Id = source.Id
+WHEN MATCHED AND target.Name <> source.Name THEN UPDATE SET target.Name = source.Name
+WHEN NOT MATCHED BY TARGET THEN INSERT (Id, Name) VALUES (source.Id, source.Name);
+
+-- Merge Value into ActorType
+MERGE INTO [dbo].[ActorType] AS target
+USING (VALUES
+    (0, 'User'),
+    (1, 'Group')
 ) AS source (Id, Name)
 ON target.Id = source.Id
 WHEN MATCHED AND target.Name <> source.Name THEN UPDATE SET target.Name = source.Name

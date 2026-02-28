@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using Asm.MooAuth.Domain.Entities.Actors;
 using Asm.MooAuth.Domain.Entities.Applications;
 using Asm.MooAuth.Domain.Entities.Connectors;
 using Asm.MooAuth.Domain.Entities.DataSources;
@@ -53,6 +54,16 @@ public partial class MooAuthContext : DomainDbContext, IReadOnlyDbContext
         modelBuilder.Entity<DataSource>();
         modelBuilder.Entity<DataSourceValue>();
         modelBuilder.Entity<DataSourceTypeEntry>().ToTable("DataSourceType");
+
+        modelBuilder.Entity<Actor>();
+        modelBuilder.Entity<ActorRoleResource>(entity =>
+        {
+            entity.HasOne(arr => arr.DataSource)
+                  .WithMany()
+                  .HasForeignKey(arr => arr.DataSourceId)
+                  .OnDelete(DeleteBehavior.Restrict);
+        });
+        modelBuilder.Entity<ActorTypeEntry>().ToTable("ActorType");
 
         modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
 

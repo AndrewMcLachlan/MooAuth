@@ -17,9 +17,9 @@ internal class UpdateValueHandler(IUnitOfWork unitOfWork, IDataSourceRepository 
         var dataSource = await repository.Get(command.DataSourceId, new IncludeValuesSpecification(), cancellationToken)
             ?? throw new NotFoundException();
 
-        if (dataSource.DataSourceType != MooAuth.Models.DataSourceType.StaticList)
+        if (dataSource.DataSourceType != MooAuth.Models.DataSourceType.PickList)
         {
-            throw new BadHttpRequestException("Values can only be updated on static list data sources");
+            throw new BadHttpRequestException("Values can only be updated on pick list data sources");
         }
 
         var value = dataSource.Values.FirstOrDefault(v => v.Id == command.ValueId)

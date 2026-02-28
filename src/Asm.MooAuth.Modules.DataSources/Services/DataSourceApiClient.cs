@@ -1,7 +1,7 @@
 using System.Net.Http.Headers;
 using System.Text.Json;
 using Asm.MooAuth.Modules.DataSources.Models;
-using Asm.MooAuth.Modules.DataSources.Models.ApiList;
+using Asm.MooAuth.Modules.DataSources.Models.ApiPickList;
 using Microsoft.Extensions.Caching.Memory;
 
 namespace Asm.MooAuth.Modules.DataSources;
@@ -15,7 +15,7 @@ internal class DataSourceApiClient(
         Domain.Entities.DataSources.DataSource dataSource,
         CancellationToken cancellationToken)
     {
-        var config = dataSource.GetConfig<ApiListConfig>();
+        var config = dataSource.GetConfig<ApiPickListConfig>();
         if (config == null) return [];
 
         var cacheKey = $"datasource-values-{dataSource.Key}";
@@ -37,7 +37,7 @@ internal class DataSourceApiClient(
         return values;
     }
 
-    private async Task ConfigureAuthenticationAsync(string key, ApiListConfig config, CancellationToken cancellationToken)
+    private async Task ConfigureAuthenticationAsync(string key, ApiPickListConfig config, CancellationToken cancellationToken)
     {
         switch (config.AuthType)
         {
@@ -54,7 +54,7 @@ internal class DataSourceApiClient(
         }
     }
 
-    private async Task<string> GetOAuthTokenAsync(string key, ApiListConfig config, CancellationToken cancellationToken)
+    private async Task<string> GetOAuthTokenAsync(string key, ApiPickListConfig config, CancellationToken cancellationToken)
     {
         var clientSecret = await secretManager.GetSecretAsync($"datasource-{key}-secret", cancellationToken);
 
@@ -75,7 +75,7 @@ internal class DataSourceApiClient(
         return doc.RootElement.GetProperty("access_token").GetString()!;
     }
 
-    private static IEnumerable<DataSourceValue> ParseResponse(string content, ApiListConfig config)
+    private static IEnumerable<DataSourceValue> ParseResponse(string content, ApiPickListConfig config)
     {
         using var doc = JsonDocument.Parse(content);
         var root = doc.RootElement;

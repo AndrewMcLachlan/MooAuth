@@ -18,7 +18,7 @@ export const Users = () => {
 
     const userRows: React.ReactNode[] = data?.results?.map(u =>
         <UserRow key={u.id} user={u} />
-    ) ?? (isLoading ? [<LoadingTableRows key={1} rows={5} cols={4} />] : []);
+    ) ?? (isLoading ? [<LoadingTableRows key={1} rows={5} cols={5} />] : []);
 
     return (
         <Page title="Users" breadcrumbs={[{ text: "Users", route: "/users" }]}>
@@ -37,6 +37,7 @@ export const Users = () => {
                         <th>Email</th>
                         <th>First Name</th>
                         <th>Last Name</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>

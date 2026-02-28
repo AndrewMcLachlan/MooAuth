@@ -21,8 +21,9 @@ internal class GetValuesHandler(
         return dataSource.DataSourceType switch
         {
             MooAuth.Models.DataSourceType.FreeText => [],
-            MooAuth.Models.DataSourceType.StaticList => dataSource.Values.Select(v => v.ToModel()),
-            MooAuth.Models.DataSourceType.ApiList => await apiClient.FetchValuesAsync(dataSource, cancellationToken),
+            MooAuth.Models.DataSourceType.Checkbox => [],
+            MooAuth.Models.DataSourceType.PickList => dataSource.Values.Select(v => v.ToModel()),
+            MooAuth.Models.DataSourceType.ApiPickList => await apiClient.FetchValuesAsync(dataSource, cancellationToken),
             _ => throw new InvalidOperationException("Unknown data source type")
         };
     }

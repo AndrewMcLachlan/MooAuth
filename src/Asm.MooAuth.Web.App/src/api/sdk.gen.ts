@@ -2,7 +2,7 @@
 
 import type { Client, Options as Options2, TDataShape } from './client';
 import { client } from './client.gen';
-import type { AddDataSourceValueData, AddDataSourceValueErrors, AddDataSourceValueResponses, AddPermissionData, AddPermissionErrors, AddPermissionResponses, CreateApilistDataSourceData, CreateApilistDataSourceResponses, CreateApplicationData, CreateApplicationResponses, CreateEntraConnectorData, CreateEntraConnectorResponses, CreateFreetextDataSourceData, CreateFreetextDataSourceResponses, CreatePermissionData, CreatePermissionResponses, CreateRoleData, CreateRoleResponses, CreateStaticlistDataSourceData, CreateStaticlistDataSourceResponses, DeleteApplicationData, DeleteApplicationErrors, DeleteApplicationResponses, DeleteConnectorData, DeleteConnectorErrors, DeleteConnectorResponses, DeleteDataSourceData, DeleteDataSourceErrors, DeleteDataSourceResponses, DeletePermissionData, DeletePermissionErrors, DeletePermissionResponses, DeleteRoleData, DeleteRoleErrors, DeleteRoleResponses, GetAllApplicationsData, GetAllApplicationsResponses, GetAllConnectorsData, GetAllConnectorsResponses, GetAllDataSourcesData, GetAllDataSourcesResponses, GetAllRolesData, GetAllRolesErrors, GetAllRolesResponses, GetApilistDataSourceData, GetApilistDataSourceErrors, GetApilistDataSourceResponses, GetApplicationData, GetApplicationErrors, GetApplicationResponses, GetAvailableConnectorTypesData, GetAvailableConnectorTypesResponses, GetConfigurationData, GetConfigurationResponses, GetDataSourceTypesData, GetDataSourceTypesResponses, GetDataSourceValuesData, GetDataSourceValuesErrors, GetDataSourceValuesResponses, GetEntraConnectorData, GetEntraConnectorErrors, GetEntraConnectorResponses, GetFreetextDataSourceData, GetFreetextDataSourceErrors, GetFreetextDataSourceResponses, GetGroupsData, GetGroupsResponses, GetPermissionData, GetPermissionErrors, GetPermissionListData, GetPermissionListResponses, GetPermissionResponses, GetRoleData, GetRoleErrors, GetRoleResponses, GetStaticlistDataSourceData, GetStaticlistDataSourceErrors, GetStaticlistDataSourceResponses, GetUserData, GetUserResponses, GetUsersData, GetUsersResponses, RemoveDataSourceValueData, RemoveDataSourceValueErrors, RemoveDataSourceValueResponses, RemoveRoleData, RemoveRoleErrors, RemoveRoleResponses, UpdateApilistDataSourceData, UpdateApilistDataSourceErrors, UpdateApilistDataSourceResponses, UpdateApplicationData, UpdateApplicationErrors, UpdateApplicationResponses, UpdateDataSourceValueData, UpdateDataSourceValueErrors, UpdateDataSourceValueResponses, UpdateEntraConnectorData, UpdateEntraConnectorErrors, UpdateEntraConnectorResponses, UpdateFreetextDataSourceData, UpdateFreetextDataSourceErrors, UpdateFreetextDataSourceResponses, UpdatePermissionData, UpdatePermissionErrors, UpdatePermissionResponses, UpdateRoleData, UpdateRoleErrors, UpdateRoleResponses, UpdateStaticlistDataSourceData, UpdateStaticlistDataSourceErrors, UpdateStaticlistDataSourceResponses } from './types.gen';
+import type { AddDataSourceValueData, AddDataSourceValueErrors, AddDataSourceValueResponses, AddPermissionData, AddPermissionErrors, AddPermissionResponses, AddRoleAssignmentData, AddRoleAssignmentResponses, CreateApipicklistDataSourceData, CreateApipicklistDataSourceResponses, CreateApplicationData, CreateApplicationResponses, CreateCheckboxDataSourceData, CreateCheckboxDataSourceResponses, CreateEntraConnectorData, CreateEntraConnectorResponses, CreateFreetextDataSourceData, CreateFreetextDataSourceResponses, CreatePermissionData, CreatePermissionResponses, CreatePicklistDataSourceData, CreatePicklistDataSourceResponses, CreateRoleData, CreateRoleResponses, DeleteApplicationData, DeleteApplicationErrors, DeleteApplicationResponses, DeleteConnectorData, DeleteConnectorErrors, DeleteConnectorResponses, DeleteDataSourceData, DeleteDataSourceErrors, DeleteDataSourceResponses, DeletePermissionData, DeletePermissionErrors, DeletePermissionResponses, DeleteRoleData, DeleteRoleErrors, DeleteRoleResponses, GetActorWithRolesData, GetActorWithRolesResponses, GetAllApplicationsData, GetAllApplicationsResponses, GetAllConnectorsData, GetAllConnectorsResponses, GetAllDataSourcesData, GetAllDataSourcesResponses, GetAllRolesData, GetAllRolesErrors, GetAllRolesResponses, GetApipicklistDataSourceData, GetApipicklistDataSourceErrors, GetApipicklistDataSourceResponses, GetApplicationData, GetApplicationErrors, GetApplicationResponses, GetAvailableConnectorTypesData, GetAvailableConnectorTypesResponses, GetCheckboxDataSourceData, GetCheckboxDataSourceErrors, GetCheckboxDataSourceResponses, GetConfigurationData, GetConfigurationResponses, GetDataSourceTypesData, GetDataSourceTypesResponses, GetDataSourceValuesData, GetDataSourceValuesErrors, GetDataSourceValuesResponses, GetEntraConnectorData, GetEntraConnectorErrors, GetEntraConnectorResponses, GetFreetextDataSourceData, GetFreetextDataSourceErrors, GetFreetextDataSourceResponses, GetGroupsData, GetGroupsResponses, GetPermissionData, GetPermissionErrors, GetPermissionListData, GetPermissionListResponses, GetPermissionResponses, GetPicklistDataSourceData, GetPicklistDataSourceErrors, GetPicklistDataSourceResponses, GetRoleData, GetRoleErrors, GetRoleResponses, GetUserData, GetUserResponses, GetUsersData, GetUsersResponses, RemoveDataSourceValueData, RemoveDataSourceValueErrors, RemoveDataSourceValueResponses, RemoveRoleAssignmentData, RemoveRoleAssignmentErrors, RemoveRoleAssignmentResponses, RemoveRoleData, RemoveRoleErrors, RemoveRoleResponses, UpdateApipicklistDataSourceData, UpdateApipicklistDataSourceErrors, UpdateApipicklistDataSourceResponses, UpdateApplicationData, UpdateApplicationErrors, UpdateApplicationResponses, UpdateCheckboxDataSourceData, UpdateCheckboxDataSourceErrors, UpdateCheckboxDataSourceResponses, UpdateDataSourceValueData, UpdateDataSourceValueErrors, UpdateDataSourceValueResponses, UpdateEntraConnectorData, UpdateEntraConnectorErrors, UpdateEntraConnectorResponses, UpdateFreetextDataSourceData, UpdateFreetextDataSourceErrors, UpdateFreetextDataSourceResponses, UpdatePermissionData, UpdatePermissionErrors, UpdatePermissionResponses, UpdatePicklistDataSourceData, UpdatePicklistDataSourceErrors, UpdatePicklistDataSourceResponses, UpdateRoleData, UpdateRoleErrors, UpdateRoleResponses } from './types.gen';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean> = Options2<TData, ThrowOnError> & {
     /**
@@ -27,6 +27,31 @@ export const getConfiguration = <ThrowOnError extends boolean = false>(options?:
     responseType: 'json',
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/api/config',
+    ...options
+});
+
+export const getActorWithRoles = <ThrowOnError extends boolean = false>(options: Options<GetActorWithRolesData, ThrowOnError>) => (options.client ?? client).get<GetActorWithRolesResponses, unknown, ThrowOnError>({
+    responseType: 'json',
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/actors/{actorType}/{externalId}',
+    ...options
+});
+
+export const addRoleAssignment = <ThrowOnError extends boolean = false>(options: Options<AddRoleAssignmentData, ThrowOnError>) => (options.client ?? client).post<AddRoleAssignmentResponses, unknown, ThrowOnError>({
+    responseType: 'json',
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/actors/{actorType}/{externalId}/roles',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+export const removeRoleAssignment = <ThrowOnError extends boolean = false>(options: Options<RemoveRoleAssignmentData, ThrowOnError>) => (options.client ?? client).delete<RemoveRoleAssignmentResponses, RemoveRoleAssignmentErrors, ThrowOnError>({
+    responseType: 'json',
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/actors/{actorType}/{externalId}/roles/{roleId}',
     ...options
 });
 
@@ -212,17 +237,17 @@ export const createFreetextDataSource = <ThrowOnError extends boolean = false>(o
     }
 });
 
-export const getStaticlistDataSource = <ThrowOnError extends boolean = false>(options: Options<GetStaticlistDataSourceData, ThrowOnError>) => (options.client ?? client).get<GetStaticlistDataSourceResponses, GetStaticlistDataSourceErrors, ThrowOnError>({
+export const getCheckboxDataSource = <ThrowOnError extends boolean = false>(options: Options<GetCheckboxDataSourceData, ThrowOnError>) => (options.client ?? client).get<GetCheckboxDataSourceResponses, GetCheckboxDataSourceErrors, ThrowOnError>({
     responseType: 'json',
     security: [{ scheme: 'bearer', type: 'http' }],
-    url: '/api/datasources/staticlist/{id}',
+    url: '/api/datasources/checkbox/{id}',
     ...options
 });
 
-export const updateStaticlistDataSource = <ThrowOnError extends boolean = false>(options: Options<UpdateStaticlistDataSourceData, ThrowOnError>) => (options.client ?? client).patch<UpdateStaticlistDataSourceResponses, UpdateStaticlistDataSourceErrors, ThrowOnError>({
+export const updateCheckboxDataSource = <ThrowOnError extends boolean = false>(options: Options<UpdateCheckboxDataSourceData, ThrowOnError>) => (options.client ?? client).patch<UpdateCheckboxDataSourceResponses, UpdateCheckboxDataSourceErrors, ThrowOnError>({
     responseType: 'json',
     security: [{ scheme: 'bearer', type: 'http' }],
-    url: '/api/datasources/staticlist/{id}',
+    url: '/api/datasources/checkbox/{id}',
     ...options,
     headers: {
         'Content-Type': 'application/json',
@@ -230,10 +255,10 @@ export const updateStaticlistDataSource = <ThrowOnError extends boolean = false>
     }
 });
 
-export const createStaticlistDataSource = <ThrowOnError extends boolean = false>(options: Options<CreateStaticlistDataSourceData, ThrowOnError>) => (options.client ?? client).post<CreateStaticlistDataSourceResponses, unknown, ThrowOnError>({
+export const createCheckboxDataSource = <ThrowOnError extends boolean = false>(options: Options<CreateCheckboxDataSourceData, ThrowOnError>) => (options.client ?? client).post<CreateCheckboxDataSourceResponses, unknown, ThrowOnError>({
     responseType: 'json',
     security: [{ scheme: 'bearer', type: 'http' }],
-    url: '/api/datasources/staticlist',
+    url: '/api/datasources/checkbox',
     ...options,
     headers: {
         'Content-Type': 'application/json',
@@ -241,17 +266,17 @@ export const createStaticlistDataSource = <ThrowOnError extends boolean = false>
     }
 });
 
-export const getApilistDataSource = <ThrowOnError extends boolean = false>(options: Options<GetApilistDataSourceData, ThrowOnError>) => (options.client ?? client).get<GetApilistDataSourceResponses, GetApilistDataSourceErrors, ThrowOnError>({
+export const getPicklistDataSource = <ThrowOnError extends boolean = false>(options: Options<GetPicklistDataSourceData, ThrowOnError>) => (options.client ?? client).get<GetPicklistDataSourceResponses, GetPicklistDataSourceErrors, ThrowOnError>({
     responseType: 'json',
     security: [{ scheme: 'bearer', type: 'http' }],
-    url: '/api/datasources/apilist/{id}',
+    url: '/api/datasources/picklist/{id}',
     ...options
 });
 
-export const updateApilistDataSource = <ThrowOnError extends boolean = false>(options: Options<UpdateApilistDataSourceData, ThrowOnError>) => (options.client ?? client).patch<UpdateApilistDataSourceResponses, UpdateApilistDataSourceErrors, ThrowOnError>({
+export const updatePicklistDataSource = <ThrowOnError extends boolean = false>(options: Options<UpdatePicklistDataSourceData, ThrowOnError>) => (options.client ?? client).patch<UpdatePicklistDataSourceResponses, UpdatePicklistDataSourceErrors, ThrowOnError>({
     responseType: 'json',
     security: [{ scheme: 'bearer', type: 'http' }],
-    url: '/api/datasources/apilist/{id}',
+    url: '/api/datasources/picklist/{id}',
     ...options,
     headers: {
         'Content-Type': 'application/json',
@@ -259,10 +284,39 @@ export const updateApilistDataSource = <ThrowOnError extends boolean = false>(op
     }
 });
 
-export const createApilistDataSource = <ThrowOnError extends boolean = false>(options: Options<CreateApilistDataSourceData, ThrowOnError>) => (options.client ?? client).post<CreateApilistDataSourceResponses, unknown, ThrowOnError>({
+export const createPicklistDataSource = <ThrowOnError extends boolean = false>(options: Options<CreatePicklistDataSourceData, ThrowOnError>) => (options.client ?? client).post<CreatePicklistDataSourceResponses, unknown, ThrowOnError>({
     responseType: 'json',
     security: [{ scheme: 'bearer', type: 'http' }],
-    url: '/api/datasources/apilist',
+    url: '/api/datasources/picklist',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+export const getApipicklistDataSource = <ThrowOnError extends boolean = false>(options: Options<GetApipicklistDataSourceData, ThrowOnError>) => (options.client ?? client).get<GetApipicklistDataSourceResponses, GetApipicklistDataSourceErrors, ThrowOnError>({
+    responseType: 'json',
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/datasources/apipicklist/{id}',
+    ...options
+});
+
+export const updateApipicklistDataSource = <ThrowOnError extends boolean = false>(options: Options<UpdateApipicklistDataSourceData, ThrowOnError>) => (options.client ?? client).patch<UpdateApipicklistDataSourceResponses, UpdateApipicklistDataSourceErrors, ThrowOnError>({
+    responseType: 'json',
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/datasources/apipicklist/{id}',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+export const createApipicklistDataSource = <ThrowOnError extends boolean = false>(options: Options<CreateApipicklistDataSourceData, ThrowOnError>) => (options.client ?? client).post<CreateApipicklistDataSourceResponses, unknown, ThrowOnError>({
+    responseType: 'json',
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/datasources/apipicklist',
     ...options,
     headers: {
         'Content-Type': 'application/json',

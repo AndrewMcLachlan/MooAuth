@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep:*)",
+      "Bash(npx vite:*)",
+      "WebFetch(domain:vite.dev)"
+    ]
+  }
+}

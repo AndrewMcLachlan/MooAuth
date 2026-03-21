@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <SpaRoot>..\MooAuth.Web.App</SpaRoot>
+    <SpaProxyLaunchCommand>npm run dev</SpaProxyLaunchCommand>
+    <SpaProxyServerUrl>https://localhost:3006</SpaProxyServerUrl>
+    <UserSecretsId>0ab319e1-4565-4c12-9dfe-d852607bcaed</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..</DockerfileContext>
+    <InterceptorsNamespaces>$(InterceptorsNamespaces);Microsoft.AspNetCore.OpenApi.Generated</InterceptorsNamespaces>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <OpenApiGenerateDocuments>true</OpenApiGenerateDocuments>
+    <OpenApiDocumentsDirectory>.</OpenApiDocumentsDirectory>
+    <OpenApiGenerateDocumentsOptions>--file-name openapi-v1</OpenApiGenerateDocumentsOptions>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Asm.AspNetCore" />
+    <PackageReference Include="Asm.AspNetCore.Api" />
+    <PackageReference Include="Asm.Cqrs.AspNetCore" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaProxy" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Asm.AspNetCore" />
+    <Using Include="Asm.AspNetCore.Security" />
+    <Using Include="Microsoft.Extensions.DependencyInjection" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MooAuth.Connector.Entra\MooAuth.Connector.Entra.csproj" />
+    <ProjectReference Include="..\MooAuth.Connectors\MooAuth.Modules.Connectors.csproj" />
+    <ProjectReference Include="..\MooAuth.Modules.Actors\MooAuth.Modules.Actors.csproj" />
+    <ProjectReference Include="..\MooAuth.Modules.DataSources\MooAuth.Modules.DataSources.csproj" />
+    <ProjectReference Include="..\MooAuth.Domain\MooAuth.Domain.csproj" />
+    <ProjectReference Include="..\MooAuth.Infrastructure\MooAuth.Infrastructure.csproj" />
+    <ProjectReference Include="..\MooAuth.Modules.Applications\MooAuth.Modules.Applications.csproj" />
+    <ProjectReference Include="..\MooAuth.Modules.Groups\MooAuth.Modules.Groups.csproj" />
+    <ProjectReference Include="..\MooAuth.Modules.Roles\MooAuth.Modules.Roles.csproj" />
+    <ProjectReference Include="..\MooAuth.Modules.Users\MooAuth.Modules.Users.csproj" />
+    <ProjectReference Include="..\MooAuth.Secrets.Database\MooAuth.Secrets.Database.csproj" />
+    <ProjectReference Include="..\MooAuth.Secrets.KeyVault\MooAuth.Secrets.KeyVault.csproj" />
+    <ProjectReference Include="..\MooAuth\MooAuth.csproj" />
+  </ItemGroup>
+
+</Project>

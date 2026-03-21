@@ -4,7 +4,7 @@
     <LangVersion>latest</LangVersion>
     <Authors>Andrew McLachlan</Authors>
     <Company />
-    <Copyright>Copyright © Andrew McLachlan 2024. All rights reserved.</Copyright>
+    <Copyright>© 2024-$([System.DateTime]::Now.Year) Andrew McLachlan</Copyright>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <FileVersion>$([System.DateTime]::Now.Year).$([System.DateTime]::Now.Month).0</FileVersion>
@@ -14,5 +14,7 @@
     <Nullable>enable</Nullable>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/AndrewMcLachlan/MooAuth</RepositoryUrl>
+    <RootNamespace>Asm.$(MSBuildProjectName)</RootNamespace>
+    <AssemblyName>Asm.$(MSBuildProjectName)</AssemblyName>
   </PropertyGroup>
 </Project>

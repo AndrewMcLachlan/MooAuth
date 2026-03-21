@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" Sdk="Microsoft.Build.Sql/2.0.0">
+  <PropertyGroup>
+    <Name>MooAuth</Name>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.SqlAzureV12DatabaseSchemaProvider</DSP>
+    <ModelCollation>1033, CI</ModelCollation>
+    <RootNamespace>Asm.MooAuth.Database</RootNamespace>
+    <AssemblyName>Asm.MooAuth.Database</AssemblyName>
+    <ProjectGuid>{db7f5c2c-063a-4878-9e2b-6c8f72e22abc}</ProjectGuid>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Build Remove="Script.StaticData.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Script.StaticData.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Local.publish.xml" />
+  </ItemGroup>
+</Project>

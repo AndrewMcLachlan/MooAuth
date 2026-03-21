@@ -11,7 +11,7 @@ registries:
 
 updates:
   - package-ecosystem: "npm"
-    directory: "/src/Asm.MooAuth.Web.App"
+    directory: "/src/MooAuth.Web.App"
     schedule:
       interval: "weekly"
       timezone: Australia/Brisbane

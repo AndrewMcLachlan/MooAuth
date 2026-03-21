@@ -34,29 +34,29 @@ jobs:
       id: set-version-number
       uses: andrewmclachlan/actions/set-version-number@v4
       with:
-        project: 'src/Asm.MooAuth.Web.Api'
+        project: 'src/MooAuth.Api'
         version-property-name: 'Version'
     - name: Restore dependencies
-      run: dotnet restore Asm.MooAuth.slnx
+      run: dotnet restore MooAuth.slnx
     - name: Setup node and npm
       uses: actions/setup-node@v6
       with:
         node-version: 22
         cache: npm
-        cache-dependency-path: 'src/Asm.MooAuth.Web.App/package-lock.json'
+        cache-dependency-path: 'src/MooAuth.Web.App/package-lock.json'
         registry-url: "https://npm.pkg.github.com"
     - name: Publish
-      run: dotnet publish src/Asm.MooAuth.Web.Api/Asm.MooAuth.Web.Api.csproj --output ${{ github.workspace }}/publish --configuration Release --p:Version=${{ steps.set-version-number.outputs.version }} --p:FileVersion=${{ steps.set-version-number.outputs.version }} --no-restore
+      run: dotnet publish src/MooAuth.Api/MooAuth.Api.csproj --output ${{ github.workspace }}/publish --configuration Release --p:Version=${{ steps.set-version-number.outputs.version }} --p:FileVersion=${{ steps.set-version-number.outputs.version }} --no-restore
     - name: Install App dependencies
       env:
         NODE_AUTH_TOKEN: ${{ secrets.CROSS_REPO_PACKAGE_TOKEN }}
-      run: npm ci --prefix src/Asm.MooAuth.Web.App
+      run: npm ci --prefix src/MooAuth.Web.App
     - name: Version App
-      run: npm version ${{ steps.set-version-number.outputs.version }} --prefix src/Asm.MooAuth.Web.App
+      run: npm version ${{ steps.set-version-number.outputs.version }} --prefix src/MooAuth.Web.App
     - name: Build App
-      run: npm run build --prefix src/Asm.MooAuth.Web.App
+      run: npm run build --prefix src/MooAuth.Web.App
     - name: Copy App
-      run: cp -r src/Asm.MooAuth.Web.App/dist ${{ github.workspace }}/publish/wwwroot
+      run: cp -r src/MooAuth.Web.App/dist ${{ github.workspace }}/publish/wwwroot
     - name: Upload Artifact
       uses: actions/upload-artifact@v7
       with:
@@ -66,7 +66,7 @@ jobs:
       uses: docker/build-push-action@v7
       with:
         context: .
-        file: ./src/Asm.MooAuth.Web.Api/Dockerfile
+        file: ./src/MooAuth.Api/Dockerfile
         push: false
         tags: |
           ghcr.io/andrewmclachlan/mooauth:${{steps.set-version-number.outputs.version}}
@@ -96,7 +96,7 @@ jobs:
       uses: docker/build-push-action@v7
       with:
         context: .
-        file: ./src/Asm.MooAuth.Web.Api/Dockerfile
+        file: ./src/MooAuth.Api/Dockerfile
         push: true
         tags: |
           ghcr.io/andrewmclachlan/mooauth:${{needs.build.outputs.version}}

@@ -24,7 +24,7 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@hey-api/openapi-ts": "^0.94.4",
-    "@tanstack/router-plugin": "^1.167.2",
+    "@tanstack/router-plugin": "^1.167.4",
     "@types/node": "^25.5.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
@@ -36,8 +36,8 @@
     "globals": "^17.4.0",
     "sass": "^1.98.0",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.57.1",
-    "vite": "^8.0.1",
+    "typescript-eslint": "^8.57.2",
+    "vite": "^8.0.2",
     "vite-plugin-svgr": "^4.5.0",
     "vite-tsconfig-paths": "^6.1.1"
   },

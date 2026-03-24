@@ -9,12 +9,13 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "generate": "openapi-ts"
+    "generate": "openapi-ts",
+    "update-moo": "npm install @andrewmclachlan/moo-app@latest @andrewmclachlan/moo-ds@latest @andrewmclachlan/moo-icons@latest"
   },
   "dependencies": {
-    "@andrewmclachlan/moo-app": "^5.1.50",
-    "@andrewmclachlan/moo-ds": "^5.1.50",
-    "@andrewmclachlan/moo-icons": "^5.1.50",
+    "@andrewmclachlan/moo-app": "^5.1.62",
+    "@andrewmclachlan/moo-ds": "^5.1.62",
+    "@andrewmclachlan/moo-icons": "^5.1.62",
     "@hey-api/client-fetch": "^0.13.1",
     "@tanstack/react-router": "^1.162.8",
     "react": "^19.2.4",
@@ -38,8 +39,7 @@
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.57.2",
     "vite": "^8.0.2",
-    "vite-plugin-svgr": "^4.5.0",
-    "vite-tsconfig-paths": "^6.1.1"
+    "vite-plugin-svgr": "^4.5.0"
   },
   "overrides": {
     "@azure/msal-react": {

@@ -1,6 +1,6 @@
 @layer mooapp, layout, mooauth;
 
-@import "~/@andrewmclachlan/moo-ds/dist/index.css" layer(mooapp);
+@import "@andrewmclachlan/moo-ds/css" layer(mooapp);
 
 @layer mooauth {
 

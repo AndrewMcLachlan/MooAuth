@@ -16,15 +16,14 @@
     "jsx": "react-jsx",
 
     /* Path resolution */
-    "baseUrl": "src",
     "paths": {
-      "App": ["./App.tsx"],
-      "api": ["./api"],
-      "api/*": ["./api/*"],
-      "services": ["./services"],
-      "services/*": ["./services/*"],
-      "utils/*": ["./utils/*"],
-      "components/*": ["./components/*"]
+      "App": ["./src/App.tsx"],
+      "api": ["./src/api"],
+      "api/*": ["./src/api/*"],
+      "services": ["./src/services"],
+      "services/*": ["./src/services/*"],
+      "utils/*": ["./src/utils/*"],
+      "components/*": ["./src/components/*"]
     },
 
     /* Linting */

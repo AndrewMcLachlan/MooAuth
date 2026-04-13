@@ -16,10 +16,10 @@
     "@andrewmclachlan/moo-app": "^5.1.85",
     "@andrewmclachlan/moo-ds": "^5.1.85",
     "@andrewmclachlan/moo-icons": "^5.1.85",
-    "@tanstack/react-router": "^1.162.8",
-    "react": "^19.2.4",
+    "@tanstack/react-router": "^1.168.19",
+    "react": "^19.2.5",
     "react-bootstrap": "^2.10.10",
-    "react-dom": "^19.2.4"
+    "react-dom": "^19.2.5"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

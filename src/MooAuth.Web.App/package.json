@@ -17,9 +17,9 @@
     "@andrewmclachlan/moo-ds": "^5.1.121",
     "@andrewmclachlan/moo-icons": "^5.1.121",
     "@tanstack/react-router": "^1.168.25",
-    "react": "^19.2.5",
+    "react": "^19.2.6",
     "react-bootstrap": "^2.10.10",
-    "react-dom": "^19.2.5"
+    "react-dom": "^19.2.6"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

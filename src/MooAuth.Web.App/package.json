@@ -16,7 +16,7 @@
     "@andrewmclachlan/moo-app": "^5.1.194",
     "@andrewmclachlan/moo-ds": "^5.1.194",
     "@andrewmclachlan/moo-icons": "^5.1.194",
-    "@tanstack/react-router": "^1.168.25",
+    "@tanstack/react-router": "^1.170.16",
     "react": "^19.2.7",
     "react-bootstrap": "^2.10.10",
     "react-dom": "^19.2.7"

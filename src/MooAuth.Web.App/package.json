@@ -13,13 +13,13 @@
     "update-moo": "npm install @andrewmclachlan/moo-app@latest @andrewmclachlan/moo-ds@latest @andrewmclachlan/moo-icons@latest"
   },
   "dependencies": {
-    "@andrewmclachlan/moo-app": "^5.2.66",
-    "@andrewmclachlan/moo-ds": "^5.2.66",
-    "@andrewmclachlan/moo-icons": "^5.2.66",
+    "@andrewmclachlan/moo-app": "^5.2.97",
+    "@andrewmclachlan/moo-ds": "^5.2.97",
+    "@andrewmclachlan/moo-icons": "^5.2.97",
     "@tanstack/react-router": "^1.170.16",
-    "react": "^19.2.7",
+    "react": "^19.2.8",
     "react-bootstrap": "^2.10.10",
-    "react-dom": "^19.2.7"
+    "react-dom": "^19.2.8"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

@@ -16,18 +16,18 @@
     "@andrewmclachlan/moo-app": "^5.2.286",
     "@andrewmclachlan/moo-ds": "^5.2.286",
     "@andrewmclachlan/moo-icons": "^5.2.286",
-    "@tanstack/react-router": "^1.170.28",
-    "react": "^19.2.8",
+    "@tanstack/react-router": "^1.170.35",
+    "react": "^19.3.0",
     "react-bootstrap": "^2.10.10",
-    "react-dom": "^19.2.8"
+    "react-dom": "^19.3.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@hey-api/openapi-ts": "^0.99.0",
     "@tanstack/router-plugin": "^1.168.35",
     "@types/node": "^26.4.1",
-    "@types/react": "^19.2.18",
-    "@types/react-dom": "^19.2.7",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.1.1",
     "esbuild": "^0.28.2",
     "eslint": "^10.10.0",

@@ -48,7 +48,7 @@ void AddServices(WebApplicationBuilder builder)
     builder.Services.AddRepositories();
     builder.Services.AddEntities();
 
-    builder.Services.AddProblemDetailsFactory();
+    builder.Services.AddPostieEndpointDispatcher();
 
     builder.Services.AddAzureOAuthOptions("MooAuth:OAuth");
 

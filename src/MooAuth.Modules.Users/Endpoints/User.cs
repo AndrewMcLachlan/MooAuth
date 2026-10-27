@@ -4,16 +4,15 @@ using Asm.MooAuth.Modules.Users.Queries;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
+using Postie.AspNetCore;
 
 namespace Asm.MooAuth.Modules.Users.Endpoints;
 
 public class User : EndpointGroupBase
 {
-    public override string Name => "User";
-
     public override string Path => "/users";
 
-    public override string Tags => "User";
+    public override string? Tag => "User";
 
 
     protected override void MapEndpoints(IEndpointRouteBuilder routeGroupBuilder)
@@ -38,7 +37,7 @@ public class User : EndpointGroupBase
             .WithNames("Update User")
             .Produces<Models.User>();*/
 
-        //routeGroupBuilder.MapDelete<Delete>("/{id}")
+        //routeGroupBuilder.MapDeleteCommand<Delete>("/{id}")
         //.WithName("Delete User");
     }
 }

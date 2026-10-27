@@ -1,8 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Page } from "@andrewmclachlan/moo-app";
-import { IconButton, LoadingTableRows } from "@andrewmclachlan/moo-ds";
+import { LoadingTableRows } from "@andrewmclachlan/moo-ds";
 import { Table } from "react-bootstrap";
-import { useNavigate } from "@tanstack/react-router";
 import { ApplicationRow } from "./-components/ApplicationRow";
 import { useGetApplications } from "./-hooks/useGetApplications";
 
@@ -11,15 +10,12 @@ export const Route = createFileRoute("/applications/")({
 });
 
 function Applications() {
-
-    const navigate = useNavigate();
-
     const { data } = useGetApplications();
 
     const applicationRows: React.ReactNode[] = data?.map(a => <ApplicationRow key={a.id} application={a} />) ?? [<LoadingTableRows key={1} rows={2} cols={3} />];
 
     return (
-        <Page title="Applications" breadcrumbs={[{ text: "Applications", route: "/applications" }]} actions={[<IconButton key="add" onClick={() => navigate({ to: "/applications/create" })} icon="plus">Create Application</IconButton>]}>
+        <Page title="Applications" breadcrumbs={[{ text: "Applications", route: "/applications" }]} actions={[{ id: "add", label: "Create Application", icon: "plus", to: "/applications/create" }]}>
             <Table className="accounts section" hover striped>
                 <thead>
                     <tr>

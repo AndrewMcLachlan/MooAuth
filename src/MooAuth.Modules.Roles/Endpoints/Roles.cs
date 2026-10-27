@@ -6,16 +6,15 @@ using Asm.MooAuth.Modules.Roles.Queries;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
+using Postie.AspNetCore;
 
 namespace Asm.MooAuth.Modules.Roles.Endpoints;
 
 internal class Roles : EndpointGroupBase
 {
-    public override string Name => "Roles";
-
     public override string Path => "/roles";
 
-    public override string Tags => "Roles";
+    public override string? Tag => "Roles";
 
     protected override void MapEndpoints(IEndpointRouteBuilder builder)
     {
@@ -28,7 +27,7 @@ internal class Roles : EndpointGroupBase
             .ProducesProblem(StatusCodes.Status403Forbidden)
             .ProducesProblem(StatusCodes.Status404NotFound);
 
-        builder.MapPostCreate<Create, Role>("/", "Get Role".ToMachine(), a => new { a.Id }, CommandBinding.Parameters)
+        builder.MapPostCreate<Create, Role>("/", "Get Role".ToMachine(), a => new { a.Id }, RequestBinding.Parameters)
             .WithNames("Create Role")
             .WithValidation<Create>();
 
@@ -43,12 +42,12 @@ internal class Roles : EndpointGroupBase
             .ProducesProblem(StatusCodes.Status403Forbidden)
             .ProducesProblem(StatusCodes.Status404NotFound);
 
-        builder.MapDelete<RemovePermission>("/{roleId}/permissions/{permissionId}")
+        builder.MapDeleteCommand<RemovePermission>("/{roleId}/permissions/{permissionId}")
             .WithNames("Remove Role")
             .ProducesProblem(StatusCodes.Status403Forbidden)
             .ProducesProblem(StatusCodes.Status404NotFound);
 
-        builder.MapDelete<Delete>("/{id}")
+        builder.MapDeleteCommand<Delete>("/{id}")
             .WithNames("Delete Role")
             .ProducesProblem(StatusCodes.Status403Forbidden)
             .ProducesProblem(StatusCodes.Status404NotFound);

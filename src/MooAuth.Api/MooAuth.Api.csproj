@@ -19,7 +19,8 @@
   <ItemGroup>
     <PackageReference Include="Asm.AspNetCore" />
     <PackageReference Include="Asm.AspNetCore.Api" />
-    <PackageReference Include="Asm.Cqrs.AspNetCore" />
+    <PackageReference Include="Postie.Cqrs.AspNetCore" />
+    <PackageReference Include="Postie.AspNetCore" />
     <PackageReference Include="Microsoft.AspNetCore.SpaProxy" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" />

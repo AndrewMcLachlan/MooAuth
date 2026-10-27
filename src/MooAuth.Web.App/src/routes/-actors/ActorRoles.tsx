@@ -1,5 +1,5 @@
 import { Page } from "@andrewmclachlan/moo-app";
-import { DeleteIcon, Form, IconButton, SectionForm } from "@andrewmclachlan/moo-ds";
+import { DeleteIcon, Form, SectionForm } from "@andrewmclachlan/moo-ds";
 import { ActorType, CreateActorRoleAssignment, DataSourceType, ResourceEntry } from "api";
 import React, { useState } from "react";
 import { Button, Col, Row, Table } from "react-bootstrap";
@@ -140,7 +140,7 @@ export const ActorRoles: React.FC<ActorRolesProps> = ({ externalId, actorType, t
             { text: parentText, route: parentRoute },
             { text: "Manage Roles", route: `${parentRoute}/${externalId}/roles` }
         ]}
-            actions={[<IconButton key="add-role" icon="plus" onClick={() => setShowAddForm(true)}>Add Role</IconButton>]}>
+            actions={[{ id: "add-role", label: "Add Role", icon: "plus", onClick: () => setShowAddForm(true) }]}>
             <h4>Role Assignments</h4>
             {showAddForm && (
                 <SectionForm form={form} onSubmit={handleAddAssignment} title="Add Role Assignment">

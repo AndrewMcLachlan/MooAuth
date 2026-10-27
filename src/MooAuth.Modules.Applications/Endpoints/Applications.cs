@@ -6,15 +6,14 @@ using Asm.MooAuth.Modules.Applications.Queries;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
+using Postie.AspNetCore;
 
 namespace Asm.MooAuth.Modules.Applications.Endpoints;
 internal class Applications : EndpointGroupBase
 {
-    public override string Name => "Applications";
-
     public override string Path => "/applications";
 
-    public override string Tags => "Applications";
+    public override string? Tag => "Applications";
 
     protected override void MapEndpoints(IEndpointRouteBuilder builder)
     {
@@ -25,16 +24,16 @@ internal class Applications : EndpointGroupBase
             .WithNames("Get Application")
             .ProducesProblem(StatusCodes.Status404NotFound);
 
-        builder.MapPostCreate<Create, Application>("/", "Get Application".ToMachine(), a => new { a.Id }, CommandBinding.Parameters)
+        builder.MapPostCreate<Create, Application>("/", "Get Application".ToMachine(), a => new { a.Id }, RequestBinding.Parameters)
             .WithNames("Create Application")
             .WithValidation<Create>();
 
-        builder.MapPatchCommand<Update, Application>("/{id}", CommandBinding.Parameters)
+        builder.MapPatchCommand<Update, Application>("/{id}", binding: RequestBinding.Parameters)
             .WithNames("Update Application")
             .WithValidation<Update>()
             .ProducesProblem(StatusCodes.Status404NotFound);
 
-        builder.MapDelete<Delete>("/{id}")
+        builder.MapDeleteCommand<Delete>("/{id}")
             .WithNames("Delete Application")
             .ProducesProblem(StatusCodes.Status404NotFound);
 
@@ -45,7 +44,7 @@ internal class Applications : EndpointGroupBase
             .WithNames("Get Permission")
             .ProducesProblem(StatusCodes.Status404NotFound);
 
-        builder.MapPostCreate<Commands.Permissions.Create, Permission>("/{applicationId}/permissions", "Get Permission".ToMachine(), a => new { a.Id }, CommandBinding.Parameters)
+        builder.MapPostCreate<Commands.Permissions.Create, Permission>("/{applicationId}/permissions", "Get Permission".ToMachine(), a => new { a.Id }, RequestBinding.Parameters)
             .WithNames("Create Permission")
             .WithValidation<Create>();
 
@@ -54,7 +53,7 @@ internal class Applications : EndpointGroupBase
             .WithValidation<Update>()
             .ProducesProblem(StatusCodes.Status404NotFound);
 
-        builder.MapDelete<Commands.Permissions.Delete>("/{applicationId}/permissions/{id}")
+        builder.MapDeleteCommand<Commands.Permissions.Delete>("/{applicationId}/permissions/{id}")
             .WithNames("Delete Permission")
             .ProducesProblem(StatusCodes.Status404NotFound);
     }

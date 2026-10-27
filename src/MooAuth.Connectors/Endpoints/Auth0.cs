@@ -7,15 +7,14 @@ using Asm.MooAuth.Modules.Connectors.Queries.Entra;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
+using Postie.AspNetCore;
 
 namespace Asm.MooAuth.Modules.Connectors.Endpoints;
 internal class Connectors : EndpointGroupBase
 {
-    public override string Name => "Connectors";
-
     public override string Path => "/connectors/Auth";
 
-    public override string Tags => "Connectors";
+    public override string? Tag => "Connectors";
 
     protected override void MapEndpoints(IEndpointRouteBuilder builder)
     {
@@ -23,16 +22,16 @@ internal class Connectors : EndpointGroupBase
             .WithNames("Get Connector")
             .ProducesProblem(StatusCodes.Status404NotFound);
 
-        builder.MapPostCreate<Create, Connector>("/", "Get Connector".ToMachine(), a => new { a.Id }, CommandBinding.Parameters)
+        builder.MapPostCreate<Create, Connector>("/", "Get Connector".ToMachine(), a => new { a.Id }, RequestBinding.Parameters)
             .WithNames("Create Connector")
             .WithValidation<Create>();
 
-        builder.MapPatchCommand<Update, Connector>("/{id}", CommandBinding.Parameters)
+        builder.MapPatchCommand<Update, Connector>("/{id}", binding: RequestBinding.Parameters)
             .WithNames("Update Connector")
             .WithValidation<Update>()
             .ProducesProblem(StatusCodes.Status404NotFound);
 
-        builder.MapDelete<Delete>("/{id}")
+        builder.MapDeleteCommand<Delete>("/{id}")
             .WithNames("Delete Connector")
             .ProducesProblem(StatusCodes.Status404NotFound);
 
@@ -43,7 +42,7 @@ internal class Connectors : EndpointGroupBase
             .WithNames("Get Permission")
             .ProducesProblem(StatusCodes.Status404NotFound);
 
-        builder.MapPostCreate<Commands.Permissions.Create, Permission>("/{connectorId}/permissions", "Get Permission".ToMachine(), a => new { a.Id }, CommandBinding.Parameters)
+        builder.MapPostCreate<Commands.Permissions.Create, Permission>("/{connectorId}/permissions", "Get Permission".ToMachine(), a => new { a.Id }, RequestBinding.Parameters)
             .WithNames("Create Permission")
             .WithValidation<Create>();
 
@@ -52,7 +51,7 @@ internal class Connectors : EndpointGroupBase
             .WithValidation<Update>()
             .ProducesProblem(StatusCodes.Status404NotFound);
 
-        builder.MapDelete<Commands.Permissions.Delete>("/{connectorId}/permissions/{id}")
+        builder.MapDeleteCommand<Commands.Permissions.Delete>("/{connectorId}/permissions/{id}")
             .WithNames("Delete Permission")
             .ProducesProblem(StatusCodes.Status404NotFound);
     }

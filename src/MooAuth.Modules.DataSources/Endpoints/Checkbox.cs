@@ -6,16 +6,15 @@ using Asm.MooAuth.Modules.DataSources.Queries.Checkbox;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
+using Postie.AspNetCore;
 
 namespace Asm.MooAuth.Modules.DataSources.Endpoints;
 
 internal class Checkbox : EndpointGroupBase
 {
-    public override string Name => "Data Sources";
-
     public override string Path => "/datasources/checkbox";
 
-    public override string Tags => "Data Sources";
+    public override string? Tag => "Data Sources";
 
     protected override void MapEndpoints(IEndpointRouteBuilder builder)
     {
@@ -23,11 +22,11 @@ internal class Checkbox : EndpointGroupBase
             .WithNames("Get Checkbox Data Source")
             .ProducesProblem(StatusCodes.Status404NotFound);
 
-        builder.MapPostCreate<Create, CheckboxDataSource>("/", "Get Checkbox Data Source".ToMachine(), a => new { a.Id }, CommandBinding.Parameters)
+        builder.MapPostCreate<Create, CheckboxDataSource>("/", "Get Checkbox Data Source".ToMachine(), a => new { a.Id }, RequestBinding.Parameters)
             .WithNames("Create Checkbox Data Source")
             .WithValidation<Create>();
 
-        builder.MapPatchCommand<Update, CheckboxDataSource>("/{id}", CommandBinding.Parameters)
+        builder.MapPatchCommand<Update, CheckboxDataSource>("/{id}", binding: RequestBinding.Parameters)
             .WithNames("Update Checkbox Data Source")
             .WithValidation<Update>()
             .ProducesProblem(StatusCodes.Status404NotFound);

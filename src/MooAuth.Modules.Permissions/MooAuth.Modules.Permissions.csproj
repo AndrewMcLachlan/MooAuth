@@ -4,7 +4,8 @@
 
   <ItemGroup>
     <PackageReference Include="Asm.AspNetCore" />
-    <PackageReference Include="Asm.Cqrs.AspNetCore" />
+    <PackageReference Include="Postie.Cqrs.AspNetCore" />
+    <PackageReference Include="Postie.AspNetCore" />
   </ItemGroup>
 
   <ItemGroup>

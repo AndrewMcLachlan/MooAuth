@@ -15,7 +15,7 @@ function Profile() {
 
     const { data: me } = useGetUser();
 
-    const handleSubmit = async (_data: User) => {
+    const handleSubmit = async () => {
     };
 
     const form = useForm<User>({ defaultValues: me });

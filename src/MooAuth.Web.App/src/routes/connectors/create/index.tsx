@@ -10,7 +10,7 @@ export const Route = createFileRoute("/connectors/create/")({
 
 function CreateConnector() {
 
-    var { data } = useGetConnectorTypes();
+    const { data } = useGetConnectorTypes();
 
     return (
         <Page title="Create Connector" breadcrumbs={[{ text: "Create", route: `/connectors/create` }]}>

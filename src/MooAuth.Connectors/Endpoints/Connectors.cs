@@ -6,15 +6,14 @@ using Asm.MooAuth.Modules.Connectors.Queries;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
+using Postie.AspNetCore;
 
 namespace Asm.MooAuth.Modules.Connectors.Endpoints;
 internal class Connectors : EndpointGroupBase
 {
-    public override string Name => "Connectors";
-
     public override string Path => "/connectors";
 
-    public override string Tags => "Connectors";
+    public override string? Tag => "Connectors";
 
     protected override void MapEndpoints(IEndpointRouteBuilder builder)
     {
@@ -25,7 +24,7 @@ internal class Connectors : EndpointGroupBase
         builder.MapQuery<GetConnectorTypes, IEnumerable<ConnectorTypeEntry>>("/available")
                .WithNames("Get Available Connector Types");
 
-        builder.MapDelete<Delete>("/{id}")
+        builder.MapDeleteCommand<Delete>("/{id}")
                .WithNames("Delete Connector")
                .ProducesProblem(StatusCodes.Status404NotFound);
     }

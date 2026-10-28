@@ -5,16 +5,15 @@ using Asm.MooAuth.Modules.Groups.Queries;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
+using Postie.AspNetCore;
 
 namespace Asm.MooAuth.Modules.Groups.Endpoints;
 
 public class ConnectorGroups : EndpointGroupBase
 {
-    public override string Name => "Groups";
-
     public override string Path => "/groups";
 
-    public override string Tags => "Groups";
+    public override string? Tag => "Groups";
 
     protected override void MapEndpoints(IEndpointRouteBuilder routeGroupBuilder)
     {

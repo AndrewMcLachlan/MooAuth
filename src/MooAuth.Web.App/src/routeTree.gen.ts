@@ -9,40 +9,40 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from "./routes/__root"
-import { Route as ProfileRouteImport } from "./routes/profile"
-import { Route as SplatRouteImport } from "./routes/$"
 import { Route as IndexRouteImport } from "./routes/index"
-import { Route as UsersIndexRouteImport } from "./routes/users/index"
-import { Route as RolesIndexRouteImport } from "./routes/roles/index"
-import { Route as GroupsIndexRouteImport } from "./routes/groups/index"
-import { Route as DatasourcesIndexRouteImport } from "./routes/datasources/index"
-import { Route as ConnectorsIndexRouteImport } from "./routes/connectors/index"
+import { Route as SplatRouteImport } from "./routes/$"
+import { Route as ProfileRouteImport } from "./routes/profile"
 import { Route as ApplicationsIndexRouteImport } from "./routes/applications/index"
-import { Route as RolesCreateRouteImport } from "./routes/roles/create"
-import { Route as ApplicationsCreateRouteImport } from "./routes/applications/create"
-import { Route as RolesIdRouteRouteImport } from "./routes/roles/$id/route"
 import { Route as ApplicationsIdRouteRouteImport } from "./routes/applications/$id/route"
-import { Route as RolesIdIndexRouteImport } from "./routes/roles/$id/index"
-import { Route as DatasourcesCreateIndexRouteImport } from "./routes/datasources/create/index"
-import { Route as ConnectorsCreateIndexRouteImport } from "./routes/connectors/create/index"
+import { Route as ApplicationsCreateRouteImport } from "./routes/applications/create"
+import { Route as ConnectorsIndexRouteImport } from "./routes/connectors/index"
+import { Route as DatasourcesIndexRouteImport } from "./routes/datasources/index"
+import { Route as GroupsIndexRouteImport } from "./routes/groups/index"
+import { Route as RolesIndexRouteImport } from "./routes/roles/index"
+import { Route as RolesIdRouteRouteImport } from "./routes/roles/$id/route"
+import { Route as RolesCreateRouteImport } from "./routes/roles/create"
+import { Route as UsersIndexRouteImport } from "./routes/users/index"
 import { Route as ApplicationsIdIndexRouteImport } from "./routes/applications/$id/index"
-import { Route as UsersExternalIdRolesRouteImport } from "./routes/users/$externalId/roles"
-import { Route as RolesIdDetailsRouteImport } from "./routes/roles/$id/details"
-import { Route as GroupsExternalIdRolesRouteImport } from "./routes/groups/$externalId/roles"
-import { Route as DatasourcesPicklistIdRouteImport } from "./routes/datasources/picklist.$id"
-import { Route as DatasourcesFreetextIdRouteImport } from "./routes/datasources/freetext.$id"
-import { Route as DatasourcesCreatePicklistRouteImport } from "./routes/datasources/create/picklist"
-import { Route as DatasourcesCreateFreetextRouteImport } from "./routes/datasources/create/freetext"
-import { Route as DatasourcesCreateCheckboxRouteImport } from "./routes/datasources/create/checkbox"
-import { Route as DatasourcesCheckboxIdRouteImport } from "./routes/datasources/checkbox.$id"
-import { Route as DatasourcesApipicklistIdRouteImport } from "./routes/datasources/apipicklist.$id"
-import { Route as ConnectorsEntraIdRouteImport } from "./routes/connectors/entra.$id"
-import { Route as ConnectorsCreateEntraRouteImport } from "./routes/connectors/create/entra"
 import { Route as ApplicationsIdDetailsRouteImport } from "./routes/applications/$id/details"
+import { Route as ConnectorsCreateIndexRouteImport } from "./routes/connectors/create/index"
+import { Route as ConnectorsCreateEntraRouteImport } from "./routes/connectors/create/entra"
+import { Route as ConnectorsEntraIdRouteImport } from "./routes/connectors/entra.$id"
+import { Route as DatasourcesApipicklistIdRouteImport } from "./routes/datasources/apipicklist.$id"
+import { Route as DatasourcesCheckboxIdRouteImport } from "./routes/datasources/checkbox.$id"
+import { Route as DatasourcesCreateIndexRouteImport } from "./routes/datasources/create/index"
+import { Route as DatasourcesCreateCheckboxRouteImport } from "./routes/datasources/create/checkbox"
+import { Route as DatasourcesCreateFreetextRouteImport } from "./routes/datasources/create/freetext"
+import { Route as DatasourcesCreatePicklistRouteImport } from "./routes/datasources/create/picklist"
+import { Route as DatasourcesFreetextIdRouteImport } from "./routes/datasources/freetext.$id"
+import { Route as DatasourcesPicklistIdRouteImport } from "./routes/datasources/picklist.$id"
+import { Route as GroupsExternalIdRolesRouteImport } from "./routes/groups/$externalId/roles"
+import { Route as RolesIdIndexRouteImport } from "./routes/roles/$id/index"
+import { Route as RolesIdDetailsRouteImport } from "./routes/roles/$id/details"
+import { Route as UsersExternalIdRolesRouteImport } from "./routes/users/$externalId/roles"
 
-const ProfileRoute = ProfileRouteImport.update({
-  id: "/profile",
-  path: "/profile",
+const IndexRoute = IndexRouteImport.update({
+  id: "/",
+  path: "/",
   getParentRoute: () => rootRouteImport,
 } as any)
 const SplatRoute = SplatRouteImport.update({
@@ -50,34 +50,9 @@ const SplatRoute = SplatRouteImport.update({
   path: "/$",
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: "/",
-  path: "/",
-  getParentRoute: () => rootRouteImport,
-} as any)
-const UsersIndexRoute = UsersIndexRouteImport.update({
-  id: "/users/",
-  path: "/users/",
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RolesIndexRoute = RolesIndexRouteImport.update({
-  id: "/roles/",
-  path: "/roles/",
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GroupsIndexRoute = GroupsIndexRouteImport.update({
-  id: "/groups/",
-  path: "/groups/",
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DatasourcesIndexRoute = DatasourcesIndexRouteImport.update({
-  id: "/datasources/",
-  path: "/datasources/",
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ConnectorsIndexRoute = ConnectorsIndexRouteImport.update({
-  id: "/connectors/",
-  path: "/connectors/",
+const ProfileRoute = ProfileRouteImport.update({
+  id: "/profile",
+  path: "/profile",
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApplicationsIndexRoute = ApplicationsIndexRouteImport.update({
@@ -85,9 +60,9 @@ const ApplicationsIndexRoute = ApplicationsIndexRouteImport.update({
   path: "/applications/",
   getParentRoute: () => rootRouteImport,
 } as any)
-const RolesCreateRoute = RolesCreateRouteImport.update({
-  id: "/roles/create",
-  path: "/roles/create",
+const ApplicationsIdRouteRoute = ApplicationsIdRouteRouteImport.update({
+  id: "/applications/$id",
+  path: "/applications/$id",
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApplicationsCreateRoute = ApplicationsCreateRouteImport.update({
@@ -95,29 +70,39 @@ const ApplicationsCreateRoute = ApplicationsCreateRouteImport.update({
   path: "/applications/create",
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConnectorsIndexRoute = ConnectorsIndexRouteImport.update({
+  id: "/connectors/",
+  path: "/connectors/",
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DatasourcesIndexRoute = DatasourcesIndexRouteImport.update({
+  id: "/datasources/",
+  path: "/datasources/",
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GroupsIndexRoute = GroupsIndexRouteImport.update({
+  id: "/groups/",
+  path: "/groups/",
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RolesIndexRoute = RolesIndexRouteImport.update({
+  id: "/roles/",
+  path: "/roles/",
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RolesIdRouteRoute = RolesIdRouteRouteImport.update({
   id: "/roles/$id",
   path: "/roles/$id",
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApplicationsIdRouteRoute = ApplicationsIdRouteRouteImport.update({
-  id: "/applications/$id",
-  path: "/applications/$id",
+const RolesCreateRoute = RolesCreateRouteImport.update({
+  id: "/roles/create",
+  path: "/roles/create",
   getParentRoute: () => rootRouteImport,
 } as any)
-const RolesIdIndexRoute = RolesIdIndexRouteImport.update({
-  id: "/",
-  path: "/",
-  getParentRoute: () => RolesIdRouteRoute,
-} as any)
-const DatasourcesCreateIndexRoute = DatasourcesCreateIndexRouteImport.update({
-  id: "/datasources/create/",
-  path: "/datasources/create/",
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ConnectorsCreateIndexRoute = ConnectorsCreateIndexRouteImport.update({
-  id: "/connectors/create/",
-  path: "/connectors/create/",
+const UsersIndexRoute = UsersIndexRouteImport.update({
+  id: "/users/",
+  path: "/users/",
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApplicationsIdIndexRoute = ApplicationsIdIndexRouteImport.update({
@@ -125,52 +110,24 @@ const ApplicationsIdIndexRoute = ApplicationsIdIndexRouteImport.update({
   path: "/",
   getParentRoute: () => ApplicationsIdRouteRoute,
 } as any)
-const UsersExternalIdRolesRoute = UsersExternalIdRolesRouteImport.update({
-  id: "/users/$externalId/roles",
-  path: "/users/$externalId/roles",
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RolesIdDetailsRoute = RolesIdDetailsRouteImport.update({
+const ApplicationsIdDetailsRoute = ApplicationsIdDetailsRouteImport.update({
   id: "/details",
   path: "/details",
-  getParentRoute: () => RolesIdRouteRoute,
+  getParentRoute: () => ApplicationsIdRouteRoute,
 } as any)
-const GroupsExternalIdRolesRoute = GroupsExternalIdRolesRouteImport.update({
-  id: "/groups/$externalId/roles",
-  path: "/groups/$externalId/roles",
+const ConnectorsCreateIndexRoute = ConnectorsCreateIndexRouteImport.update({
+  id: "/connectors/create/",
+  path: "/connectors/create/",
   getParentRoute: () => rootRouteImport,
 } as any)
-const DatasourcesPicklistIdRoute = DatasourcesPicklistIdRouteImport.update({
-  id: "/datasources/picklist/$id",
-  path: "/datasources/picklist/$id",
+const ConnectorsCreateEntraRoute = ConnectorsCreateEntraRouteImport.update({
+  id: "/connectors/create/entra",
+  path: "/connectors/create/entra",
   getParentRoute: () => rootRouteImport,
 } as any)
-const DatasourcesFreetextIdRoute = DatasourcesFreetextIdRouteImport.update({
-  id: "/datasources/freetext/$id",
-  path: "/datasources/freetext/$id",
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DatasourcesCreatePicklistRoute =
-  DatasourcesCreatePicklistRouteImport.update({
-    id: "/datasources/create/picklist",
-    path: "/datasources/create/picklist",
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const DatasourcesCreateFreetextRoute =
-  DatasourcesCreateFreetextRouteImport.update({
-    id: "/datasources/create/freetext",
-    path: "/datasources/create/freetext",
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const DatasourcesCreateCheckboxRoute =
-  DatasourcesCreateCheckboxRouteImport.update({
-    id: "/datasources/create/checkbox",
-    path: "/datasources/create/checkbox",
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const DatasourcesCheckboxIdRoute = DatasourcesCheckboxIdRouteImport.update({
-  id: "/datasources/checkbox/$id",
-  path: "/datasources/checkbox/$id",
+const ConnectorsEntraIdRoute = ConnectorsEntraIdRouteImport.update({
+  id: "/connectors/entra/$id",
+  path: "/connectors/entra/$id",
   getParentRoute: () => rootRouteImport,
 } as any)
 const DatasourcesApipicklistIdRoute =
@@ -179,20 +136,63 @@ const DatasourcesApipicklistIdRoute =
     path: "/datasources/apipicklist/$id",
     getParentRoute: () => rootRouteImport,
   } as any)
-const ConnectorsEntraIdRoute = ConnectorsEntraIdRouteImport.update({
-  id: "/connectors/entra/$id",
-  path: "/connectors/entra/$id",
+const DatasourcesCheckboxIdRoute = DatasourcesCheckboxIdRouteImport.update({
+  id: "/datasources/checkbox/$id",
+  path: "/datasources/checkbox/$id",
   getParentRoute: () => rootRouteImport,
 } as any)
-const ConnectorsCreateEntraRoute = ConnectorsCreateEntraRouteImport.update({
-  id: "/connectors/create/entra",
-  path: "/connectors/create/entra",
+const DatasourcesCreateIndexRoute = DatasourcesCreateIndexRouteImport.update({
+  id: "/datasources/create/",
+  path: "/datasources/create/",
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApplicationsIdDetailsRoute = ApplicationsIdDetailsRouteImport.update({
+const DatasourcesCreateCheckboxRoute =
+  DatasourcesCreateCheckboxRouteImport.update({
+    id: "/datasources/create/checkbox",
+    path: "/datasources/create/checkbox",
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const DatasourcesCreateFreetextRoute =
+  DatasourcesCreateFreetextRouteImport.update({
+    id: "/datasources/create/freetext",
+    path: "/datasources/create/freetext",
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const DatasourcesCreatePicklistRoute =
+  DatasourcesCreatePicklistRouteImport.update({
+    id: "/datasources/create/picklist",
+    path: "/datasources/create/picklist",
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const DatasourcesFreetextIdRoute = DatasourcesFreetextIdRouteImport.update({
+  id: "/datasources/freetext/$id",
+  path: "/datasources/freetext/$id",
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DatasourcesPicklistIdRoute = DatasourcesPicklistIdRouteImport.update({
+  id: "/datasources/picklist/$id",
+  path: "/datasources/picklist/$id",
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GroupsExternalIdRolesRoute = GroupsExternalIdRolesRouteImport.update({
+  id: "/groups/$externalId/roles",
+  path: "/groups/$externalId/roles",
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RolesIdIndexRoute = RolesIdIndexRouteImport.update({
+  id: "/",
+  path: "/",
+  getParentRoute: () => RolesIdRouteRoute,
+} as any)
+const RolesIdDetailsRoute = RolesIdDetailsRouteImport.update({
   id: "/details",
   path: "/details",
-  getParentRoute: () => ApplicationsIdRouteRoute,
+  getParentRoute: () => RolesIdRouteRoute,
+} as any)
+const UsersExternalIdRolesRoute = UsersExternalIdRolesRouteImport.update({
+  id: "/users/$externalId/roles",
+  path: "/users/$externalId/roles",
+  getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -418,11 +418,11 @@ export interface RootRouteChildren {
 
 declare module "@tanstack/react-router" {
   interface FileRoutesByPath {
-    "/profile": {
-      id: "/profile"
-      path: "/profile"
-      fullPath: "/profile"
-      preLoaderRoute: typeof ProfileRouteImport
+    "/": {
+      id: "/"
+      path: "/"
+      fullPath: "/"
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     "/$": {
@@ -432,46 +432,11 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof SplatRouteImport
       parentRoute: typeof rootRouteImport
     }
-    "/": {
-      id: "/"
-      path: "/"
-      fullPath: "/"
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    "/users/": {
-      id: "/users/"
-      path: "/users"
-      fullPath: "/users/"
-      preLoaderRoute: typeof UsersIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    "/roles/": {
-      id: "/roles/"
-      path: "/roles"
-      fullPath: "/roles/"
-      preLoaderRoute: typeof RolesIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    "/groups/": {
-      id: "/groups/"
-      path: "/groups"
-      fullPath: "/groups/"
-      preLoaderRoute: typeof GroupsIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    "/datasources/": {
-      id: "/datasources/"
-      path: "/datasources"
-      fullPath: "/datasources/"
-      preLoaderRoute: typeof DatasourcesIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    "/connectors/": {
-      id: "/connectors/"
-      path: "/connectors"
-      fullPath: "/connectors/"
-      preLoaderRoute: typeof ConnectorsIndexRouteImport
+    "/profile": {
+      id: "/profile"
+      path: "/profile"
+      fullPath: "/profile"
+      preLoaderRoute: typeof ProfileRouteImport
       parentRoute: typeof rootRouteImport
     }
     "/applications/": {
@@ -481,11 +446,11 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof ApplicationsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    "/roles/create": {
-      id: "/roles/create"
-      path: "/roles/create"
-      fullPath: "/roles/create"
-      preLoaderRoute: typeof RolesCreateRouteImport
+    "/applications/$id": {
+      id: "/applications/$id"
+      path: "/applications/$id"
+      fullPath: "/applications/$id"
+      preLoaderRoute: typeof ApplicationsIdRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     "/applications/create": {
@@ -495,6 +460,34 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof ApplicationsCreateRouteImport
       parentRoute: typeof rootRouteImport
     }
+    "/connectors/": {
+      id: "/connectors/"
+      path: "/connectors"
+      fullPath: "/connectors/"
+      preLoaderRoute: typeof ConnectorsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    "/datasources/": {
+      id: "/datasources/"
+      path: "/datasources"
+      fullPath: "/datasources/"
+      preLoaderRoute: typeof DatasourcesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    "/groups/": {
+      id: "/groups/"
+      path: "/groups"
+      fullPath: "/groups/"
+      preLoaderRoute: typeof GroupsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    "/roles/": {
+      id: "/roles/"
+      path: "/roles"
+      fullPath: "/roles/"
+      preLoaderRoute: typeof RolesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     "/roles/$id": {
       id: "/roles/$id"
       path: "/roles/$id"
@@ -502,32 +495,18 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof RolesIdRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    "/applications/$id": {
-      id: "/applications/$id"
-      path: "/applications/$id"
-      fullPath: "/applications/$id"
-      preLoaderRoute: typeof ApplicationsIdRouteRouteImport
+    "/roles/create": {
+      id: "/roles/create"
+      path: "/roles/create"
+      fullPath: "/roles/create"
+      preLoaderRoute: typeof RolesCreateRouteImport
       parentRoute: typeof rootRouteImport
     }
-    "/roles/$id/": {
-      id: "/roles/$id/"
-      path: "/"
-      fullPath: "/roles/$id/"
-      preLoaderRoute: typeof RolesIdIndexRouteImport
-      parentRoute: typeof RolesIdRouteRoute
-    }
-    "/datasources/create/": {
-      id: "/datasources/create/"
-      path: "/datasources/create"
-      fullPath: "/datasources/create/"
-      preLoaderRoute: typeof DatasourcesCreateIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    "/connectors/create/": {
-      id: "/connectors/create/"
-      path: "/connectors/create"
-      fullPath: "/connectors/create/"
-      preLoaderRoute: typeof ConnectorsCreateIndexRouteImport
+    "/users/": {
+      id: "/users/"
+      path: "/users"
+      fullPath: "/users/"
+      preLoaderRoute: typeof UsersIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     "/applications/$id/": {
@@ -537,81 +516,18 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof ApplicationsIdIndexRouteImport
       parentRoute: typeof ApplicationsIdRouteRoute
     }
-    "/users/$externalId/roles": {
-      id: "/users/$externalId/roles"
-      path: "/users/$externalId/roles"
-      fullPath: "/users/$externalId/roles"
-      preLoaderRoute: typeof UsersExternalIdRolesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    "/roles/$id/details": {
-      id: "/roles/$id/details"
+    "/applications/$id/details": {
+      id: "/applications/$id/details"
       path: "/details"
-      fullPath: "/roles/$id/details"
-      preLoaderRoute: typeof RolesIdDetailsRouteImport
-      parentRoute: typeof RolesIdRouteRoute
+      fullPath: "/applications/$id/details"
+      preLoaderRoute: typeof ApplicationsIdDetailsRouteImport
+      parentRoute: typeof ApplicationsIdRouteRoute
     }
-    "/groups/$externalId/roles": {
-      id: "/groups/$externalId/roles"
-      path: "/groups/$externalId/roles"
-      fullPath: "/groups/$externalId/roles"
-      preLoaderRoute: typeof GroupsExternalIdRolesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    "/datasources/picklist/$id": {
-      id: "/datasources/picklist/$id"
-      path: "/datasources/picklist/$id"
-      fullPath: "/datasources/picklist/$id"
-      preLoaderRoute: typeof DatasourcesPicklistIdRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    "/datasources/freetext/$id": {
-      id: "/datasources/freetext/$id"
-      path: "/datasources/freetext/$id"
-      fullPath: "/datasources/freetext/$id"
-      preLoaderRoute: typeof DatasourcesFreetextIdRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    "/datasources/create/picklist": {
-      id: "/datasources/create/picklist"
-      path: "/datasources/create/picklist"
-      fullPath: "/datasources/create/picklist"
-      preLoaderRoute: typeof DatasourcesCreatePicklistRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    "/datasources/create/freetext": {
-      id: "/datasources/create/freetext"
-      path: "/datasources/create/freetext"
-      fullPath: "/datasources/create/freetext"
-      preLoaderRoute: typeof DatasourcesCreateFreetextRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    "/datasources/create/checkbox": {
-      id: "/datasources/create/checkbox"
-      path: "/datasources/create/checkbox"
-      fullPath: "/datasources/create/checkbox"
-      preLoaderRoute: typeof DatasourcesCreateCheckboxRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    "/datasources/checkbox/$id": {
-      id: "/datasources/checkbox/$id"
-      path: "/datasources/checkbox/$id"
-      fullPath: "/datasources/checkbox/$id"
-      preLoaderRoute: typeof DatasourcesCheckboxIdRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    "/datasources/apipicklist/$id": {
-      id: "/datasources/apipicklist/$id"
-      path: "/datasources/apipicklist/$id"
-      fullPath: "/datasources/apipicklist/$id"
-      preLoaderRoute: typeof DatasourcesApipicklistIdRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    "/connectors/entra/$id": {
-      id: "/connectors/entra/$id"
-      path: "/connectors/entra/$id"
-      fullPath: "/connectors/entra/$id"
-      preLoaderRoute: typeof ConnectorsEntraIdRouteImport
+    "/connectors/create/": {
+      id: "/connectors/create/"
+      path: "/connectors/create"
+      fullPath: "/connectors/create/"
+      preLoaderRoute: typeof ConnectorsCreateIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     "/connectors/create/entra": {
@@ -621,12 +537,96 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof ConnectorsCreateEntraRouteImport
       parentRoute: typeof rootRouteImport
     }
-    "/applications/$id/details": {
-      id: "/applications/$id/details"
+    "/connectors/entra/$id": {
+      id: "/connectors/entra/$id"
+      path: "/connectors/entra/$id"
+      fullPath: "/connectors/entra/$id"
+      preLoaderRoute: typeof ConnectorsEntraIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    "/datasources/apipicklist/$id": {
+      id: "/datasources/apipicklist/$id"
+      path: "/datasources/apipicklist/$id"
+      fullPath: "/datasources/apipicklist/$id"
+      preLoaderRoute: typeof DatasourcesApipicklistIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    "/datasources/checkbox/$id": {
+      id: "/datasources/checkbox/$id"
+      path: "/datasources/checkbox/$id"
+      fullPath: "/datasources/checkbox/$id"
+      preLoaderRoute: typeof DatasourcesCheckboxIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    "/datasources/create/": {
+      id: "/datasources/create/"
+      path: "/datasources/create"
+      fullPath: "/datasources/create/"
+      preLoaderRoute: typeof DatasourcesCreateIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    "/datasources/create/checkbox": {
+      id: "/datasources/create/checkbox"
+      path: "/datasources/create/checkbox"
+      fullPath: "/datasources/create/checkbox"
+      preLoaderRoute: typeof DatasourcesCreateCheckboxRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    "/datasources/create/freetext": {
+      id: "/datasources/create/freetext"
+      path: "/datasources/create/freetext"
+      fullPath: "/datasources/create/freetext"
+      preLoaderRoute: typeof DatasourcesCreateFreetextRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    "/datasources/create/picklist": {
+      id: "/datasources/create/picklist"
+      path: "/datasources/create/picklist"
+      fullPath: "/datasources/create/picklist"
+      preLoaderRoute: typeof DatasourcesCreatePicklistRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    "/datasources/freetext/$id": {
+      id: "/datasources/freetext/$id"
+      path: "/datasources/freetext/$id"
+      fullPath: "/datasources/freetext/$id"
+      preLoaderRoute: typeof DatasourcesFreetextIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    "/datasources/picklist/$id": {
+      id: "/datasources/picklist/$id"
+      path: "/datasources/picklist/$id"
+      fullPath: "/datasources/picklist/$id"
+      preLoaderRoute: typeof DatasourcesPicklistIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    "/groups/$externalId/roles": {
+      id: "/groups/$externalId/roles"
+      path: "/groups/$externalId/roles"
+      fullPath: "/groups/$externalId/roles"
+      preLoaderRoute: typeof GroupsExternalIdRolesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    "/roles/$id/": {
+      id: "/roles/$id/"
+      path: "/"
+      fullPath: "/roles/$id/"
+      preLoaderRoute: typeof RolesIdIndexRouteImport
+      parentRoute: typeof RolesIdRouteRoute
+    }
+    "/roles/$id/details": {
+      id: "/roles/$id/details"
       path: "/details"
-      fullPath: "/applications/$id/details"
-      preLoaderRoute: typeof ApplicationsIdDetailsRouteImport
-      parentRoute: typeof ApplicationsIdRouteRoute
+      fullPath: "/roles/$id/details"
+      preLoaderRoute: typeof RolesIdDetailsRouteImport
+      parentRoute: typeof RolesIdRouteRoute
+    }
+    "/users/$externalId/roles": {
+      id: "/users/$externalId/roles"
+      path: "/users/$externalId/roles"
+      fullPath: "/users/$externalId/roles"
+      preLoaderRoute: typeof UsersExternalIdRolesRouteImport
+      parentRoute: typeof rootRouteImport
     }
   }
 }

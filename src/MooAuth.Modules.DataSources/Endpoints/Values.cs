@@ -6,16 +6,15 @@ using Asm.MooAuth.Modules.DataSources.Queries;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
+using Postie.AspNetCore;
 
 namespace Asm.MooAuth.Modules.DataSources.Endpoints;
 
 internal class Values : EndpointGroupBase
 {
-    public override string Name => "Data Source Values";
-
     public override string Path => "/datasources/{dataSourceId}/values";
 
-    public override string Tags => "Data Sources";
+    public override string? Tag => "Data Sources";
 
     protected override void MapEndpoints(IEndpointRouteBuilder builder)
     {
@@ -23,15 +22,15 @@ internal class Values : EndpointGroupBase
             .WithNames("Get Data Source Values")
             .ProducesProblem(StatusCodes.Status404NotFound);
 
-        builder.MapPostCreate<AddValue, DataSourceValue>("/", "Get Data Source Values".ToMachine(), _ => new { }, CommandBinding.Parameters)
+        builder.MapPostCreate<AddValue, DataSourceValue>("/", "Get Data Source Values".ToMachine(), _ => new { }, RequestBinding.Parameters)
             .WithNames("Add Data Source Value")
             .ProducesProblem(StatusCodes.Status404NotFound);
 
-        builder.MapPatchCommand<UpdateValue, DataSourceValue>("/{valueId}", CommandBinding.Parameters)
+        builder.MapPatchCommand<UpdateValue, DataSourceValue>("/{valueId}", binding: RequestBinding.Parameters)
             .WithNames("Update Data Source Value")
             .ProducesProblem(StatusCodes.Status404NotFound);
 
-        builder.MapDelete<RemoveValue>("/{valueId}")
+        builder.MapDeleteCommand<RemoveValue>("/{valueId}")
             .WithNames("Remove Data Source Value")
             .ProducesProblem(StatusCodes.Status404NotFound);
     }

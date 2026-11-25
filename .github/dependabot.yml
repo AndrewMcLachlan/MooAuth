@@ -34,6 +34,10 @@ updates:
         update-types:
           - "minor"
           - "patch"
+    ignore:
+      # 8.73+ peers on @typescript/native >=7.1; lift once TypeScript 7.1 is GA
+      - dependency-name: "typescript-eslint"
+        versions: [">=8.73.0"]
     open-pull-requests-limit: 20
     registries: "*"
 

@@ -34,28 +34,28 @@ const sideMenu: NavItem[] = [
     {
         text: "Dashboard",
         route: "/",
-        image: <Dashboard />
+        icon: Dashboard
     },
     {
         text: "Applications",
         route: "/applications",
-        image: <Application />
+        icon: Application
     },
     {
         text: "Roles",
         route: "/roles",
-        image: <UserShield />
+        icon: UserShield
 
     },
     {
         text: "Users",
         route: "/users",
-        image: <User />
+        icon: User
     },
     {
         text: "Groups",
         route: "/groups",
-        image: <Users />
+        icon: Users
     },
     {
         text: "Connectors",
@@ -64,6 +64,6 @@ const sideMenu: NavItem[] = [
     {
         text: "Data Sources",
         route: "/datasources",
-        image: <Database />
+        icon: Database
     },
 ];
